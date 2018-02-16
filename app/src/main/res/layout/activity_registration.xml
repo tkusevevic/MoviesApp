@@ -50,7 +50,7 @@
                 android:layout_width="match_parent"
                 android:hint="@string/hint_name"
                 android:layout_marginTop="5dp"
-                android:textColorHint="@color/input_register"
+                android:textColorHint="@color/hint_gray"
                 android:layout_height="wrap_content">
 
                 <EditText
@@ -69,7 +69,7 @@
                 android:id="@+id/layoutEmail"
                 android:hint="@string/hint_email"
                 android:layout_marginTop="5dp"
-                android:textColorHint="@color/input_register"
+                android:textColorHint="@color/hint_gray"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -91,7 +91,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:hint="@string/hint_password"
-                android:textColorHint="@color/input_register"
+                android:textColorHint="@color/hint_gray"
                 android:layout_height="wrap_content">
 
                 <EditText

@@ -6,7 +6,7 @@
     <color name="white">#ffffff</color>
     <color name="black">#222222</color>
     <color name="input_login_hint">#5e6266</color>
-    <color name="input_register">#5e6266</color>
+    <color name="hint_gray">#5e6266</color>
     <color name="input_register_bg">#3b4148</color>
     <color name="input_register_hint">#5e6266</color>
     <color name="btn_login">#26ae90</color>

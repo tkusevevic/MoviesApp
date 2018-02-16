@@ -1,7 +1,10 @@
 package com.tkusevic.moviesapp.firebase.database
 
 import android.util.Log
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.tkusevic.moviesapp.data.model.User
 
 /**
@@ -9,16 +12,32 @@ import com.tkusevic.moviesapp.data.model.User
  */
 class DatabaseHelperImpl : DatabaseHelper {
 
-    val reference = FirebaseDatabase.getInstance()
+    val reference = FirebaseDatabase.getInstance().reference
 
     override fun saveUser(user: User) {
-        Log.d("USER REGISTRATION", reference.reference.root.toString())
-        reference.reference.child("users").child(user.id).setValue(user)
+        Log.d("USER REGISTRATION", reference.root.toString())
+        reference.child("users").child(user.id).setValue(user)
     }
 
-    override fun getUser(id: String): User {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun getUser(id: String, returning: (User) -> Unit) {
+        reference.child("users").child(id).addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError?) {
+
+            }
+
+            override fun onDataChange(dataSnapshot: DataSnapshot?) {
+                dataSnapshot?.run {
+                    val user = getValue(User::class.java)
+                    user?.run {
+                        Log.d("User", toString())
+                        returning(user)
+                    }
+                }
+            }
+        })
+
     }
+
 
     override fun editUser(user: User) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.

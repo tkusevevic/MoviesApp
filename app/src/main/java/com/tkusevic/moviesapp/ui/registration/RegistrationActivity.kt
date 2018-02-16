@@ -20,6 +20,11 @@ import com.tkusevic.moviesapp.ui.signIn.SignInActivity
 import kotlinx.android.synthetic.main.activity_registration.*
 
 class RegistrationActivity : AppCompatActivity(), RegistrationView, RequestListener {
+   //override fun processDone() {
+   //    errorHandling()
+   //    progress.hide()
+   //    layoutWithoutImage.show()
+   //}
 
     //TODO LOGIKA U PRESENTER
 
@@ -41,7 +46,7 @@ class RegistrationActivity : AppCompatActivity(), RegistrationView, RequestListe
     private fun initListeners() {
         registrationBtn.onClick {
             showProgressHideLayout()
-            if (checkInputs(email.text.toString(), password.text.toString(), name.text.toString())) {
+            if (inputsNotEmpty(email.text.toString(), password.text.toString(), name.text.toString())) {
                 tryToSaveToDatabase()
                 hideErrors()
             } else checkValidation()
@@ -90,27 +95,17 @@ class RegistrationActivity : AppCompatActivity(), RegistrationView, RequestListe
 
     //success on register try
     override fun onSuccessfulRequest() {
-        //waitingForProcess()
         startActivity(Intent(this, SignInActivity::class.java))
+        hideProgressAndShowOther()
     }
 
     //fail on register try
     override fun onFailedRequest() {
-        //processDone()
+        hideProgressAndShowOther()
     }
 
-    //override fun waitingForProcess() {
-    //    progress.show()
-    //    layoutWithoutImage.hide()
-    //}
 
-    //override fun processDone() {
-    //    errorHandling()
-    //    progress.hide()
-    //    layoutWithoutImage.show()
-    //}
-
-    private fun errorHandling() {
+     fun errorHandling() {
         if (isPasswordCorrect(password.text.toString().trim()))
             layoutPassword.error = PASSWORD_ERROR
         else {
@@ -119,11 +114,13 @@ class RegistrationActivity : AppCompatActivity(), RegistrationView, RequestListe
     }
 
     override fun showProgressAndHideOther() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        progress.show()
+        layoutWithoutImage.hide()
     }
 
     override fun hideProgressAndShowOther() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        progress.hide()
+        layoutWithoutImage.show()
     }
 
     override fun showEmailError() {

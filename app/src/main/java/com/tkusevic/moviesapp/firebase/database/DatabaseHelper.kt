@@ -7,9 +7,10 @@ import com.tkusevic.moviesapp.data.model.User
  */
 interface DatabaseHelper {
 
+
     fun saveUser(user: User)
 
-    fun getUser(id: String): User
+    fun getUser(id: String,onUserNesto : (User) -> Unit)
 
     fun editUser(user: User)
 

@@ -19,5 +19,7 @@ interface SignInView {
 
     fun hideProgressAndShowOther()
 
-    fun setUI(user : User? = null)
+    fun startUI(user : User? = null)
+
+    fun showMessage(message : String)
 }

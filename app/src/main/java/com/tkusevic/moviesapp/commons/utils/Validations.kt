@@ -14,7 +14,7 @@ fun isPasswordCorrect(password: String): Boolean {
     return password.length < 6 && !password.isEmpty()
 }
 
-fun checkInputs(email: String, password: String, name: String): Boolean {
+fun inputsNotEmpty(email: String, password: String, name: String): Boolean {
     return (!email.isEmpty() && !password.isEmpty() && !name.isEmpty())
 }
 

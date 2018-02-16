@@ -12,4 +12,4 @@ const val FAILED_REGISRATION = "Failed registration!"
 
 //registration errors
 const val PASSWORD_ERROR = "Password must contains 6 or more characters"
-const val EMAIL_ERROR = "Incorrect input of email"
+const val EMAIL_ERROR = "Incorrect email!"

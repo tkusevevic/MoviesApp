@@ -2,13 +2,19 @@ package com.tkusevic.moviesapp.ui.signIn
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.widget.Toast
 import com.facebook.FacebookSdk
 import com.facebook.appevents.AppEventsLogger
 import com.tkusevic.moviesapp.R
+import com.tkusevic.moviesapp.commons.constants.EMAIL_ERROR
+import com.tkusevic.moviesapp.commons.constants.PASSWORD_ERROR
+import com.tkusevic.moviesapp.commons.extensions.hide
 import com.tkusevic.moviesapp.commons.extensions.onClick
+import com.tkusevic.moviesapp.commons.extensions.show
 import com.tkusevic.moviesapp.data.model.User
 import com.tkusevic.moviesapp.presentation.SignInPresenter
 import com.tkusevic.moviesapp.presentation.SignInPresenterImpl
+import kotlinx.android.synthetic.main.activity_registration.*
 import kotlinx.android.synthetic.main.activity_sign_in.*
 
 /**
@@ -16,8 +22,8 @@ import kotlinx.android.synthetic.main.activity_sign_in.*
  */
 class SignInActivity : AppCompatActivity(), SignInView {
 
-    override fun setUI(user: User?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun showMessage(message: String) {
+        Toast.makeText(this,message, Toast.LENGTH_SHORT).show()
     }
 
     private val presenter: SignInPresenter by lazy { SignInPresenterImpl() }
@@ -36,6 +42,7 @@ class SignInActivity : AppCompatActivity(), SignInView {
     }
 
     private fun initListeners() {
+
         signIn.onClick { presenter.onSignInClick(emailSignIn.text.toString(),passwordSignIn.text.toString()) }
 
         signInFacebook.onClick { presenter.onFacebookClick() }
@@ -44,26 +51,32 @@ class SignInActivity : AppCompatActivity(), SignInView {
     }
 
     override fun hidePasswordError() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        layoutPasswordSign.isErrorEnabled = false
     }
 
     override fun hideEmailError() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        layoutEmailSign.isErrorEnabled = false
     }
 
     override fun showPasswordError() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        layoutPasswordSign.error= PASSWORD_ERROR
     }
 
     override fun showEmailError() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        layoutEmailSign.error= EMAIL_ERROR
     }
 
     override fun showProgressAndHideOther() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        progressSign.show()
+        layoutWithoutImageSign.hide()
     }
 
     override fun hideProgressAndShowOther() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        progressSign.hide()
+        layoutWithoutImageSign.show()
+    }
+
+    override fun startUI(user: User?) {
+        //TODO start profila
     }
 }

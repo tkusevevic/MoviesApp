@@ -16,4 +16,5 @@ interface RegistrationView {
     fun showProgressAndHideOther()
 
     fun hideProgressAndShowOther()
+
 }
