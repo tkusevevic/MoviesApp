@@ -1,5 +1,8 @@
 <resources>
-    <string name="app_name">Android Login and Registration</string>
+    <string name="app_name">MovieApp</string>
+    <string name="facebook_app_id">1530042647094273</string>
+    <string name="fb_login_protocol_scheme">fb1530042647094273</string>
+
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
     <string name="hint_name">Fullname</string>
@@ -11,12 +14,13 @@
     <string name="btn_logout">LOGOUT</string>
     <string name="name">Fullname</string>
 
-    <string name="facebook_app_id">1530042647094273</string>
-    <string name="fb_login_protocol_scheme">fb1530042647094273</string>
+
     <string name="facebook">Facebook</string>
     <string name="google">Google</string>
     <string name="profile">Profile</string>
     <string name="save">SAVE</string>
     <string name="moviesDescription">Descriptin about movies I like:</string>
     <string name="aboutMe">About me:</string>
+
+
 </resources>

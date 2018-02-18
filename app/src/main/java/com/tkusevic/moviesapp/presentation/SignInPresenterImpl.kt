@@ -1,5 +1,6 @@
 package com.tkusevic.moviesapp.presentation
 
+import com.facebook.CallbackManager
 import com.tkusevic.moviesapp.commons.constants.ERROR_EMAIL_OR_PASSWORD
 import com.tkusevic.moviesapp.commons.utils.checkEmailEmpty
 import com.tkusevic.moviesapp.commons.utils.checkPasswordEmpty
@@ -14,6 +15,9 @@ import com.tkusevic.moviesapp.ui.signIn.SignInView
  * Created by tkusevic on 15.02.2018..
  */
 class SignInPresenterImpl : SignInPresenter, UserListenerLogin {
+
+    var callbackManager = CallbackManager.Factory.create()
+
 
     private val authenticationHelper: AuthenticationHelper by lazy { AuthenticationHelperImpl() }
 
@@ -54,6 +58,8 @@ class SignInPresenterImpl : SignInPresenter, UserListenerLogin {
     override fun onSuccessfulRequest(user: User) {
         signView.hideProgressAndShowOther()
         signView.showMessage(user.toString())
+        signView.startMoviesActvitiy()
+
     }
 
     override fun onFailedRequest() {

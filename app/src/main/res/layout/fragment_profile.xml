@@ -37,19 +37,19 @@
         </RelativeLayout>
 
         <ImageView
-            android:id="@+id/image_details"
+            android:id="@+id/imageDetails"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_below="@id/toolbar"
             android:layout_centerHorizontal="true"
             android:padding="5dp"
-            tools:src="@drawable/movies" />
+            android:src="@drawable/movies" />
 
-        <EditText
+        <TextView
             android:id="@+id/profileName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/image_details"
+            android:layout_below="@id/imageDetails"
             android:layout_centerHorizontal="true"
             android:layout_margin="10dp"
             android:textColor="@color/white"

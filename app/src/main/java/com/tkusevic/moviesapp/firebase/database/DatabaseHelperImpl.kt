@@ -19,7 +19,7 @@ class DatabaseHelperImpl : DatabaseHelper {
         reference.child("users").child(user.id).setValue(user)
     }
 
-    override fun getUser(id: String, returning: (User) -> Unit) {
+    override fun getUser(id: String, returningUser: (User) -> Unit) {
         reference.child("users").child(id).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError?) {
 
@@ -30,7 +30,7 @@ class DatabaseHelperImpl : DatabaseHelper {
                     val user = getValue(User::class.java)
                     user?.run {
                         Log.d("User", toString())
-                        returning(user)
+                        returningUser(user)
                     }
                 }
             }
@@ -40,7 +40,7 @@ class DatabaseHelperImpl : DatabaseHelper {
 
 
     override fun editUser(user: User) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        //TODO
     }
 
 }

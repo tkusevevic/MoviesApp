@@ -10,7 +10,7 @@ interface DatabaseHelper {
 
     fun saveUser(user: User)
 
-    fun getUser(id: String,onUserNesto : (User) -> Unit)
+    fun getUser(id: String, returningUser: (User) -> Unit)
 
     fun editUser(user: User)
 
