@@ -14,7 +14,6 @@ import com.tkusevic.moviesapp.commons.extensions.show
 import com.tkusevic.moviesapp.data.model.User
 import com.tkusevic.moviesapp.presentation.SignInPresenter
 import com.tkusevic.moviesapp.presentation.SignInPresenterImpl
-import kotlinx.android.synthetic.main.activity_registration.*
 import kotlinx.android.synthetic.main.activity_sign_in.*
 
 /**
@@ -23,7 +22,7 @@ import kotlinx.android.synthetic.main.activity_sign_in.*
 class SignInActivity : AppCompatActivity(), SignInView {
 
     override fun showMessage(message: String) {
-        Toast.makeText(this,message, Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
     private val presenter: SignInPresenter by lazy { SignInPresenterImpl() }
@@ -43,7 +42,7 @@ class SignInActivity : AppCompatActivity(), SignInView {
 
     private fun initListeners() {
 
-        signIn.onClick { presenter.onSignInClick(emailSignIn.text.toString(),passwordSignIn.text.toString()) }
+        signIn.onClick { presenter.onSignInClick(emailSignIn.text.toString(), passwordSignIn.text.toString()) }
 
         signInFacebook.onClick { presenter.onFacebookClick() }
 
@@ -59,11 +58,11 @@ class SignInActivity : AppCompatActivity(), SignInView {
     }
 
     override fun showPasswordError() {
-        layoutPasswordSign.error= PASSWORD_ERROR
+        layoutPasswordSign.error = PASSWORD_ERROR
     }
 
     override fun showEmailError() {
-        layoutEmailSign.error= EMAIL_ERROR
+        layoutEmailSign.error = EMAIL_ERROR
     }
 
     override fun showProgressAndHideOther() {
@@ -77,6 +76,8 @@ class SignInActivity : AppCompatActivity(), SignInView {
     }
 
     override fun startUI(user: User?) {
-        //TODO start profila
+        //TODO
+        //startActivity(Intent(this, name::class.java))
+        //hideProgressAndShowOther()
     }
 }

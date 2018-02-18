@@ -16,4 +16,7 @@
     <string name="facebook">Facebook</string>
     <string name="google">Google</string>
     <string name="profile">Profile</string>
+    <string name="save">SAVE</string>
+    <string name="moviesDescription">Descriptin about movies I like:</string>
+    <string name="aboutMe">About me:</string>
 </resources>

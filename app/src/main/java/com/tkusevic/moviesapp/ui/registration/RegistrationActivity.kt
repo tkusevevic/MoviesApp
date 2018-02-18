@@ -6,31 +6,20 @@ import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import com.tkusevic.moviesapp.R
 import com.tkusevic.moviesapp.commons.constants.EMAIL_ERROR
+import com.tkusevic.moviesapp.commons.constants.NO_NAME_ERROR
 import com.tkusevic.moviesapp.commons.constants.PASSWORD_ERROR
 import com.tkusevic.moviesapp.commons.extensions.hide
 import com.tkusevic.moviesapp.commons.extensions.onClick
 import com.tkusevic.moviesapp.commons.extensions.show
-import com.tkusevic.moviesapp.commons.utils.*
 import com.tkusevic.moviesapp.firebase.RequestListener
-import com.tkusevic.moviesapp.firebase.authentication.AuthenticationHelper
-import com.tkusevic.moviesapp.firebase.authentication.AuthenticationHelperImpl
 import com.tkusevic.moviesapp.presentation.RegistrationPresenter
 import com.tkusevic.moviesapp.presentation.RegistrationPresenterImpl
 import com.tkusevic.moviesapp.ui.signIn.SignInActivity
 import kotlinx.android.synthetic.main.activity_registration.*
 
 class RegistrationActivity : AppCompatActivity(), RegistrationView, RequestListener {
-   //override fun processDone() {
-   //    errorHandling()
-   //    progress.hide()
-   //    layoutWithoutImage.show()
-   //}
-
-    //TODO LOGIKA U PRESENTER
 
     private val presenter: RegistrationPresenter by lazy { RegistrationPresenterImpl() }
-
-    private val authenticationHelper: AuthenticationHelper by lazy { AuthenticationHelperImpl() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,72 +34,24 @@ class RegistrationActivity : AppCompatActivity(), RegistrationView, RequestListe
 
     private fun initListeners() {
         registrationBtn.onClick {
-            showProgressHideLayout()
-            if (inputsNotEmpty(email.text.toString(), password.text.toString(), name.text.toString())) {
-                tryToSaveToDatabase()
-                hideErrors()
-            } else checkValidation()
+            presenter.onRegistrationClick(
+                    email.text.toString()
+                    , password.text.toString()
+                    , name.text.toString())
         }
 
         goToLogin.onClick { startActivity(Intent(this, SignInActivity::class.java)) }
     }
 
-    private fun checkValidation() {
-        Toast.makeText(this, "Input all fields!", Toast.LENGTH_SHORT).show()
-        if (checkEmailEmpty(email.text.toString()))
-            layoutEmail.error = "Empty email!"
-        else
-            layoutEmail.isErrorEnabled = false
+    //////// View
 
-        if (checkPasswordEmpty(password.text.toString()))
-            layoutPassword.error = "Empty password"
-        else
-            layoutPassword.isErrorEnabled = false
-
-        if (checkNameEmpty(name.text.toString()))
-            layoutName.error = "Empty name"
-        else
-            layoutName.isErrorEnabled = false
-
-        progress.hide()
-        layoutWithoutImage.show()
-    }
-
-    private fun showProgressHideLayout() {
-        progress.show()
-        layoutWithoutImage.hide()
-    }
-
-    private fun tryToSaveToDatabase() {
-        authenticationHelper.attemptToRegisterTheUser(email.text.toString()
-                , password.text.toString()
-                , name.text.toString()
-                , this)
-    }
-
-    private fun hideErrors() {
-        layoutEmail.isErrorEnabled = false
-        layoutPassword.isErrorEnabled = false
-    }
-
-    //success on register try
     override fun onSuccessfulRequest() {
         startActivity(Intent(this, SignInActivity::class.java))
         hideProgressAndShowOther()
     }
 
-    //fail on register try
     override fun onFailedRequest() {
         hideProgressAndShowOther()
-    }
-
-
-     fun errorHandling() {
-        if (isPasswordCorrect(password.text.toString().trim()))
-            layoutPassword.error = PASSWORD_ERROR
-        else {
-            layoutEmail.error = EMAIL_ERROR
-        }
     }
 
     override fun showProgressAndHideOther() {
@@ -124,19 +65,32 @@ class RegistrationActivity : AppCompatActivity(), RegistrationView, RequestListe
     }
 
     override fun showEmailError() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        layoutEmail.error = EMAIL_ERROR
     }
 
     override fun showPasswordError() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        layoutPassword.error = PASSWORD_ERROR
     }
 
     override fun hideEmailError() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        layoutEmail.isErrorEnabled = false
     }
 
     override fun hidePasswordError() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        layoutPassword.isErrorEnabled = false
     }
+
+    override fun showMessage(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun showNameError() {
+        layoutName.error = NO_NAME_ERROR
+    }
+
+    override fun hideNameError() {
+        layoutName.isErrorEnabled = false
+    }
+
 }
 

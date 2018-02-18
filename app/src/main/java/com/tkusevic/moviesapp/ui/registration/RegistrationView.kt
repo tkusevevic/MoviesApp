@@ -17,4 +17,9 @@ interface RegistrationView {
 
     fun hideProgressAndShowOther()
 
+    fun showNameError()
+
+    fun hideNameError()
+
+    fun showMessage(message : String)
 }

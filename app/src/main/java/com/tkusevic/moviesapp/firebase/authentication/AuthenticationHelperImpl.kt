@@ -1,14 +1,11 @@
 package com.tkusevic.moviesapp.firebase.authentication
 
-import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.tkusevic.moviesapp.commons.extensions.mapToUser
-import com.tkusevic.moviesapp.data.model.User
 import com.tkusevic.moviesapp.firebase.RequestListener
-import com.tkusevic.moviesapp.firebase.database.DatabaseHelper
 import com.tkusevic.moviesapp.firebase.database.DatabaseHelperImpl
-import com.tkusevic.moviesapp.firebase.userListenerLogin
+import com.tkusevic.moviesapp.firebase.UserListenerLogin
 
 
 /**
@@ -36,11 +33,11 @@ class AuthenticationHelperImpl() : AuthenticationHelper {
         }
     }
 
-    override fun logTheUserIn(email: String, password: String, listener: userListenerLogin) {
+    override fun logTheUserIn(email: String, password: String, listener: UserListenerLogin) {
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 firebaseAuth.currentUser?.run {
-                    databaseHelper.getUser(uid, { listener.onSuccessfulRequest(it)})
+                    databaseHelper.getUser(uid, { listener.onSuccessfulRequest(it) })
                 }
             } else {
                 listener.onFailedRequest()

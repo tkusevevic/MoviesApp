@@ -6,4 +6,7 @@ import com.tkusevic.moviesapp.ui.registration.RegistrationView
 /**
  * Created by tkusevic on 15.02.2018..
  */
-interface RegistrationPresenter : BasePresenter<RegistrationView>
+interface RegistrationPresenter : BasePresenter<RegistrationView> {
+
+    fun onRegistrationClick(email: String, password: String, name: String)
+}
