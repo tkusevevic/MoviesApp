@@ -1,7 +1,6 @@
 package com.tkusevic.moviesapp.ui.movies
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.support.design.widget.TabLayout
 import android.support.v7.app.AppCompatActivity
 import com.tkusevic.moviesapp.R
@@ -23,7 +22,9 @@ class MoviesActivity : AppCompatActivity() {
         initTabs()
         initAdapter()
         initListeners()
+
     }
+
 
     private fun initTabs() {
         tabLayout.addTab(tabLayout.newTab().setText(TOP_RATED))

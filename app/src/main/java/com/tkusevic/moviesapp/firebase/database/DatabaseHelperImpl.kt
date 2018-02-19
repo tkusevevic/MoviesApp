@@ -1,6 +1,7 @@
 package com.tkusevic.moviesapp.firebase.database
 
 import android.util.Log
+import android.widget.Toast
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -38,9 +39,5 @@ class DatabaseHelperImpl : DatabaseHelper {
 
     }
 
-
-    override fun editUser(user: User) {
-        //TODO
-    }
 
 }

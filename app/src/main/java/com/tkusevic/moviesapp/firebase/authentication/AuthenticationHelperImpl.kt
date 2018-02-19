@@ -1,17 +1,24 @@
 package com.tkusevic.moviesapp.firebase.authentication
 
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.tkusevic.moviesapp.commons.extensions.mapToUser
+import com.tkusevic.moviesapp.data.model.User
 import com.tkusevic.moviesapp.firebase.RequestListener
+import com.tkusevic.moviesapp.firebase.UserRequestListener
 import com.tkusevic.moviesapp.firebase.database.DatabaseHelperImpl
-import com.tkusevic.moviesapp.firebase.UserListenerLogin
 
 
 /**
  * Created by tkusevic on 14.02.2018..
  */
-class AuthenticationHelperImpl() : AuthenticationHelper {
+class AuthenticationHelperImpl : AuthenticationHelper {
+    override fun editUser(user: User, listener: UserRequestListener) {
+        databaseHelper.saveUser(user)
+        listener.onSuccessfulRequest(user)
+
+    }
 
     private val databaseHelper by lazy { DatabaseHelperImpl() }
 
@@ -33,7 +40,7 @@ class AuthenticationHelperImpl() : AuthenticationHelper {
         }
     }
 
-    override fun logTheUserIn(email: String, password: String, listener: UserListenerLogin) {
+    override fun logTheUserIn(email: String, password: String, listener: UserRequestListener) {
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 firebaseAuth.currentUser?.run {
@@ -63,6 +70,14 @@ class AuthenticationHelperImpl() : AuthenticationHelper {
 
     override fun checkIfUserIsLoggedIn(): Boolean {
         return (firebaseAuth.currentUser != null)
+    }
+
+    override fun getCurrentUserId(): String? {
+        return firebaseAuth.currentUser?.uid
+    }
+
+    override fun getCurrentUser(): FirebaseUser? {
+        return (firebaseAuth.currentUser)
     }
 
     override val currentUserDisplayName: String = firebaseAuth.currentUser?.displayName.toString()

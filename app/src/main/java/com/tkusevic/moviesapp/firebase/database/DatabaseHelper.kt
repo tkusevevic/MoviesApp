@@ -12,6 +12,4 @@ interface DatabaseHelper {
 
     fun getUser(id: String, returningUser: (User) -> Unit)
 
-    fun editUser(user: User)
-
 }
