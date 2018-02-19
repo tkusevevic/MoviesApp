@@ -20,11 +20,11 @@ interface AuthenticationHelper {
 
     fun checkIfUserIsLoggedIn(): Boolean
 
-    fun getCurrentUserId() : String?
+    fun getCurrentUserId(): String?
 
-    fun getCurrentUser() : FirebaseUser?
+    fun getCurrentUser(): FirebaseUser?
 
-    fun editUser(user : User, listener: UserRequestListener)
+    fun editUser(user: User, listener: UserRequestListener)
 
     val currentUserDisplayName: String
 }

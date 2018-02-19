@@ -6,15 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.tkusevic.moviesapp.App
 import com.tkusevic.moviesapp.R
 import com.tkusevic.moviesapp.commons.extensions.hide
 import com.tkusevic.moviesapp.commons.extensions.onClick
 import com.tkusevic.moviesapp.commons.extensions.show
 import com.tkusevic.moviesapp.data.model.User
-import com.tkusevic.moviesapp.firebase.authentication.AuthenticationHelper
-import com.tkusevic.moviesapp.firebase.authentication.AuthenticationHelperImpl
 import com.tkusevic.moviesapp.presentation.ProfilePresenter
-import com.tkusevic.moviesapp.presentation.ProfilePresenterImpl
+import com.tkusevic.moviesapp.profilePresenter
+import com.tkusevic.moviesapp.ui.movies.views.ProfileView
 import kotlinx.android.synthetic.main.fragment_profile.*
 
 /**
@@ -22,7 +22,8 @@ import kotlinx.android.synthetic.main.fragment_profile.*
  */
 class ProfileFragment : Fragment(), ProfileView {
 
-    private val profilePresenter: ProfilePresenter by lazy { ProfilePresenterImpl() }
+    //todo u app providers
+    private val presenter: ProfilePresenter by lazy { profilePresenter() }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_profile, container, false)
@@ -30,8 +31,7 @@ class ProfileFragment : Fragment(), ProfileView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initPresenter()
-        initAdapter()
+        initDataOnProfile()
         textHideEdit()
         initListeners()
     }
@@ -41,26 +41,21 @@ class ProfileFragment : Fragment(), ProfileView {
             if (saveProfile.visibility == View.GONE) {
                 saveProfile.show()
                 textGiveEdit()
-            }
-            else {
+            } else {
                 saveProfile.hide()
                 textHideEdit()
             }
         }
 
         saveProfile.onClick {
-            profilePresenter.editUser(aboutMe.text.toString(), profileMoviesDescription.text.toString(), profileName.text.toString())
+            presenter.editUser(aboutMe.text.toString(), profileMoviesDescription.text.toString(), profileName.text.toString())
         }
     }
 
-    private fun initPresenter() {
-        profilePresenter.setBaseview(this)
-        profilePresenter.getUserId()
+    private fun initDataOnProfile() {
+        presenter.setBaseview(this)
+        presenter.getUserId()
     }
-
-    private fun initAdapter() {
-    }
-
 
     override fun setData(user: User) {
         profileEmail.text = user.email

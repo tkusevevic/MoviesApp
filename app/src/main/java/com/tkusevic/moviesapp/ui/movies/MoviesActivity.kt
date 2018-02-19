@@ -22,9 +22,7 @@ class MoviesActivity : AppCompatActivity() {
         initTabs()
         initAdapter()
         initListeners()
-
     }
-
 
     private fun initTabs() {
         tabLayout.addTab(tabLayout.newTab().setText(TOP_RATED))

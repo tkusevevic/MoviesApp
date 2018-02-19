@@ -1,6 +1,5 @@
-package com.tkusevic.moviesapp.ui.movies
+package com.tkusevic.moviesapp.ui.movies.views
 
-import android.graphics.Movie
 import com.tkusevic.moviesapp.data.model.User
 
 /**
@@ -8,7 +7,7 @@ import com.tkusevic.moviesapp.data.model.User
  */
 interface ProfileView {
 
-    fun setData(user : User)
+    fun setData(user: User)
     fun makeText(s: String)
     fun hideButton()
     fun textGiveEdit()

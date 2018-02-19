@@ -14,7 +14,7 @@ import com.tkusevic.moviesapp.commons.extensions.onClick
 import com.tkusevic.moviesapp.commons.extensions.show
 import com.tkusevic.moviesapp.data.model.User
 import com.tkusevic.moviesapp.presentation.SignInPresenter
-import com.tkusevic.moviesapp.presentation.SignInPresenterImpl
+import com.tkusevic.moviesapp.signInPresenter
 import com.tkusevic.moviesapp.ui.movies.MoviesActivity
 import kotlinx.android.synthetic.main.activity_sign_in.*
 
@@ -24,12 +24,12 @@ import kotlinx.android.synthetic.main.activity_sign_in.*
  */
 class SignInActivity : AppCompatActivity(), SignInView {
 
-    private val presenter: SignInPresenter by lazy { SignInPresenterImpl() }
+    private val presenter: SignInPresenter by lazy { signInPresenter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
-        FacebookSdk.sdkInitialize(getApplicationContext())
+        FacebookSdk.sdkInitialize(applicationContext)
         AppEventsLogger.activateApp(this)
         initPresenter()
         initListeners()

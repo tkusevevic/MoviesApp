@@ -7,15 +7,13 @@ import com.tkusevic.moviesapp.commons.utils.checkNameEmpty
 import com.tkusevic.moviesapp.commons.utils.checkPasswordEmpty
 import com.tkusevic.moviesapp.firebase.RequestListener
 import com.tkusevic.moviesapp.firebase.authentication.AuthenticationHelper
-import com.tkusevic.moviesapp.firebase.authentication.AuthenticationHelperImpl
 import com.tkusevic.moviesapp.ui.registration.RegistrationView
+import javax.inject.Inject
 
 /**
  * Created by tkusevic on 15.02.2018..
  */
-class RegistrationPresenterImpl : RegistrationPresenter, RequestListener {
-
-    private val authenticationHelper: AuthenticationHelper by lazy { AuthenticationHelperImpl() }
+class RegistrationPresenterImpl @Inject constructor(private val authenticationHelper: AuthenticationHelper) : RegistrationPresenter, RequestListener {
 
     private lateinit var regView: RegistrationView
 
@@ -33,15 +31,11 @@ class RegistrationPresenterImpl : RegistrationPresenter, RequestListener {
     }
 
     private fun chechInputEmpty(email: String, password: String, name: String) {
-        if (checkEmailEmpty(email.trim()))
-            regView.showEmailError()
-        else regView.hideEmailError()
-        if (checkPasswordEmpty(password.trim()) || password.trim().length < 6)
-            regView.showPasswordError()
-        else regView.hidePasswordError()
-        if (checkNameEmpty(name.trim()))
-            regView.showNameError()
-        else regView.hideNameError()
+        if (checkEmailEmpty(email.trim())) regView.showEmailError() else regView.hideEmailError()
+
+        if (checkPasswordEmpty(password.trim()) || password.trim().length < 6) regView.showPasswordError() else regView.hidePasswordError()
+
+        if (checkNameEmpty(name.trim())) regView.showNameError() else regView.hideNameError()
     }
 
     private fun tryToRegister(email: String, password: String, name: String) {
@@ -51,7 +45,6 @@ class RegistrationPresenterImpl : RegistrationPresenter, RequestListener {
     override fun onSuccessfulRequest() {
         regView.hideProgressAndShowOther()
         regView.showMessage(SUCCESS_REGISTRATION)
-
     }
 
     override fun onFailedRequest() {

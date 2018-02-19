@@ -17,6 +17,8 @@ class FavoritesFragment : Fragment(), OnMovieClickListener {
 
     //val moviesInteractor by lazy { MoviesInteractorImpl(MoviesApiService) }
 
+
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_favorites, container, false)
     }

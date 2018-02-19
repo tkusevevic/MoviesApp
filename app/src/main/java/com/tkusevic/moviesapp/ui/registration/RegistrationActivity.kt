@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
+import com.tkusevic.moviesapp.App
 import com.tkusevic.moviesapp.R
 import com.tkusevic.moviesapp.commons.constants.EMAIL_ERROR
 import com.tkusevic.moviesapp.commons.constants.NO_NAME_ERROR
@@ -13,13 +14,13 @@ import com.tkusevic.moviesapp.commons.extensions.onClick
 import com.tkusevic.moviesapp.commons.extensions.show
 import com.tkusevic.moviesapp.firebase.RequestListener
 import com.tkusevic.moviesapp.presentation.RegistrationPresenter
-import com.tkusevic.moviesapp.presentation.RegistrationPresenterImpl
+import com.tkusevic.moviesapp.registrationPresenter
 import com.tkusevic.moviesapp.ui.signIn.SignInActivity
 import kotlinx.android.synthetic.main.activity_registration.*
 
 class RegistrationActivity : AppCompatActivity(), RegistrationView, RequestListener {
 
-    private val presenter: RegistrationPresenter by lazy { RegistrationPresenterImpl() }
+    private val presenter: RegistrationPresenter by lazy { registrationPresenter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +45,6 @@ class RegistrationActivity : AppCompatActivity(), RegistrationView, RequestListe
     }
 
     //////// View
-
     override fun onSuccessfulRequest() {
         startActivity(Intent(this, SignInActivity::class.java))
         hideProgressAndShowOther()

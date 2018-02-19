@@ -1,19 +1,17 @@
 package com.tkusevic.moviesapp.firebase.database
 
 import android.util.Log
-import android.widget.Toast
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.tkusevic.moviesapp.data.model.User
+import javax.inject.Inject
 
 /**
  * Created by tkusevic on 14.02.2018..
  */
-class DatabaseHelperImpl : DatabaseHelper {
-
-    val reference = FirebaseDatabase.getInstance().reference
+class DatabaseHelperImpl @Inject constructor(private val reference: DatabaseReference) : DatabaseHelper {
 
     override fun saveUser(user: User) {
         Log.d("USER REGISTRATION", reference.root.toString())

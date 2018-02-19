@@ -21,5 +21,5 @@ interface RegistrationView {
 
     fun hideNameError()
 
-    fun showMessage(message : String)
+    fun showMessage(message: String)
 }

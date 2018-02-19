@@ -6,16 +6,14 @@ import com.tkusevic.moviesapp.commons.utils.checkPasswordEmpty
 import com.tkusevic.moviesapp.data.model.User
 import com.tkusevic.moviesapp.firebase.UserRequestListener
 import com.tkusevic.moviesapp.firebase.authentication.AuthenticationHelper
-import com.tkusevic.moviesapp.firebase.authentication.AuthenticationHelperImpl
 import com.tkusevic.moviesapp.ui.signIn.SignInView
+import javax.inject.Inject
 
 
 /**
  * Created by tkusevic on 15.02.2018..
  */
-class SignInPresenterImpl : SignInPresenter, UserRequestListener {
-
-    private val authenticationHelper: AuthenticationHelper by lazy { AuthenticationHelperImpl() }
+class SignInPresenterImpl @Inject constructor(private val authenticationHelper: AuthenticationHelper) : SignInPresenter, UserRequestListener {
 
     private lateinit var signView: SignInView
 
