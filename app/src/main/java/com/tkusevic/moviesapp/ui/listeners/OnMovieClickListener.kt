@@ -9,5 +9,5 @@ interface OnMovieClickListener {
 
     fun onMovieClick(movie: Movie)
 
-    fun onLikeClick(movies: Movie)
+    fun onLikeClick(movie: Movie)
 }

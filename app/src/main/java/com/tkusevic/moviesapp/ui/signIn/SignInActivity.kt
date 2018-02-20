@@ -16,6 +16,7 @@ import com.tkusevic.moviesapp.data.model.User
 import com.tkusevic.moviesapp.presentation.SignInPresenter
 import com.tkusevic.moviesapp.signInPresenter
 import com.tkusevic.moviesapp.ui.movies.MoviesActivity
+import com.tkusevic.moviesapp.ui.registration.RegistrationActivity
 import kotlinx.android.synthetic.main.activity_sign_in.*
 
 
@@ -46,6 +47,8 @@ class SignInActivity : AppCompatActivity(), SignInView {
         signInFacebook.onClick { presenter.onFacebookClick() }
 
         //signInGoogle.onClick(presenter.onGoogleClick())
+
+        goToRegistration.onClick { startActivity(Intent(this,RegistrationActivity::class.java)) }
     }
 
     override fun hidePasswordError() {

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@color/bg_register"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/backDetails"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="20dp"
+                android:src="@drawable/back" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/movieDetailsTitle"
+                android:textColor="@color/greenButton"
+                android:textSize="20sp" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/imageMovieDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="160dp"
+            android:layout_below="@id/toolbar"
+            android:layout_centerHorizontal="true"
+            android:padding="5dp"
+            tools:src="@drawable/movies" />
+
+        <TextView
+            android:id="@+id/titleMovieDetails"
+            android:layout_width="wrap_content"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imageMovieDetails"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            tools:text="Titanic" />
+
+        <TextView
+            android:id="@+id/ratingMovieDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/titleMovieDetails"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            tools:text="Rating: 7.7" />
+
+        <ImageView
+            android:id="@+id/likeMovieDetails"
+            android:padding="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ratingMovieDetails"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            android:background="@drawable/like"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/nothingImportant"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/likeMovieDetails"
+            android:layout_marginStart="20dp"
+            android:text="Description:"
+            android:textSize="12sp"
+            android:textColor="@color/greenButton"/>
+        <EditText
+            android:id="@+id/descriptionMovieDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/likeMovieDetails"
+            android:layout_margin="20dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/hint_gray"
+            android:textSize="19sp"
+            tools:text="Neki description koji nema veze" />
+
+
+    </RelativeLayout>
+</ScrollView>

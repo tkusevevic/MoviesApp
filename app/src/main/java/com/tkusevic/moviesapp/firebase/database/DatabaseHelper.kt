@@ -11,5 +11,4 @@ interface DatabaseHelper {
     fun saveUser(user: User)
 
     fun getUser(id: String, returningUser: (User) -> Unit)
-
 }

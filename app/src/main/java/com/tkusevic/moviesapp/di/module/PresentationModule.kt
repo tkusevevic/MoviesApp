@@ -20,4 +20,7 @@ abstract class PresentationModule {
 
     @Binds
     abstract fun topRatedPresenter(topRatedPresenterImpl: TopRatedPresenterImpl): TopRatedPresenter
+
+    @Binds
+    abstract fun newFilmsPresenter(newFilmsPresenterImpl: NewFilmsPresenterImpl) : NewFilmsPresenter
 }

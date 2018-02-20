@@ -1,6 +1,8 @@
 package com.tkusevic.moviesapp.presentation
 
 import com.tkusevic.moviesapp.base.BasePresenter
+import com.tkusevic.moviesapp.data.model.Movie
+import com.tkusevic.moviesapp.data.model.User
 import com.tkusevic.moviesapp.ui.movies.views.TopRatedView
 
 /**
@@ -8,5 +10,9 @@ import com.tkusevic.moviesapp.ui.movies.views.TopRatedView
  */
 interface TopRatedPresenter : BasePresenter<TopRatedView> {
 
-    fun setTopRatedMovies()
+    fun getMovies()
+
+    fun loadNextPage(page: Int)
+
+    fun onLikeTapped(movie: Movie)
 }

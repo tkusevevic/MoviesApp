@@ -1,31 +1,30 @@
 package com.tkusevic.moviesapp.presentation
 
+import com.tkusevic.moviesapp.commons.constants.NOW_PLAYING_KEY
 import com.tkusevic.moviesapp.commons.constants.RESPONSE_OK
 import com.tkusevic.moviesapp.commons.constants.TOP_RATED_KEY
-import com.tkusevic.moviesapp.data.model.Movie
 import com.tkusevic.moviesapp.data.response.MoviesResponse
 import com.tkusevic.moviesapp.interaction.MoviesInteractor
-import com.tkusevic.moviesapp.ui.movies.views.TopRatedView
+import com.tkusevic.moviesapp.ui.movies.views.NewFilmsView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import javax.inject.Inject
 
 /**
- * Created by tkusevic on 19.02.2018..
+ * Created by tkusevic on 20.02.2018..
  */
-class TopRatedPresenterImpl @Inject constructor(private val moviesInteractor: MoviesInteractor) : TopRatedPresenter {
+class NewFilmsPresenterImpl @Inject constructor(private val moviesInteractor: MoviesInteractor): NewFilmsPresenter {
 
-    private lateinit var topRatedView: TopRatedView
+    private lateinit var newFilmsView : NewFilmsView
 
-    override fun setBaseview(baseView: TopRatedView) {
-        this.topRatedView = baseView
+    override fun setBaseview(baseView: NewFilmsView) {
+        newFilmsView = baseView
     }
 
     override fun getMovies() {
-        moviesInteractor.getMoviesBy(TOP_RATED_KEY, 1, getMoviesCallback())
+        moviesInteractor.getMoviesBy(NOW_PLAYING_KEY,1,getMoviesCallback())
     }
-
 
     private fun getMoviesCallback(): Callback<MoviesResponse> = object : Callback<MoviesResponse> {
         override fun onFailure(call: Call<MoviesResponse>?, t: Throwable?) {
@@ -35,40 +34,26 @@ class TopRatedPresenterImpl @Inject constructor(private val moviesInteractor: Mo
         override fun onResponse(call: Call<MoviesResponse>?, response: Response<MoviesResponse>) {
             if (response.isSuccessful) {
                 if (response.code() == RESPONSE_OK) {
-                    response.body().results.run { topRatedView.setMovies(this) }
+                    response.body().results.run { newFilmsView.setMovies (this) }
                 }
             }
         }
     }
 
     override fun loadNextPage(page: Int) {
-        moviesInteractor.loadNextPage(TOP_RATED_KEY, page, addBeersCallback())
+        moviesInteractor.loadNextPage(NOW_PLAYING_KEY, page, addBeersCallback())
     }
 
     private fun addBeersCallback() = object : Callback<MoviesResponse> {
         override fun onResponse(call: Call<MoviesResponse>?, response: Response<MoviesResponse>) {
             if (response.isSuccessful) {
                 if (response.code() == RESPONSE_OK)
-                    response.body().results.run { topRatedView.addMovies(this) }
+                    response.body().results.run { newFilmsView.addMovies(this) }
             }
         }
 
         override fun onFailure(call: Call<MoviesResponse>?, t: Throwable?) {
             TODO("not implemented")
         }
-    }
-
-    override fun onLikeTapped(movie: Movie) {
-        //val user = preferences.getUser()
-
-       //if (user.movies.contains(movie)) {
-       //    //already liked
-       //    //setValue na firebaseu na null firebase.reference.child(userId).child(movies).child(movideId).setValue(null)
-       //} else {
-       //    //not liked
-       //    //setValue na firebaseu na null firebase.reference.child(userId).child(movies).child(movideId).setValue(movie)
-       //}
-
-
     }
 }

@@ -7,19 +7,14 @@ import com.tkusevic.moviesapp.R
 import com.tkusevic.moviesapp.data.model.Movie
 import com.tkusevic.moviesapp.ui.listeners.OnMovieClickListener
 import com.tkusevic.moviesapp.ui.movies.holder.MoviesViewHolder
+import kotlinx.android.synthetic.main.holder_movies.view.*
 
 /**
  * Created by tkusevic on 18.02.2018..
  */
-class MoviesAdapter : RecyclerView.Adapter<MoviesViewHolder>() {
-
-    private var listener: OnMovieClickListener? = null
+class MoviesAdapter(private val listener: OnMovieClickListener) : RecyclerView.Adapter<MoviesViewHolder>() {
 
     private val movies: MutableList<Movie> = mutableListOf()
-
-    fun setListener(listener: OnMovieClickListener) {
-        this.listener = listener
-    }
 
     fun setMovies(list: List<Movie>) {
         movies.clear()
@@ -27,25 +22,35 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesViewHolder>() {
         notifyDataSetChanged()
     }
 
-    fun addMovie(movie: Movie) {
-        movies.add(movie)
-        notifyDataSetChanged()
+    fun addMovies(movies: List<Movie> = arrayListOf()) {
+        val start: Int = this.movies.size
+        this.movies.addAll(movies)
+        notifyItemRangeInserted(start, movies.size)
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.holder_movies, parent, false)
+        return MoviesViewHolder(listener, view)
     }
 
     override fun onBindViewHolder(holder: MoviesViewHolder, position: Int) {
         val movie = movies[position]
         holder.run {
             setMovies(movie)
-            listener?.let { setListener(it) }
+            listener.let { this }
         }
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.holder_movies, parent, false)
-        return MoviesViewHolder(view)
     }
 
     override fun getItemCount(): Int {
         return movies.size
+    }
+
+    fun setMovieLiked(id: Int, isLiked: Boolean) {
+        val movie = movies.find { it.id == id }
+
+        movie?.run {
+            this.isLiked = isLiked
+            notifyItemChanged(movies.indexOf(this))
+        }
     }
 }

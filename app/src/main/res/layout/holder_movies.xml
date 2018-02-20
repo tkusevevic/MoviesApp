@@ -16,6 +16,7 @@
 
     <LinearLayout
         android:id="@+id/layoutMovies"
+        android:layout_marginRight="50dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toEndOf="@id/image"
@@ -38,17 +39,18 @@
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:layout_marginTop="10dp"
-            android:textAlignment="center"
+
             android:textSize="17sp"
             tools:text="rating" />
     </LinearLayout>
 
     <ImageView
+        android:id="@+id/like"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:layout_marginRight="10dp"
-        tools:src="@drawable/like_fill" />
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/like" />
 
 </RelativeLayout>

@@ -29,7 +29,7 @@ class FavoritesFragment : Fragment(), OnMovieClickListener {
     }
 
     private fun initAdapter(view: View) {
-        val adapter = MoviesAdapter()
+        val adapter = MoviesAdapter(this)
         //TODO
     }
 

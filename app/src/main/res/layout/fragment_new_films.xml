@@ -16,16 +16,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="@string/topRatedMovies"
+            android:text="@string/nowPlaying"
             android:textColor="@color/greenButton"
             android:textSize="20sp" />
 
     </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerViewTopRated"
+        android:id="@+id/recyclerViewNewFilms"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     </android.support.v7.widget.RecyclerView>
-
 </LinearLayout>

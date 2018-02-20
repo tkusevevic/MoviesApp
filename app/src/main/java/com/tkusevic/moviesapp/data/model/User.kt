@@ -10,4 +10,5 @@ data class User(val id: String = "",
                 val email: String = "",
                 var userDisplayName: String = "",
                 var description: String = "",
+                var movies: MutableList<Movie> = arrayListOf(),
                 var moviesDescription: String = "") : Serializable

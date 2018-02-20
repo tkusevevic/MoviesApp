@@ -5,10 +5,7 @@ import com.tkusevic.moviesapp.App
 import com.tkusevic.moviesapp.di.module.AppModule
 import com.tkusevic.moviesapp.di.module.InteractorModule
 import com.tkusevic.moviesapp.di.module.PresentationModule
-import com.tkusevic.moviesapp.presentation.ProfilePresenter
-import com.tkusevic.moviesapp.presentation.RegistrationPresenter
-import com.tkusevic.moviesapp.presentation.SignInPresenter
-import com.tkusevic.moviesapp.presentation.TopRatedPresenter
+import com.tkusevic.moviesapp.presentation.*
 import dagger.Component
 import javax.inject.Singleton
 
@@ -28,5 +25,7 @@ interface AppComponent {
     fun signInPresenter(): SignInPresenter
 
     fun topRatedPresenter(): TopRatedPresenter
+
+    fun newFilmsPresenter() : NewFilmsPresenter
 
 }

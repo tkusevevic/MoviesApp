@@ -8,4 +8,6 @@ import retrofit2.Callback
  */
 interface MoviesInteractor {
     fun getMoviesBy(movieType: String, page: Int, moviesResponseCallback: Callback<MoviesResponse>)
+
+    fun loadNextPage(type: String, page: Int, moviesResponseCallback: Callback<MoviesResponse>)
 }

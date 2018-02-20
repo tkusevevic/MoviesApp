@@ -1,9 +1,6 @@
 package com.tkusevic.moviesapp
 
-import com.tkusevic.moviesapp.presentation.ProfilePresenter
-import com.tkusevic.moviesapp.presentation.RegistrationPresenter
-import com.tkusevic.moviesapp.presentation.SignInPresenter
-import com.tkusevic.moviesapp.presentation.TopRatedPresenter
+import com.tkusevic.moviesapp.presentation.*
 
 /**
  * Created by tkusevic on 14.02.2018..
@@ -17,3 +14,5 @@ fun registrationPresenter(): RegistrationPresenter = App.appComponent.registrati
 fun signInPresenter(): SignInPresenter = App.appComponent.signInPresenter()
 
 fun profilePresenter(): ProfilePresenter = App.appComponent.profilePresenter()
+
+fun newFilmsPresenter(): NewFilmsPresenter = App.appComponent.newFilmsPresenter()

@@ -3,9 +3,9 @@ package com.tkusevic.moviesapp.ui.movies.views
 import com.tkusevic.moviesapp.data.model.Movie
 
 /**
- * Created by tkusevic on 19.02.2018..
+ * Created by tkusevic on 20.02.2018..
  */
-interface TopRatedView {
+interface NewFilmsView {
 
     fun setMovies(movies : List<Movie>)
 

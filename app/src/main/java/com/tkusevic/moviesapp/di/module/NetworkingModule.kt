@@ -17,7 +17,7 @@ import javax.inject.Singleton
 class NetworkingModule {
 
     @Provides
-    fun baseUrl(): String = "http://api.themoviedb.org/3/movie/"
+    fun baseUrl(): String = "http://api.themoviedb.org/"
 
     @Provides
     fun loggingInterceptor(): HttpLoggingInterceptor = HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY }

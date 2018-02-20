@@ -3,10 +3,7 @@ package com.tkusevic.moviesapp.ui.movies.pager
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
-import com.tkusevic.moviesapp.commons.constants.FAVORITES
-import com.tkusevic.moviesapp.commons.constants.LATEST
-import com.tkusevic.moviesapp.commons.constants.PROFILE
-import com.tkusevic.moviesapp.commons.constants.TOP_RATED
+import com.tkusevic.moviesapp.commons.constants.*
 
 /**
  * Created by tkusevic on 16.02.2018..
@@ -31,7 +28,7 @@ class CustomPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
     override fun getPageTitle(position: Int): CharSequence? {
         return when (position) {
             0 -> TOP_RATED
-            1 -> LATEST
+            1 -> NOW_PLAYING
             2 -> FAVORITES
             3 -> PROFILE
             else -> null

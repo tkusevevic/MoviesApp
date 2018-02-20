@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".ui.registration.RegistrationActivity"
+        <activity android:name=".ui.signIn.SignInActivity"
             android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,7 +42,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.signIn.SignInActivity"
+            android:name=".ui.registration.RegistrationActivity"
             android:windowSoftInputMode="stateHidden"
             android:screenOrientation="portrait">
         </activity>

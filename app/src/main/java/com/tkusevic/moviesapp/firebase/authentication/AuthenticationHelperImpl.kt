@@ -27,6 +27,7 @@ class AuthenticationHelperImpl @Inject constructor(private val firebaseAuth: Fir
                 firebaseAuth.currentUser?.run {
                     val mappedUser = user?.mapToUser()
                     mappedUser?.userDisplayName = name
+                    mappedUser?.movies = mutableListOf()
                     mappedUser?.let { databaseHelper.saveUser(it) }
                     listener.onSuccessfulRequest()
                 }

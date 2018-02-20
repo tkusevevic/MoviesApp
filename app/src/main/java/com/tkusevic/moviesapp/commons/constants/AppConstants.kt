@@ -17,6 +17,13 @@ const val NO_NAME_ERROR = "Name is empty!"
 const val ERROR_EMAIL_OR_PASSWORD = "Wrong input of email or password"
 
 const val TOP_RATED = "Top rated"
-const val LATEST =  "Latest"
+const val NOW_PLAYING =  "Now playing"
 const val FAVORITES = "Favorites"
 const val PROFILE = "Profile"
+
+const val IMAGE_KEY = "https://image.tmdb.org/t/p/w500"
+
+const val TOP_RATED_KEY = "top_rated"
+const val NOW_PLAYING_KEY = "now_playing"
+
+const val RESPONSE_OK = 200

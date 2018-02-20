@@ -21,6 +21,9 @@
     <string name="save">SAVE</string>
     <string name="moviesDescription">Descriptin about movies I like:</string>
     <string name="aboutMe">About me:</string>
+    <string name="topRatedMovies">Top Rated Movies</string>
+    <string name="nowPlaying">Now Playing</string>
+    <string name="movieDetailsTitle">Movie Details</string>
 
 
 </resources>

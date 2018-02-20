@@ -1,7 +1,8 @@
 package com.tkusevic.moviesapp.data.response
 
-import android.graphics.Movie
+
 import com.google.gson.annotations.SerializedName
+import com.tkusevic.moviesapp.data.model.Movie
 
 /**
  * Created by tkusevic on 15.02.2018..
