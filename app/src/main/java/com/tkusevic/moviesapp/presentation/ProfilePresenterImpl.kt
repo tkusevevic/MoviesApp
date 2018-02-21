@@ -2,7 +2,6 @@ package com.tkusevic.moviesapp.presentation
 
 import com.google.firebase.auth.FirebaseUser
 import com.tkusevic.moviesapp.commons.extensions.mapToUser
-import com.tkusevic.moviesapp.data.model.Movie
 import com.tkusevic.moviesapp.data.model.User
 import com.tkusevic.moviesapp.firebase.UserRequestListener
 import com.tkusevic.moviesapp.firebase.authentication.AuthenticationHelper
@@ -42,7 +41,6 @@ class ProfilePresenterImpl @Inject constructor(private val authenticationHelper:
         profileView.setData(user)
         profileView.hideButton()
         profileView.textHideEdit()
-
     }
 
     override fun onFailedRequest() {

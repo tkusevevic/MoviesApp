@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.tkusevic.moviesapp.R
+import com.tkusevic.moviesapp.commons.constants.MOVIE_KEY
 import com.tkusevic.moviesapp.data.model.Movie
 import com.tkusevic.moviesapp.newFilmsPresenter
 import com.tkusevic.moviesapp.presentation.NewFilmsPresenter
@@ -65,12 +66,13 @@ class NewFilmsFragment : Fragment(), OnMovieClickListener, NewFilmsView {
 
     override fun onMovieClick(movie: Movie) {
         val bundle = Bundle()
-        bundle.putSerializable("movie",movie)
+        bundle.putSerializable(MOVIE_KEY, movie)
         val intent = Intent(activity, MovieDetailsActivity::class.java).putExtras(bundle)
         startActivity(intent)
     }
 
     override fun onLikeClick(movie: Movie) {
-        //TODO
+        presenter.onLikeTapped(movie)
+        adapter.setMovieLiked(movie.id, movie.isLiked)
     }
 }

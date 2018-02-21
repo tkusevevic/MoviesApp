@@ -7,7 +7,7 @@ import com.tkusevic.moviesapp.data.model.Movie
  */
 interface TopRatedView {
 
-    fun setMovies(movies : List<Movie>)
+    fun setMovies(movies: List<Movie>)
 
     fun addMovies(movies: List<Movie>)
 }

@@ -19,8 +19,7 @@ abstract class EndlessScrollListener(layoutManager: LinearLayoutManager) : Recyc
     private var loading = true
     private val startingPageIndex = 1
 
-    internal var mLayoutManager: RecyclerView.LayoutManager = layoutManager
-
+    private var mLayoutManager: RecyclerView.LayoutManager = layoutManager
 
     fun getLastVisibleItem(lastVisibleItemPositions: IntArray): Int {
         var maxSize = 0
@@ -38,13 +37,13 @@ abstract class EndlessScrollListener(layoutManager: LinearLayoutManager) : Recyc
         var lastVisibleItemPosition = 0
         val totalItemCount = mLayoutManager.itemCount
 
-        if (mLayoutManager is StaggeredGridLayoutManager) {
-            val lastVisibleItemPositions = (mLayoutManager as StaggeredGridLayoutManager).findLastVisibleItemPositions(null)
-            lastVisibleItemPosition = getLastVisibleItem(lastVisibleItemPositions)
-        } else if (mLayoutManager is GridLayoutManager) {
-            lastVisibleItemPosition = (mLayoutManager as GridLayoutManager).findLastVisibleItemPosition()
-        } else if (mLayoutManager is LinearLayoutManager) {
-            lastVisibleItemPosition = (mLayoutManager as LinearLayoutManager).findLastVisibleItemPosition()
+        when (mLayoutManager) {
+            is StaggeredGridLayoutManager -> {
+                val lastVisibleItemPositions = (mLayoutManager as StaggeredGridLayoutManager).findLastVisibleItemPositions(null)
+                lastVisibleItemPosition = getLastVisibleItem(lastVisibleItemPositions)
+            }
+            is GridLayoutManager -> lastVisibleItemPosition = (mLayoutManager as GridLayoutManager).findLastVisibleItemPosition()
+            is LinearLayoutManager -> lastVisibleItemPosition = (mLayoutManager as LinearLayoutManager).findLastVisibleItemPosition()
         }
 
         if (totalItemCount < previousTotalItemCount) {
@@ -65,12 +64,6 @@ abstract class EndlessScrollListener(layoutManager: LinearLayoutManager) : Recyc
             onLoadMore(currentPage, totalItemCount, view)
             loading = true
         }
-    }
-
-    fun resetState() {
-        this.currentPage = this.startingPageIndex
-        this.previousTotalItemCount = 0
-        this.loading = true
     }
 
     abstract fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView?)

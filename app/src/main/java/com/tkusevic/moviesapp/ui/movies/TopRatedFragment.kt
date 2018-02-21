@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.tkusevic.moviesapp.R
+import com.tkusevic.moviesapp.commons.constants.MOVIE_KEY
 import com.tkusevic.moviesapp.data.model.Movie
 import com.tkusevic.moviesapp.presentation.TopRatedPresenter
 import com.tkusevic.moviesapp.topRatedPresenter
@@ -51,16 +52,15 @@ class TopRatedFragment : Fragment(), OnMovieClickListener, TopRatedView {
         recyclerViewTopRated.addOnScrollListener(scrollListener)
     }
 
-    private fun loadTopRatedMovies() {
-        presenter.getMovies()
-    }
+    private fun loadTopRatedMovies() = presenter.getMovies()
 
     override fun addMovies(movies: List<Movie>) = adapter.addMovies(movies)
+
     override fun setMovies(movies: List<Movie>) = adapter.setMovies(movies)
 
     override fun onMovieClick(movie: Movie) {
         val bundle = Bundle()
-        bundle.putSerializable("movie", movie)
+        bundle.putSerializable(MOVIE_KEY, movie)
         val intent = Intent(activity, MovieDetailsActivity::class.java).putExtras(bundle)
         startActivity(intent)
     }

@@ -40,7 +40,6 @@ class MoviesAdapter(private val listener: OnMovieClickListener) : RecyclerView.A
         }
     }
 
-
     override fun getItemCount(): Int {
         return movies.size
     }
@@ -52,9 +51,5 @@ class MoviesAdapter(private val listener: OnMovieClickListener) : RecyclerView.A
             this.isLiked = isLiked
             notifyItemChanged(movies.indexOf(this))
         }
-    }
-
-    fun setFavoriteMovies(favorite: List<String>) {
-        movies.forEach { it.isLiked = it.id.toString() in favorite }
     }
 }

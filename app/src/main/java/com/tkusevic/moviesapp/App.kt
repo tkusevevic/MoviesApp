@@ -16,7 +16,7 @@ class App : Application() {
             DaggerAppComponent.builder().appModule(AppModule(instance)).build()
         }
 
-        internal lateinit var instance : App
+        internal lateinit var instance: App
     }
 
     override fun onCreate() {

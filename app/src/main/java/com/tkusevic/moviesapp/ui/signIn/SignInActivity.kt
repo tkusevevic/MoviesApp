@@ -48,7 +48,7 @@ class SignInActivity : AppCompatActivity(), SignInView {
 
         //signInGoogle.onClick(presenter.onGoogleClick())
 
-        goToRegistration.onClick { startActivity(Intent(this,RegistrationActivity::class.java)) }
+        goToRegistration.onClick { startActivity(Intent(this, RegistrationActivity::class.java)) }
     }
 
     override fun hidePasswordError() {

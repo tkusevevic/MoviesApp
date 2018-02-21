@@ -1,7 +1,6 @@
 package com.tkusevic.moviesapp.ui.movies.holder
 
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.View
 import com.squareup.picasso.Picasso
 import com.tkusevic.moviesapp.R
@@ -33,5 +32,4 @@ class MoviesViewHolder(private val listener: OnMovieClickListener, itemView: Vie
         onClick { listener.onMovieClick(movie) }
         like.onClick { listener.onLikeClick(movie) }
     }
-
 }

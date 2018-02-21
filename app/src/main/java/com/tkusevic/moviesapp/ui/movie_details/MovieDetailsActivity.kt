@@ -17,7 +17,7 @@ import java.io.Serializable
  */
 class MovieDetailsActivity : AppCompatActivity(), MovieDetailsView {
 
-    private val presenter : MovieDetailsPresenter by lazy { MovieDetailsPresenterImpl() }
+    private val presenter: MovieDetailsPresenter by lazy { MovieDetailsPresenterImpl() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,8 +37,8 @@ class MovieDetailsActivity : AppCompatActivity(), MovieDetailsView {
 
     private fun getMoviesInformation() {
         val intent = this.intent
-        val bundle : Bundle = intent.extras
-        val movie : Serializable? = bundle.getSerializable("movie")
+        val bundle: Bundle = intent.extras
+        val movie: Serializable? = bundle.getSerializable("movie")
         showData(movie as Movie)
     }
 
@@ -48,10 +48,9 @@ class MovieDetailsActivity : AppCompatActivity(), MovieDetailsView {
                 .resize(180, 180)
                 .centerCrop()
                 .into(imageMovieDetails)
-        if(movie.isLiked) {
+        if (movie.isLiked) {
             likeMovieDetails.setImageResource(R.drawable.like_fill)
-        }
-        else{
+        } else {
             likeMovieDetails.setImageResource(R.drawable.like)
         }
         titleMovieDetails.text = movie.title
@@ -59,5 +58,4 @@ class MovieDetailsActivity : AppCompatActivity(), MovieDetailsView {
         numVotesMovieDetails.text = String.format("Vote Number: " + movie.voteNumber)
         descriptionMovieDetails.text = movie.description
     }
-
 }

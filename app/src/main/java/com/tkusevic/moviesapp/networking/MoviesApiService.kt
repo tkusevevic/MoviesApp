@@ -16,5 +16,4 @@ interface MoviesApiService {
     @GET("3/movie/{movieType}/")
     fun getMoviesBy(@Path("movieType") movieType: String, @Query("api_key") apiKey: String, @Query("page") page: Int):
             Call<MoviesResponse>
-
 }

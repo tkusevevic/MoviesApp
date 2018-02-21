@@ -3,7 +3,10 @@ package com.tkusevic.moviesapp.ui.movies.pager
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
-import com.tkusevic.moviesapp.commons.constants.*
+import com.tkusevic.moviesapp.commons.constants.FAVORITES
+import com.tkusevic.moviesapp.commons.constants.NOW_PLAYING
+import com.tkusevic.moviesapp.commons.constants.PROFILE
+import com.tkusevic.moviesapp.commons.constants.TOP_RATED
 
 /**
  * Created by tkusevic on 16.02.2018..

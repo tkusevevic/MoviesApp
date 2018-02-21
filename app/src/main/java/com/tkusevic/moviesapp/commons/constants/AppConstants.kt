@@ -27,3 +27,5 @@ const val TOP_RATED_KEY = "top_rated"
 const val NOW_PLAYING_KEY = "now_playing"
 
 const val RESPONSE_OK = 200
+
+const val MOVIE_KEY = "movie"
