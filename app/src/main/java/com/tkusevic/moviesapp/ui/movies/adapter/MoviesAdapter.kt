@@ -7,7 +7,6 @@ import com.tkusevic.moviesapp.R
 import com.tkusevic.moviesapp.data.model.Movie
 import com.tkusevic.moviesapp.ui.listeners.OnMovieClickListener
 import com.tkusevic.moviesapp.ui.movies.holder.MoviesViewHolder
-import kotlinx.android.synthetic.main.holder_movies.view.*
 
 /**
  * Created by tkusevic on 18.02.2018..
@@ -33,13 +32,14 @@ class MoviesAdapter(private val listener: OnMovieClickListener) : RecyclerView.A
         return MoviesViewHolder(listener, view)
     }
 
-    override fun onBindViewHolder(holder: MoviesViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MoviesViewHolder?, position: Int) {
         val movie = movies[position]
-        holder.run {
-            setMovies(movie)
+        holder?.run {
+            setMovie(movie)
             listener.let { this }
         }
     }
+
 
     override fun getItemCount(): Int {
         return movies.size
@@ -52,5 +52,9 @@ class MoviesAdapter(private val listener: OnMovieClickListener) : RecyclerView.A
             this.isLiked = isLiked
             notifyItemChanged(movies.indexOf(this))
         }
+    }
+
+    fun setFavoriteMovies(favorite: List<String>) {
+        movies.forEach { it.isLiked = it.id.toString() in favorite }
     }
 }

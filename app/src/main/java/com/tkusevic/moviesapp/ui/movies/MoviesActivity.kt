@@ -4,7 +4,10 @@ import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v7.app.AppCompatActivity
 import com.tkusevic.moviesapp.R
-import com.tkusevic.moviesapp.commons.constants.*
+import com.tkusevic.moviesapp.commons.constants.FAVORITES
+import com.tkusevic.moviesapp.commons.constants.NOW_PLAYING
+import com.tkusevic.moviesapp.commons.constants.PROFILE
+import com.tkusevic.moviesapp.commons.constants.TOP_RATED
 import com.tkusevic.moviesapp.ui.movies.pager.CustomPagerAdapter
 import kotlinx.android.synthetic.main.activity_movies.*
 
@@ -37,8 +40,7 @@ class MoviesActivity : AppCompatActivity() {
         navigationPagerAdapter.addFragment(ProfileFragment())
 
         viewPager.adapter = navigationPagerAdapter
-        viewPager.offscreenPageLimit=3
-
+        viewPager.offscreenPageLimit = 3
     }
 
     private fun initListeners() {
@@ -48,9 +50,7 @@ class MoviesActivity : AppCompatActivity() {
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab) {}
-
             override fun onTabReselected(tab: TabLayout.Tab) {}
         })
-        viewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayout))
     }
 }

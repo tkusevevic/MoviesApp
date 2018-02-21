@@ -10,7 +10,7 @@ import com.tkusevic.moviesapp.commons.constants.*
  */
 class CustomPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
 
-    val fragments: MutableList<Fragment> = mutableListOf()
+    private val fragments: MutableList<Fragment> = mutableListOf()
 
     fun addFragment(fragment: Fragment) {
         fragments.add(fragment)

@@ -27,7 +27,6 @@ class AuthenticationHelperImpl @Inject constructor(private val firebaseAuth: Fir
                 firebaseAuth.currentUser?.run {
                     val mappedUser = user?.mapToUser()
                     mappedUser?.userDisplayName = name
-                    mappedUser?.movies = mutableListOf()
                     mappedUser?.let { databaseHelper.saveUser(it) }
                     listener.onSuccessfulRequest()
                 }
@@ -41,7 +40,7 @@ class AuthenticationHelperImpl @Inject constructor(private val firebaseAuth: Fir
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 firebaseAuth.currentUser?.run {
-                    databaseHelper.getUser(uid, { listener.onSuccessfulRequest(it) })
+                    listener.onSuccessfulRequest(mapToUser())
                 }
             } else {
                 listener.onFailedRequest()

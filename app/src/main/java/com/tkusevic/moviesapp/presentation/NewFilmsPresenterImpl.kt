@@ -28,7 +28,7 @@ class NewFilmsPresenterImpl @Inject constructor(private val moviesInteractor: Mo
 
     private fun getMoviesCallback(): Callback<MoviesResponse> = object : Callback<MoviesResponse> {
         override fun onFailure(call: Call<MoviesResponse>?, t: Throwable?) {
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
         }
 
         override fun onResponse(call: Call<MoviesResponse>?, response: Response<MoviesResponse>) {
@@ -53,7 +53,7 @@ class NewFilmsPresenterImpl @Inject constructor(private val moviesInteractor: Mo
         }
 
         override fun onFailure(call: Call<MoviesResponse>?, t: Throwable?) {
-            TODO("not implemented")
+
         }
     }
 }

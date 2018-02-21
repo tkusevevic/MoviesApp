@@ -16,20 +16,22 @@ import kotlinx.android.synthetic.main.holder_movies.view.*
  */
 class MoviesViewHolder(private val listener: OnMovieClickListener, itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    fun setMovies(movie: Movie) = with(itemView) {
-        if(movie.isLiked){
-            itemView.like.setImageResource(R.drawable.like_fill)
+    fun setMovie(movie: Movie) = with(itemView) {
+        if (movie.isLiked) {
+            like.setImageResource(R.drawable.like_fill)
+        } else {
+            like.setImageResource(R.drawable.like)
         }
         Picasso.with(context)
                 .load(IMAGE_KEY + movie.imageUrl)
-                .resize(110, 110)
+                .resize(720, 720)
                 .centerCrop()
                 .into(image)
-        itemView.title.text = movie.title
-        itemView.rating.text =String.format("Rating: %s",movie.voteAverage)
+        title.text = movie.title
+        rating.text = String.format("Rating: %s", movie.voteAverage)
+        numberVotes.text = String.format("Number of votes: %s", movie.voteNumber)
         onClick { listener.onMovieClick(movie) }
-        itemView.like.onClick { listener.onLikeClick(movie) }
-
+        like.onClick { listener.onLikeClick(movie) }
     }
 
 }

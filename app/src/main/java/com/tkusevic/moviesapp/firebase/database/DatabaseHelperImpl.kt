@@ -20,23 +20,46 @@ class DatabaseHelperImpl @Inject constructor(private val reference: DatabaseRefe
     }
 
     override fun getUser(id: String, returningUser: (User) -> Unit) {
-        reference.child("users").child(id).addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onCancelled(p0: DatabaseError?) {
-
-            }
+        reference.child("users").child(id).addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError?) {}
 
             override fun onDataChange(dataSnapshot: DataSnapshot?) {
                 dataSnapshot?.run {
                     val user = getValue(User::class.java)
                     user?.run {
-                        Log.d("User", toString())
                         returningUser(user)
                     }
                 }
             }
         })
-
     }
 
 
+    override fun onMovieLiked(userId: String, movie: Movie) {
+        val userMovies = reference.child("users").child(userId).child("movies").child(movie.id.toString())
+        userMovies.setValue(if (!movie.isLiked) null else movie)
+    }
+
+    override fun getFavoriteMoviesId(userId: String, returningMovies: (List<String>) -> Unit) {
+        reference.child("users").child(userId).child("movies").addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError?) {}
+
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val keys = if (dataSnapshot.hasChildren()) dataSnapshot.children.map { it.key } else listOf<String>()
+                returningMovies(keys)
+            }
+        })
+    }
+
+    override fun getFavoriteMovies(userId: String, returningMovies: (List<Movie>) -> Unit){
+        reference.child("users").child(userId).child("movies").addValueEventListener(object : ValueEventListener{
+            override fun onCancelled(p0: DatabaseError?) {}
+
+            override fun onDataChange(datasnapshot: DataSnapshot) {
+               val values = if(datasnapshot.hasChildren()) datasnapshot.children.map { it.getValue(Movie::class.java) } else listOf<Movie>()
+                returningMovies(values as List<Movie>)
+            }
+
+        })
+    }
 }

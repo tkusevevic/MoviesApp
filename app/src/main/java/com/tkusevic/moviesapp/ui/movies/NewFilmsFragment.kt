@@ -1,5 +1,6 @@
 package com.tkusevic.moviesapp.ui.movies
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -13,10 +14,10 @@ import com.tkusevic.moviesapp.newFilmsPresenter
 import com.tkusevic.moviesapp.presentation.NewFilmsPresenter
 import com.tkusevic.moviesapp.ui.listeners.EndlessScrollListener
 import com.tkusevic.moviesapp.ui.listeners.OnMovieClickListener
+import com.tkusevic.moviesapp.ui.movie_details.MovieDetailsActivity
 import com.tkusevic.moviesapp.ui.movies.adapter.MoviesAdapter
 import com.tkusevic.moviesapp.ui.movies.views.NewFilmsView
 import kotlinx.android.synthetic.main.fragment_new_films.*
-import kotlinx.android.synthetic.main.fragment_top_rated.*
 
 /**
  * Created by tkusevic on 18.02.2018..
@@ -40,7 +41,7 @@ class NewFilmsFragment : Fragment(), OnMovieClickListener, NewFilmsView {
 
     private fun initRecyclerView() {
         recyclerViewNewFilms.adapter = adapter
-        val lm = LinearLayoutManager(activity?.applicationContext)
+        val lm = LinearLayoutManager(activity)
         recyclerViewNewFilms.layoutManager = lm
         val scrollListener = object : EndlessScrollListener(lm) {
             override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView?) {
@@ -63,10 +64,13 @@ class NewFilmsFragment : Fragment(), OnMovieClickListener, NewFilmsView {
     }
 
     override fun onMovieClick(movie: Movie) {
-        //TODO
+        val bundle = Bundle()
+        bundle.putSerializable("movie",movie)
+        val intent = Intent(activity, MovieDetailsActivity::class.java).putExtras(bundle)
+        startActivity(intent)
     }
 
-    override fun onLikeClick(movies: Movie) {
+    override fun onLikeClick(movie: Movie) {
         //TODO
     }
 }

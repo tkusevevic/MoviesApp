@@ -37,8 +37,8 @@
 
         <ImageView
             android:id="@+id/imageMovieDetails"
-            android:layout_width="wrap_content"
-            android:layout_height="160dp"
+            android:layout_width="match_parent"
+            android:layout_height="260dp"
             android:layout_below="@id/toolbar"
             android:layout_centerHorizontal="true"
             android:padding="5dp"
@@ -47,13 +47,13 @@
         <TextView
             android:id="@+id/titleMovieDetails"
             android:layout_width="wrap_content"
-            android:textStyle="bold"
             android:layout_height="wrap_content"
             android:layout_below="@id/imageMovieDetails"
             android:layout_centerHorizontal="true"
             android:layout_margin="10dp"
             android:textColor="@color/white"
             android:textSize="24sp"
+            android:textStyle="bold"
             tools:text="Titanic" />
 
         <TextView
@@ -67,15 +67,25 @@
             android:textSize="20sp"
             tools:text="Rating: 7.7" />
 
-        <ImageView
-            android:id="@+id/likeMovieDetails"
-            android:padding="20dp"
+        <TextView
+            android:id="@+id/numVotesMovieDetails"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/ratingMovieDetails"
             android:layout_centerHorizontal="true"
             android:layout_margin="10dp"
-            android:background="@drawable/like"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            tools:text="1100 votes" />
+
+        <ImageView
+            android:id="@+id/likeMovieDetails"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_below="@id/numVotesMovieDetails"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            tools:background="@drawable/like"
             android:textColor="@color/white" />
 
         <TextView
@@ -85,9 +95,10 @@
             android:layout_below="@id/likeMovieDetails"
             android:layout_marginStart="20dp"
             android:text="Description:"
-            android:textSize="12sp"
-            android:textColor="@color/greenButton"/>
-        <EditText
+            android:textColor="@color/greenButton"
+            android:textSize="12sp" />
+
+        <TextView
             android:id="@+id/descriptionMovieDetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

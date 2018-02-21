@@ -2,6 +2,7 @@ package com.tkusevic.moviesapp.presentation
 
 import com.google.firebase.auth.FirebaseUser
 import com.tkusevic.moviesapp.commons.extensions.mapToUser
+import com.tkusevic.moviesapp.data.model.Movie
 import com.tkusevic.moviesapp.data.model.User
 import com.tkusevic.moviesapp.firebase.UserRequestListener
 import com.tkusevic.moviesapp.firebase.authentication.AuthenticationHelper
@@ -17,6 +18,10 @@ class ProfilePresenterImpl @Inject constructor(private val authenticationHelper:
 
     private lateinit var profileView: ProfileView
 
+    override fun setBaseview(baseView: ProfileView) {
+        this.profileView = baseView
+    }
+
     override fun editUser(aboutMe: String, movieDescription: String, name: String) {
         val firebaseUser: FirebaseUser? = authenticationHelper.getCurrentUser()
         val user = firebaseUser?.mapToUser()
@@ -26,10 +31,6 @@ class ProfilePresenterImpl @Inject constructor(private val authenticationHelper:
             userDisplayName = name
         }
         user?.let { authenticationHelper.editUser(it, this) }
-    }
-
-    override fun setBaseview(baseView: ProfileView) {
-        this.profileView = baseView
     }
 
     override fun getUserId() {

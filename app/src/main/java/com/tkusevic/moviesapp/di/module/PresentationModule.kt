@@ -23,4 +23,7 @@ abstract class PresentationModule {
 
     @Binds
     abstract fun newFilmsPresenter(newFilmsPresenterImpl: NewFilmsPresenterImpl) : NewFilmsPresenter
+
+    @Binds
+    abstract fun favoritesPresenter(favoritesPresenterImpl: FavoritesPresenterImpl) : FavoritesPresenter
 }

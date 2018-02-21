@@ -16,3 +16,5 @@ fun signInPresenter(): SignInPresenter = App.appComponent.signInPresenter()
 fun profilePresenter(): ProfilePresenter = App.appComponent.profilePresenter()
 
 fun newFilmsPresenter(): NewFilmsPresenter = App.appComponent.newFilmsPresenter()
+
+fun favoritesPresenter() : FavoritesPresenter = App.appComponent.favoritesPresenter()

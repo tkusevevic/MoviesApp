@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.tkusevic.moviesapp.App
 import com.tkusevic.moviesapp.R
 import com.tkusevic.moviesapp.commons.extensions.hide
 import com.tkusevic.moviesapp.commons.extensions.onClick
@@ -22,7 +21,6 @@ import kotlinx.android.synthetic.main.fragment_profile.*
  */
 class ProfileFragment : Fragment(), ProfileView {
 
-    //todo u app providers
     private val presenter: ProfilePresenter by lazy { profilePresenter() }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

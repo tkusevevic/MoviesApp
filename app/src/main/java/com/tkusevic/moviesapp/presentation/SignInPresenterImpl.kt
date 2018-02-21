@@ -3,6 +3,7 @@ package com.tkusevic.moviesapp.presentation
 import com.tkusevic.moviesapp.commons.constants.ERROR_EMAIL_OR_PASSWORD
 import com.tkusevic.moviesapp.commons.utils.checkEmailEmpty
 import com.tkusevic.moviesapp.commons.utils.checkPasswordEmpty
+import com.tkusevic.moviesapp.data.model.Movie
 import com.tkusevic.moviesapp.data.model.User
 import com.tkusevic.moviesapp.firebase.UserRequestListener
 import com.tkusevic.moviesapp.firebase.authentication.AuthenticationHelper

@@ -51,6 +51,11 @@
             android:windowSoftInputMode="stateHidden"
             android:screenOrientation="portrait">
         </activity>
+        <activity
+            android:name=".ui.movie_details.MovieDetailsActivity"
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait">
+        </activity>
 
 
     </application>

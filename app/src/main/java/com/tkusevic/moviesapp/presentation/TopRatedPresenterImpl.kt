@@ -4,6 +4,8 @@ import com.tkusevic.moviesapp.commons.constants.RESPONSE_OK
 import com.tkusevic.moviesapp.commons.constants.TOP_RATED_KEY
 import com.tkusevic.moviesapp.data.model.Movie
 import com.tkusevic.moviesapp.data.response.MoviesResponse
+import com.tkusevic.moviesapp.firebase.authentication.AuthenticationHelper
+import com.tkusevic.moviesapp.firebase.database.DatabaseHelper
 import com.tkusevic.moviesapp.interaction.MoviesInteractor
 import com.tkusevic.moviesapp.ui.movies.views.TopRatedView
 import retrofit2.Call
@@ -14,7 +16,10 @@ import javax.inject.Inject
 /**
  * Created by tkusevic on 19.02.2018..
  */
-class TopRatedPresenterImpl @Inject constructor(private val moviesInteractor: MoviesInteractor) : TopRatedPresenter {
+class TopRatedPresenterImpl @Inject constructor(private val moviesInteractor: MoviesInteractor,
+                                                private val authenticationHelper: AuthenticationHelper,
+                                                private val databaseHelper: DatabaseHelper) : TopRatedPresenter {
+
 
     private lateinit var topRatedView: TopRatedView
 
@@ -59,16 +64,9 @@ class TopRatedPresenterImpl @Inject constructor(private val moviesInteractor: Mo
     }
 
     override fun onLikeTapped(movie: Movie) {
-        //val user = preferences.getUser()
-
-       //if (user.movies.contains(movie)) {
-       //    //already liked
-       //    //setValue na firebaseu na null firebase.reference.child(userId).child(movies).child(movideId).setValue(null)
-       //} else {
-       //    //not liked
-       //    //setValue na firebaseu na null firebase.reference.child(userId).child(movies).child(movideId).setValue(movie)
-       //}
-
-
+        movie.isLiked = !movie.isLiked
+        authenticationHelper.getCurrentUser()?.uid?.run {
+            databaseHelper.onMovieLiked(this, movie)
+        }
     }
 }
