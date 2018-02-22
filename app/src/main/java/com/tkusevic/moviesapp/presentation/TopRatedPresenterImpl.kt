@@ -4,6 +4,7 @@ import com.tkusevic.moviesapp.commons.constants.RESPONSE_OK
 import com.tkusevic.moviesapp.commons.constants.TOP_RATED_KEY
 import com.tkusevic.moviesapp.data.model.Movie
 import com.tkusevic.moviesapp.data.response.MoviesResponse
+import com.tkusevic.moviesapp.firebase.MoviesRequestListener
 import com.tkusevic.moviesapp.firebase.authentication.AuthenticationHelper
 import com.tkusevic.moviesapp.firebase.database.DatabaseHelper
 import com.tkusevic.moviesapp.interaction.MoviesInteractor
@@ -18,9 +19,8 @@ import javax.inject.Inject
  */
 class TopRatedPresenterImpl @Inject constructor(private val moviesInteractor: MoviesInteractor,
                                                 private val authenticationHelper: AuthenticationHelper,
-                                                private val databaseHelper: DatabaseHelper) : TopRatedPresenter {
-
-
+                                                private val databaseHelper: DatabaseHelper) : TopRatedPresenter, MoviesRequestListener{
+    
     private lateinit var topRatedView: TopRatedView
 
     override fun setBaseview(baseView: TopRatedView) {
@@ -29,6 +29,19 @@ class TopRatedPresenterImpl @Inject constructor(private val moviesInteractor: Mo
 
     override fun getMovies() {
         moviesInteractor.getMoviesBy(TOP_RATED_KEY, 1, getMoviesCallback())
+    }
+
+    override fun getFavorites() {
+        val userId = authenticationHelper.getCurrentUserId()
+        databaseHelper.getFavoriteMovies(userId!!,{this.onSuccessfulRequest(it)})
+    }
+
+    override fun onSuccessfulRequest(movies: List<Movie>) {
+        topRatedView.setFavorites(movies)
+    }
+
+    override fun onFailedRequest() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
 

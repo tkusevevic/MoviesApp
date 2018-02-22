@@ -8,4 +8,6 @@ import com.tkusevic.moviesapp.data.model.Movie
 interface MovieDetailsView {
 
     fun showData(movie: Movie)
+
+    fun setLike(isLiked: Boolean)
 }

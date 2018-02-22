@@ -7,6 +7,7 @@ import com.tkusevic.moviesapp.R
 import com.tkusevic.moviesapp.commons.constants.IMAGE_KEY
 import com.tkusevic.moviesapp.commons.extensions.onClick
 import com.tkusevic.moviesapp.data.model.Movie
+import com.tkusevic.moviesapp.movieDetailsPresenter
 import com.tkusevic.moviesapp.presentation.MovieDetailsPresenter
 import com.tkusevic.moviesapp.presentation.MovieDetailsPresenterImpl
 import kotlinx.android.synthetic.main.activity_movie_details.*
@@ -17,7 +18,7 @@ import java.io.Serializable
  */
 class MovieDetailsActivity : AppCompatActivity(), MovieDetailsView {
 
-    private val presenter: MovieDetailsPresenter by lazy { MovieDetailsPresenterImpl() }
+    private val presenter: MovieDetailsPresenter by lazy { movieDetailsPresenter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +30,11 @@ class MovieDetailsActivity : AppCompatActivity(), MovieDetailsView {
 
     private fun initListeners() {
         backDetails.onClick { finish() }
+        likeMovieDetails.onClick {
+            val intent = this.intent
+            val bundle: Bundle = intent.extras
+            val movie: Serializable? = bundle.getSerializable("movie")
+            presenter.onLikeTapped(movie as Movie) }
     }
 
     private fun initPresenter() {
@@ -58,4 +64,10 @@ class MovieDetailsActivity : AppCompatActivity(), MovieDetailsView {
         numVotesMovieDetails.text = String.format("Vote Number: " + movie.voteNumber)
         descriptionMovieDetails.text = movie.description
     }
+
+    override fun setLike(isLiked: Boolean) {
+        if(isLiked) likeMovieDetails.setImageResource(R.drawable.like_fill)
+        else likeMovieDetails.setImageResource(R.drawable.like)
+    }
+
 }

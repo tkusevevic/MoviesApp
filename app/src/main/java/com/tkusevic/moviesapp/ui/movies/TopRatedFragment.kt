@@ -16,7 +16,7 @@ import com.tkusevic.moviesapp.topRatedPresenter
 import com.tkusevic.moviesapp.ui.listeners.EndlessScrollListener
 import com.tkusevic.moviesapp.ui.listeners.OnMovieClickListener
 import com.tkusevic.moviesapp.ui.movie_details.MovieDetailsActivity
-import com.tkusevic.moviesapp.ui.movies.adapter.MoviesAdapter
+import com.tkusevic.moviesapp.ui.movies.adapter.TopRatedNewFilmsAdapter
 import com.tkusevic.moviesapp.ui.movies.views.TopRatedView
 import kotlinx.android.synthetic.main.fragment_top_rated.*
 
@@ -27,7 +27,7 @@ class TopRatedFragment : Fragment(), OnMovieClickListener, TopRatedView {
 
     private val presenter: TopRatedPresenter by lazy { topRatedPresenter() }
 
-    private val adapter by lazy { MoviesAdapter(this) }
+    private val adapter by lazy { TopRatedNewFilmsAdapter(this) }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_top_rated, container, false)
@@ -36,6 +36,7 @@ class TopRatedFragment : Fragment(), OnMovieClickListener, TopRatedView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         presenter.setBaseview(this)
+        presenter.getFavorites()
         initRecyclerView()
         loadTopRatedMovies()
     }
@@ -52,11 +53,9 @@ class TopRatedFragment : Fragment(), OnMovieClickListener, TopRatedView {
         recyclerViewTopRated.addOnScrollListener(scrollListener)
     }
 
-    private fun loadTopRatedMovies() = presenter.getMovies()
-
-    override fun addMovies(movies: List<Movie>) = adapter.addMovies(movies)
-
-    override fun setMovies(movies: List<Movie>) = adapter.setMovies(movies)
+    private fun loadTopRatedMovies() {
+        presenter.getMovies()
+    }
 
     override fun onMovieClick(movie: Movie) {
         val bundle = Bundle()
@@ -70,5 +69,10 @@ class TopRatedFragment : Fragment(), OnMovieClickListener, TopRatedView {
         adapter.setMovieLiked(movie.id, movie.isLiked)
     }
 
+    override fun addMovies(movies: List<Movie>) = adapter.addMovies(movies)
+
+    override fun setMovies(movies: List<Movie>) = adapter.setMovies(movies)
+
+    override fun setFavorites(favorites: List<Movie>)  = adapter.setFavoriteMovies(favorites)
 }
 

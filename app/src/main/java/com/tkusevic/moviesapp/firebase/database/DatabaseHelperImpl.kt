@@ -40,17 +40,6 @@ class DatabaseHelperImpl @Inject constructor(private val reference: DatabaseRefe
         userMovies.setValue(if (!movie.isLiked) null else movie)
     }
 
-    override fun getFavoriteMoviesId(userId: String, returningMovies: (List<String>) -> Unit) {
-        reference.child("users").child(userId).child("movies").addValueEventListener(object : ValueEventListener {
-            override fun onCancelled(p0: DatabaseError?) {}
-
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val keys = if (dataSnapshot.hasChildren()) dataSnapshot.children.map { it.key } else listOf<String>()
-                returningMovies(keys)
-            }
-        })
-    }
-
     override fun getFavoriteMovies(userId: String, returningMovies: (List<Movie>) -> Unit){
         reference.child("users").child(userId).child("movies").addValueEventListener(object : ValueEventListener{
             override fun onCancelled(p0: DatabaseError?) {}

@@ -10,4 +10,6 @@ interface NewFilmsView {
     fun setMovies(movies: List<Movie>)
 
     fun addMovies(movies: List<Movie>)
+
+    fun setFavorites(favorites : List<Movie>)
 }

@@ -17,6 +17,7 @@ import com.tkusevic.moviesapp.ui.listeners.EndlessScrollListener
 import com.tkusevic.moviesapp.ui.listeners.OnMovieClickListener
 import com.tkusevic.moviesapp.ui.movie_details.MovieDetailsActivity
 import com.tkusevic.moviesapp.ui.movies.adapter.MoviesAdapter
+import com.tkusevic.moviesapp.ui.movies.adapter.TopRatedNewFilmsAdapter
 import com.tkusevic.moviesapp.ui.movies.views.NewFilmsView
 import kotlinx.android.synthetic.main.fragment_new_films.*
 
@@ -27,7 +28,7 @@ class NewFilmsFragment : Fragment(), OnMovieClickListener, NewFilmsView {
 
     private val presenter: NewFilmsPresenter by lazy { newFilmsPresenter() }
 
-    private val adapter by lazy { MoviesAdapter(this) }
+    private val adapter by lazy { TopRatedNewFilmsAdapter(this) }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_new_films, container, false)
@@ -56,14 +57,6 @@ class NewFilmsFragment : Fragment(), OnMovieClickListener, NewFilmsView {
         presenter.getMovies()
     }
 
-    override fun setMovies(movies: List<Movie>) {
-        adapter.setMovies(movies)
-    }
-
-    override fun addMovies(movies: List<Movie>) {
-        adapter.addMovies(movies)
-    }
-
     override fun onMovieClick(movie: Movie) {
         val bundle = Bundle()
         bundle.putSerializable(MOVIE_KEY, movie)
@@ -75,4 +68,10 @@ class NewFilmsFragment : Fragment(), OnMovieClickListener, NewFilmsView {
         presenter.onLikeTapped(movie)
         adapter.setMovieLiked(movie.id, movie.isLiked)
     }
+
+    override fun addMovies(movies: List<Movie>) = adapter.addMovies(movies)
+
+    override fun setMovies(movies: List<Movie>) = adapter.setMovies(movies)
+
+    override fun setFavorites(favorites: List<Movie>)  = adapter.setFavoriteMovies(favorites)
 }

@@ -12,7 +12,10 @@ interface TopRatedPresenter : BasePresenter<TopRatedView> {
 
     fun getMovies()
 
+    fun getFavorites()
+
     fun loadNextPage(page: Int)
 
     fun onLikeTapped(movie: Movie)
+
 }

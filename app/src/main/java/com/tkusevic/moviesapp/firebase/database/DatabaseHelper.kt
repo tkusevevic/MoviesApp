@@ -8,8 +8,6 @@ import com.tkusevic.moviesapp.data.model.User
  */
 interface DatabaseHelper {
 
-    fun getFavoriteMoviesId(userId: String, returningMovies: (List<String>)->Unit)
-
     fun saveUser(user: User)
 
     fun getUser(id: String, returningUser: (User) -> Unit)

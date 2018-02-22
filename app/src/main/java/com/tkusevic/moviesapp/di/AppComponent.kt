@@ -30,4 +30,6 @@ interface AppComponent {
 
     fun favoritesPresenter() : FavoritesPresenter
 
+    fun movieDetalsPresenter() : MovieDetailsPresenter
+
 }

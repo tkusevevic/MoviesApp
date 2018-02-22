@@ -4,6 +4,8 @@ import com.tkusevic.moviesapp.commons.constants.NOW_PLAYING_KEY
 import com.tkusevic.moviesapp.commons.constants.RESPONSE_OK
 import com.tkusevic.moviesapp.data.model.Movie
 import com.tkusevic.moviesapp.data.response.MoviesResponse
+import com.tkusevic.moviesapp.firebase.authentication.AuthenticationHelper
+import com.tkusevic.moviesapp.firebase.database.DatabaseHelper
 import com.tkusevic.moviesapp.interaction.MoviesInteractor
 import com.tkusevic.moviesapp.ui.movies.views.NewFilmsView
 import retrofit2.Call
@@ -14,7 +16,9 @@ import javax.inject.Inject
 /**
  * Created by tkusevic on 20.02.2018..
  */
-class NewFilmsPresenterImpl @Inject constructor(private val moviesInteractor: MoviesInteractor) : NewFilmsPresenter {
+class NewFilmsPresenterImpl @Inject constructor(private val moviesInteractor: MoviesInteractor,
+                                                private val authenticationHelper: AuthenticationHelper,
+                                                private val databaseHelper: DatabaseHelper) : NewFilmsPresenter {
 
     private lateinit var newFilmsView: NewFilmsView
 
@@ -58,9 +62,9 @@ class NewFilmsPresenterImpl @Inject constructor(private val moviesInteractor: Mo
     }
 
     override fun onLikeTapped(movie: Movie) {
-        //movie.isLiked = !movie.isLiked
-        //authenticationHelper.getCurrentUser()?.uid?.run {
-        //    databaseHelper.onMovieLiked(this, movie)
-        //}
+        movie.isLiked = !movie.isLiked
+        authenticationHelper.getCurrentUser()?.uid?.run {
+            databaseHelper.onMovieLiked(this, movie)
+        }
     }
 }
