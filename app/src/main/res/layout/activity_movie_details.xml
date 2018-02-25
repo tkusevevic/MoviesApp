@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="@color/bg_register"
+    android:background="@color/background_color"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -12,6 +12,7 @@
         android:layout_height="wrap_content">
 
         <RelativeLayout
+            android:background="@color/toolbar_color"
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="56dp"
@@ -31,8 +32,16 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="@string/movieDetailsTitle"
-                android:textColor="@color/greenButton"
+                android:textColor="@color/main_green"
                 android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/likeMovieDetails"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="10dp"
+                tools:background="@drawable/like" />
         </RelativeLayout>
 
         <ImageView
@@ -78,31 +87,23 @@
             android:textSize="20sp"
             tools:text="1100 votes" />
 
-        <ImageView
-            android:id="@+id/likeMovieDetails"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:layout_below="@id/numVotesMovieDetails"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="10dp"
-            tools:background="@drawable/like"
-            android:textColor="@color/white" />
+
 
         <TextView
             android:id="@+id/nothingImportant"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/likeMovieDetails"
+            android:layout_below="@id/numVotesMovieDetails"
             android:layout_marginStart="20dp"
             android:text="Description:"
-            android:textColor="@color/greenButton"
+            android:textColor="@color/main_green"
             android:textSize="12sp" />
 
         <TextView
             android:id="@+id/descriptionMovieDetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/likeMovieDetails"
+            android:layout_below="@id/nothingImportant"
             android:layout_margin="20dp"
             android:textColor="@color/white"
             android:textColorHint="@color/hint_gray"

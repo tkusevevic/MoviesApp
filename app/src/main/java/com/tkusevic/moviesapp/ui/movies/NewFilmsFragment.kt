@@ -10,13 +10,14 @@ import android.view.View
 import android.view.ViewGroup
 import com.tkusevic.moviesapp.R
 import com.tkusevic.moviesapp.commons.constants.MOVIE_KEY
+import com.tkusevic.moviesapp.commons.extensions.hide
+import com.tkusevic.moviesapp.commons.extensions.show
 import com.tkusevic.moviesapp.data.model.Movie
 import com.tkusevic.moviesapp.newFilmsPresenter
 import com.tkusevic.moviesapp.presentation.NewFilmsPresenter
 import com.tkusevic.moviesapp.ui.listeners.EndlessScrollListener
 import com.tkusevic.moviesapp.ui.listeners.OnMovieClickListener
 import com.tkusevic.moviesapp.ui.movie_details.MovieDetailsActivity
-import com.tkusevic.moviesapp.ui.movies.adapter.MoviesAdapter
 import com.tkusevic.moviesapp.ui.movies.adapter.TopRatedNewFilmsAdapter
 import com.tkusevic.moviesapp.ui.movies.views.NewFilmsView
 import kotlinx.android.synthetic.main.fragment_new_films.*
@@ -37,6 +38,7 @@ class NewFilmsFragment : Fragment(), OnMovieClickListener, NewFilmsView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         presenter.setBaseview(this)
+        loadFavorites()
         initRecyclerView()
         loadNewMovies()
     }
@@ -53,9 +55,9 @@ class NewFilmsFragment : Fragment(), OnMovieClickListener, NewFilmsView {
         recyclerViewNewFilms.addOnScrollListener(scrollListener)
     }
 
-    private fun loadNewMovies() {
-        presenter.getMovies()
-    }
+    private fun loadFavorites() = presenter.getFavorites()
+
+    private fun loadNewMovies() = presenter.getMovies()
 
     override fun onMovieClick(movie: Movie) {
         val bundle = Bundle()
@@ -73,5 +75,9 @@ class NewFilmsFragment : Fragment(), OnMovieClickListener, NewFilmsView {
 
     override fun setMovies(movies: List<Movie>) = adapter.setMovies(movies)
 
-    override fun setFavorites(favorites: List<Movie>)  = adapter.setFavoriteMovies(favorites)
+    override fun setFavorites(favorites: List<Movie>) = adapter.setFavoriteMovies(favorites)
+
+    override fun showMessageEmptyList() = noNewMovies.show()
+
+    override fun hideMessageEmptyList() = noNewMovies.hide()
 }

@@ -16,16 +16,22 @@ const val EMAIL_ERROR = "Incorrect email!"
 const val NO_NAME_ERROR = "Name is empty!"
 const val ERROR_EMAIL_OR_PASSWORD = "Wrong input of email or password"
 
+//pager titles
 const val TOP_RATED = "Top rated"
 const val NOW_PLAYING =  "Now playing"
 const val FAVORITES = "Favorites"
 const val PROFILE = "Profile"
 
+//keys for downloading image
 const val IMAGE_KEY = "https://image.tmdb.org/t/p/w500"
 
+//keys for activitys
+const val USER_ID = "userId"
 const val TOP_RATED_KEY = "top_rated"
 const val NOW_PLAYING_KEY = "now_playing"
+const val MOVIE_KEY = "movie"
 
+//responses
 const val RESPONSE_OK = 200
 
-const val MOVIE_KEY = "movie"
+

@@ -1,0 +1,126 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@color/background_color">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@color/toolbar_color"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/profileTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/profile"
+                android:textColor="@color/main_green"
+                android:textSize="20sp" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/imageEdit"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_below="@id/toolbar"
+            android:layout_centerHorizontal="true"
+            android:padding="5dp"
+            android:src="@drawable/movies" />
+
+        <TextView
+            android:id="@+id/profileEditName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imageEdit"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            tools:text="Schoxara96" />
+
+        <TextView
+            android:id="@+id/profileEditEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/profileEditName"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            tools:text="email@email.com" />
+
+        <TextView
+            android:id="@+id/nothingImportant2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/profileEditEmail"
+            android:layout_marginStart="20dp"
+            android:text="@string/aboutMe"
+            android:textColor="@color/main_green"
+            android:textSize="12sp" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/aboutMeLayout"
+            android:layout_width="match_parent"
+            android:layout_margin="10dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/nothingImportant2">
+
+            <EditText
+                android:id="@+id/aboutMeEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:minLines="2"
+                android:textColor="@color/white"
+                android:textSize="19sp" />
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:id="@+id/nothingImportant"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/aboutMeLayout"
+            android:layout_marginStart="20dp"
+            android:text="@string/movies_i_like"
+            android:textColor="@color/main_green"
+            android:textSize="12sp" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/moviesDescriptionLayout"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/nothingImportant">
+
+            <EditText
+                android:id="@+id/profileEditMoviesDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/nothingImportant"
+                android:layout_margin="10dp"
+                android:minLines="2"
+                android:textColor="@color/white"
+                android:textSize="19sp" />
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/saveEditProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/moviesDescriptionLayout"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:background="@color/main_green"
+            android:text="@string/save"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+</ScrollView>

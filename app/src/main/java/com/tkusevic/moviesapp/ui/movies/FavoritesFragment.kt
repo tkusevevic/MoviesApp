@@ -9,6 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.tkusevic.moviesapp.R
 import com.tkusevic.moviesapp.commons.constants.MOVIE_KEY
+import com.tkusevic.moviesapp.commons.extensions.hide
+import com.tkusevic.moviesapp.commons.extensions.show
 import com.tkusevic.moviesapp.data.model.Movie
 import com.tkusevic.moviesapp.favoritesPresenter
 import com.tkusevic.moviesapp.presentation.FavoritesPresenter
@@ -38,9 +40,7 @@ class FavoritesFragment : Fragment(), OnMovieClickListener, FavoritesView {
         loadFavorites()
     }
 
-    private fun loadFavorites() {
-        presenter.getFavoriteMovies()
-    }
+    private fun initPresenter() = presenter.setBaseview(this)
 
     private fun initRecycler() {
         recyclerViewFavorites.adapter = adapter
@@ -48,12 +48,9 @@ class FavoritesFragment : Fragment(), OnMovieClickListener, FavoritesView {
         recyclerViewFavorites.layoutManager = lm
     }
 
-    private fun initPresenter() = presenter.setBaseview(this)
+    private fun loadFavorites() = presenter.getFavoriteMovies()
 
-
-    override fun setMovies(movies: List<Movie>) {
-        adapter.setMovies(movies)
-    }
+    override fun setMovies(movies: List<Movie>) = adapter.setMovies(movies)
 
     override fun onMovieClick(movie: Movie) {
         val bundle = Bundle()
@@ -66,4 +63,8 @@ class FavoritesFragment : Fragment(), OnMovieClickListener, FavoritesView {
         presenter.onLikeTapped(movie)
         adapter.setMovieLiked(movie.id, movie.isLiked)
     }
+
+    override fun showMessageOnScreen() = noFavorites.show()
+
+    override fun hideMessageOnScreen() = noFavorites.hide()
 }

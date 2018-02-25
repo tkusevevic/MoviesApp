@@ -7,7 +7,7 @@ import com.tkusevic.moviesapp.ui.movie_details.MovieDetailsView
 /**
  * Created by tkusevic on 20.02.2018..
  */
-interface MovieDetailsPresenter : BasePresenter<MovieDetailsView>{
+interface MovieDetailsPresenter : BasePresenter<MovieDetailsView> {
 
     fun onLikeTapped(movie: Movie)
 }

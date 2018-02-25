@@ -1,6 +1,5 @@
 package com.tkusevic.moviesapp.firebase.database
 
-import android.util.Log
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -16,7 +15,6 @@ class DatabaseHelperImpl @Inject constructor(private val reference: DatabaseRefe
 
     override fun saveUser(user: User) {
         reference.child("users").child(user.id).setValue(user)
-        Log.i("SAVING USER", user.toString())
     }
 
     override fun getUser(id: String, returningUser: (User) -> Unit) {
@@ -34,21 +32,34 @@ class DatabaseHelperImpl @Inject constructor(private val reference: DatabaseRefe
         })
     }
 
-
     override fun onMovieLiked(userId: String, movie: Movie) {
         val userMovies = reference.child("users").child(userId).child("movies").child(movie.id.toString())
         userMovies.setValue(if (!movie.isLiked) null else movie)
     }
 
-    override fun getFavoriteMovies(userId: String, returningMovies: (List<Movie>) -> Unit){
-        reference.child("users").child(userId).child("movies").addValueEventListener(object : ValueEventListener{
+    override fun listenToFavoriteMovies(userId: String, onFavoriteMoviesReceived: (List<Movie>) -> Unit) {
+        reference.child("users").child(userId).child("movies").addValueEventListener(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError?) {}
 
             override fun onDataChange(datasnapshot: DataSnapshot) {
-               val values = if(datasnapshot.hasChildren()) datasnapshot.children.map { it.getValue(Movie::class.java) } else listOf<Movie>()
-                returningMovies(values as List<Movie>)
+                val values = if (datasnapshot.hasChildren()) datasnapshot.children.map { it.getValue(Movie::class.java) } else listOf()
+
+                onFavoriteMoviesReceived(values.filterNotNull())
+            }
+        })
+    }
+
+    override fun getFavoriteMoviesOnce(userId: String, onFavoriteMoviesReceived: (List<Movie>) -> Unit) {
+        reference.child("users").child(userId).child("movies").addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError?) {}
+
+            override fun onDataChange(datasnapshot: DataSnapshot) {
+                val values = if (datasnapshot.hasChildren()) datasnapshot.children.map { it.getValue(Movie::class.java) } else listOf<Movie>()
+                onFavoriteMoviesReceived(values.filterNotNull())
             }
 
         })
     }
+
+
 }

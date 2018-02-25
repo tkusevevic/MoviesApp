@@ -21,12 +21,14 @@ class TopRatedNewFilmsViewHolder(private val listener: OnMovieClickListener, ite
         } else {
             like.setImageResource(R.drawable.like)
         }
+
         Picasso.with(context)
                 .load(IMAGE_KEY + movie.imageUrl)
                 .resize(720, 720)
                 .centerCrop()
                 .into(image)
         title.text = movie.title
+        date.text = String.format("Released: %s", movie.release)
         rating.text = String.format("Rating: %s", movie.voteAverage)
         numberVotes.text = String.format("Number of votes: %s", movie.voteNumber)
         onClick { listener.onMovieClick(movie) }

@@ -9,7 +9,5 @@ interface ProfileView {
 
     fun setData(user: User)
     fun makeText(s: String)
-    fun hideButton()
-    fun textGiveEdit()
-    fun textHideEdit()
+    fun goToEdit()
 }

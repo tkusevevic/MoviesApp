@@ -12,4 +12,8 @@ interface NewFilmsView {
     fun addMovies(movies: List<Movie>)
 
     fun setFavorites(favorites : List<Movie>)
+
+    fun showMessageEmptyList()
+
+    fun hideMessageEmptyList()
 }

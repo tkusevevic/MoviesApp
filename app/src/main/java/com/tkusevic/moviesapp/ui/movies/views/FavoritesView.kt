@@ -8,4 +8,8 @@ import com.tkusevic.moviesapp.data.model.Movie
 interface FavoritesView {
 
     fun setMovies(movies: List<Movie>)
+
+    fun showMessageOnScreen()
+
+    fun hideMessageOnScreen()
 }

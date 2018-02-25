@@ -2,7 +2,7 @@ package com.tkusevic.moviesapp.firebase.authentication
 
 import com.google.firebase.auth.FirebaseUser
 import com.tkusevic.moviesapp.data.model.User
-import com.tkusevic.moviesapp.firebase.RequestListener
+import com.tkusevic.moviesapp.firebase.EmptyRequestListener
 import com.tkusevic.moviesapp.firebase.UserRequestListener
 
 /**
@@ -12,7 +12,7 @@ interface AuthenticationHelper {
 
     fun logTheUserIn(email: String, password: String, listener: UserRequestListener)
 
-    fun attemptToRegisterTheUser(email: String, password: String, name: String, listener: RequestListener)
+    fun attemptToRegisterTheUser(email: String, password: String, name: String, listener: EmptyRequestListener)
 
     fun setUserDisplayName(username: String)
 

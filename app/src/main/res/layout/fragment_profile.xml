@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:layout_gravity="center"
-    android:background="@color/bg_register"
-    android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background_color">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <RelativeLayout
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="56dp"
+            android:background="@color/toolbar_color"
             android:orientation="horizontal">
 
             <TextView
@@ -23,7 +22,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="@string/profile"
-                android:textColor="@color/greenButton"
+                android:textColor="@color/main_green"
                 android:textSize="20sp" />
 
             <ImageView
@@ -40,84 +39,92 @@
             android:id="@+id/imageDetails"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:layout_below="@id/toolbar"
-            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
             android:padding="5dp"
             android:src="@drawable/movies" />
 
         <TextView
-            android:id="@+id/profileName"
+            android:id="@+id/descName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/imageDetails"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="10dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/name"
+            android:textColor="@color/main_green"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/profileName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
             android:textColor="@color/white"
-            android:textSize="22sp"
-            tools:text="Schoxara96" />
+            android:textColorHint="@color/hint_gray"
+            android:textSize="19sp" />
+
+        <TextView
+            android:id="@+id/descEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="@string/hint_email"
+            android:textColor="@color/main_green"
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/profileEmail"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/profileName"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="10dp"
+            android:layout_margin="20dp"
             android:textColor="@color/white"
-            android:textSize="22sp"
-            tools:text="email@email.com" />
+            android:textColorHint="@color/hint_gray"
+            android:textSize="19sp" />
 
         <TextView
             android:id="@+id/nothingImportant2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/profileEmail"
             android:layout_marginStart="20dp"
-            android:text="About me"
-            android:textSize="12sp"
-            android:textColor="@color/greenButton"/>
-        <EditText
+            android:text="@string/aboutMe"
+            android:textColor="@color/main_green"
+            android:textSize="12sp" />
+
+        <TextView
             android:id="@+id/aboutMe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/nothingImportant2"
-            android:layout_margin="10dp"
-            android:minLines="3"
+            android:layout_margin="20dp"
             android:textColor="@color/white"
             android:textColorHint="@color/hint_gray"
-            android:textSize="19sp"
-            android:inputType="textMultiLine" />
+            android:textSize="19sp" />
+
         <TextView
             android:id="@+id/nothingImportant"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/aboutMe"
             android:layout_marginStart="20dp"
-            android:text="What movies I like: "
-            android:textSize="12sp"
-            android:textColor="@color/greenButton"/>
+            android:text="@string/movies_i_like"
+            android:textColor="@color/main_green"
+            android:textSize="12sp" />
 
-        <EditText
+        <TextView
             android:id="@+id/profileMoviesDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/nothingImportant"
-            android:layout_margin="10dp"
-            android:minLines="3"
+            android:layout_margin="20dp"
             android:textColor="@color/white"
             android:textColorHint="@color/hint_gray"
-            android:textSize="19sp"
-            android:inputType="textMultiLine" />
+            android:textSize="19sp" />
 
-        <Button
-            android:id="@+id/saveProfile"
+        <TextView
+            android:id="@+id/signOut"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/profileMoviesDescription"
-            android:layout_centerHorizontal="true"
-            android:background="@color/greenButton"
-            android:text="@string/save"
-            android:textColor="@color/white"
-            android:visibility="gone" />
-    </RelativeLayout>
+            android:layout_marginBottom="60dp"
+            android:layout_marginEnd="20dp"
+            android:text="@string/sign_out"
+            android:textColor="@color/main_green"
+            android:layout_gravity="end"
+            android:textSize="12sp" />
+    </LinearLayout>
 </ScrollView>

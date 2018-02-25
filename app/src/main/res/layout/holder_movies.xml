@@ -1,64 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/parent_layout_products"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
-    android:background="@color/bg_register">
+    android:layout_margin="3dp">
 
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
-        android:padding="5dp"
-        tools:src="@drawable/common_google_signin_btn_icon_dark" />
-
-    <LinearLayout
-        android:id="@+id/layoutMovies"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginRight="50dp"
-        android:layout_toEndOf="@id/image"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:background="@color/background_color">
 
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:ellipsize="end"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            tools:text="Igra gladi" />
 
-        <TextView
-            android:id="@+id/rating"
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="140dp"
+            android:padding="3dp"
+            android:layout_height="140dp"
+            android:layout_centerVertical="true"
+            tools:src="@drawable/common_google_signin_btn_icon_dark" />
+
+        <LinearLayout
+            android:id="@+id/layoutMovies"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textColor="@color/white"
-            android:textSize="17sp"
-            tools:text="rating" />
+            android:layout_centerInParent="true"
+            android:layout_marginRight="50dp"
+            android:layout_toEndOf="@id/image"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/numberVotes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textColor="@color/white"
-            android:textSize="17sp"
-            tools:text="rating" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                tools:text="Igra gladi" />
 
-    <ImageView
-        android:id="@+id/like"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:layout_marginEnd="20dp"
-        android:src="@drawable/like" />
+            <TextView
+                android:id="@+id/rating"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                tools:text="rating" />
 
-</RelativeLayout>
+            <TextView
+                android:id="@+id/numberVotes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                tools:text="rating" />
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                tools:text="28/5/1994" />
+        </LinearLayout>
+
+            <ImageView
+                android:id="@+id/like"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
+                android:layout_marginEnd="20dp"
+                android:src="@drawable/like" />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

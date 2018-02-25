@@ -21,6 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
@@ -53,6 +54,11 @@
         </activity>
         <activity
             android:name=".ui.movie_details.MovieDetailsActivity"
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ui.edit_profile.EditProfileActivity"
             android:windowSoftInputMode="stateHidden"
             android:screenOrientation="portrait">
         </activity>

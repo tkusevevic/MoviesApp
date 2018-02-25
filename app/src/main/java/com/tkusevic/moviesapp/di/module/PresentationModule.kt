@@ -22,11 +22,14 @@ abstract class PresentationModule {
     abstract fun topRatedPresenter(topRatedPresenterImpl: TopRatedPresenterImpl): TopRatedPresenter
 
     @Binds
-    abstract fun newFilmsPresenter(newFilmsPresenterImpl: NewFilmsPresenterImpl) : NewFilmsPresenter
+    abstract fun newFilmsPresenter(newFilmsPresenterImpl: NewFilmsPresenterImpl): NewFilmsPresenter
 
     @Binds
-    abstract fun favoritesPresenter(favoritesPresenterImpl: FavoritesPresenterImpl) : FavoritesPresenter
+    abstract fun favoritesPresenter(favoritesPresenterImpl: FavoritesPresenterImpl): FavoritesPresenter
 
     @Binds
-    abstract fun movieDetailsPresenter(movieDetailsPresenterImpl: MovieDetailsPresenterImpl) : MovieDetailsPresenter
+    abstract fun movieDetailsPresenter(movieDetailsPresenterImpl: MovieDetailsPresenterImpl): MovieDetailsPresenter
+
+    @Binds
+    abstract fun editProfilePresenter(editProfilePresenterImpl: EditProfilePresenterImpl): EditProfilePresenter
 }

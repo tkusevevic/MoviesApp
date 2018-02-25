@@ -11,13 +11,13 @@ import com.tkusevic.moviesapp.commons.constants.PASSWORD_ERROR
 import com.tkusevic.moviesapp.commons.extensions.hide
 import com.tkusevic.moviesapp.commons.extensions.onClick
 import com.tkusevic.moviesapp.commons.extensions.show
-import com.tkusevic.moviesapp.firebase.RequestListener
+import com.tkusevic.moviesapp.firebase.EmptyRequestListener
 import com.tkusevic.moviesapp.presentation.RegistrationPresenter
 import com.tkusevic.moviesapp.registrationPresenter
 import com.tkusevic.moviesapp.ui.signIn.SignInActivity
 import kotlinx.android.synthetic.main.activity_registration.*
 
-class RegistrationActivity : AppCompatActivity(), RegistrationView, RequestListener {
+class RegistrationActivity : AppCompatActivity(), RegistrationView, EmptyRequestListener {
 
     private val presenter: RegistrationPresenter by lazy { registrationPresenter() }
 
@@ -39,19 +39,14 @@ class RegistrationActivity : AppCompatActivity(), RegistrationView, RequestListe
                     , password.text.toString()
                     , name.text.toString())
         }
-
-        goToLogin.onClick { startActivity(Intent(this, SignInActivity::class.java)) }
     }
 
-    //////// View
     override fun onSuccessfulRequest() {
         startActivity(Intent(this, SignInActivity::class.java))
         hideProgressAndShowOther()
     }
 
-    override fun onFailedRequest() {
-        hideProgressAndShowOther()
-    }
+    override fun onFailedRequest() = hideProgressAndShowOther()
 
     override fun showProgressAndHideOther() {
         progress.show()
@@ -90,6 +85,5 @@ class RegistrationActivity : AppCompatActivity(), RegistrationView, RequestListe
     override fun hideNameError() {
         layoutName.isErrorEnabled = false
     }
-
 }
 

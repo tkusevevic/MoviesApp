@@ -12,7 +12,7 @@
     <string name="btn_link_to_login">Already registred! Login Me.</string>
     <string name="welcome">Welcome</string>
     <string name="btn_logout">LOGOUT</string>
-    <string name="name">Fullname</string>
+    <string name="name">Name</string>
 
 
     <string name="facebook">Facebook</string>
@@ -24,6 +24,12 @@
     <string name="topRatedMovies">Top Rated Movies</string>
     <string name="nowPlaying">Now Playing</string>
     <string name="movieDetailsTitle">Movie Details</string>
+    <string name="favorites">Favorites</string>
+    <string name="no_favorites">No favorite movies :(</string>
+    <string name="no_new_films">Empty list :(</string>
+    <string name="empty_list">Empty list :(</string>
+    <string name="movies_i_like">About movies I like:</string>
+    <string name="sign_out">SIGN OUT</string>
 
 
 </resources>

@@ -1,5 +1,6 @@
 package com.tkusevic.moviesapp.ui.movies
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import com.tkusevic.moviesapp.commons.extensions.show
 import com.tkusevic.moviesapp.data.model.User
 import com.tkusevic.moviesapp.presentation.ProfilePresenter
 import com.tkusevic.moviesapp.profilePresenter
+import com.tkusevic.moviesapp.ui.edit_profile.EditProfileActivity
 import com.tkusevic.moviesapp.ui.movies.views.ProfileView
 import kotlinx.android.synthetic.main.fragment_profile.*
 
@@ -29,25 +31,8 @@ class ProfileFragment : Fragment(), ProfileView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initDataOnProfile()
-        textHideEdit()
         initListeners()
-    }
-
-    private fun initListeners() {
-        editProfile.onClick {
-            if (saveProfile.visibility == View.GONE) {
-                saveProfile.show()
-                textGiveEdit()
-            } else {
-                saveProfile.hide()
-                textHideEdit()
-            }
-        }
-
-        saveProfile.onClick {
-            presenter.editUser(aboutMe.text.toString(), profileMoviesDescription.text.toString(), profileName.text.toString())
-        }
+        initDataOnProfile()
     }
 
     private fun initDataOnProfile() {
@@ -55,28 +40,20 @@ class ProfileFragment : Fragment(), ProfileView {
         presenter.getUserId()
     }
 
+    private fun initListeners() {
+        editProfile.onClick { goToEdit() }
+    }
+
     override fun setData(user: User) {
         profileEmail.text = user.email
         profileName.text = user.userDisplayName
-        aboutMe.setText(user.description)
-        profileMoviesDescription.setText(user.moviesDescription)
+        aboutMe.text = (user.description)
+        profileMoviesDescription.text = user.moviesDescription
     }
 
-    override fun makeText(s: String) {
-        Toast.makeText(activity, s, Toast.LENGTH_SHORT).show()
-    }
+    override fun makeText(s: String) = Toast.makeText(activity, s, Toast.LENGTH_SHORT).show()
 
-    override fun hideButton() {
-        saveProfile.hide()
-    }
-
-    override fun textGiveEdit() {
-        aboutMe.isEnabled = true
-        profileMoviesDescription.isEnabled = true
-    }
-
-    override fun textHideEdit() {
-        aboutMe.isEnabled = false
-        profileMoviesDescription.isEnabled = false
+    override fun goToEdit() {
+        startActivity(Intent(activity,EditProfileActivity::class.java))
     }
 }

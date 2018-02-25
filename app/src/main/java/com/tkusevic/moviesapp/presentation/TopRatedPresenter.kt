@@ -17,5 +17,4 @@ interface TopRatedPresenter : BasePresenter<TopRatedView> {
     fun loadNextPage(page: Int)
 
     fun onLikeTapped(movie: Movie)
-
 }

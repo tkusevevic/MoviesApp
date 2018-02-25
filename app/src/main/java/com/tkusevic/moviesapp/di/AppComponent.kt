@@ -1,9 +1,7 @@
 package com.tkusevic.moviesapp.di
 
-import android.app.Presentation
 import com.tkusevic.moviesapp.App
 import com.tkusevic.moviesapp.di.module.AppModule
-import com.tkusevic.moviesapp.di.module.InteractorModule
 import com.tkusevic.moviesapp.di.module.PresentationModule
 import com.tkusevic.moviesapp.presentation.*
 import dagger.Component
@@ -26,10 +24,12 @@ interface AppComponent {
 
     fun topRatedPresenter(): TopRatedPresenter
 
-    fun newFilmsPresenter() : NewFilmsPresenter
+    fun newFilmsPresenter(): NewFilmsPresenter
 
-    fun favoritesPresenter() : FavoritesPresenter
+    fun favoritesPresenter(): FavoritesPresenter
 
-    fun movieDetalsPresenter() : MovieDetailsPresenter
+    fun movieDetalsPresenter(): MovieDetailsPresenter
+
+    fun editProfilePresenter() : EditProfilePresenter
 
 }

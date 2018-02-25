@@ -20,3 +20,5 @@ fun newFilmsPresenter(): NewFilmsPresenter = App.appComponent.newFilmsPresenter(
 fun favoritesPresenter(): FavoritesPresenter = App.appComponent.favoritesPresenter()
 
 fun movieDetailsPresenter() : MovieDetailsPresenter = App.appComponent.movieDetalsPresenter()
+
+fun editProfilePresenter() : EditProfilePresenter= App.appComponent.editProfilePresenter()

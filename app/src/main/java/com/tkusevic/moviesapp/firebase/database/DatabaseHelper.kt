@@ -14,5 +14,7 @@ interface DatabaseHelper {
 
     fun onMovieLiked(userId: String, movie: Movie)
 
-    fun getFavoriteMovies(userId: String, returningMovies: (List<Movie>) -> Unit)
+    fun listenToFavoriteMovies(userId: String, onFavoriteMoviesReceived: (List<Movie>) -> Unit)
+
+    fun getFavoriteMoviesOnce(userId: String, onFavoriteMoviesReceived: (List<Movie>) -> Unit)
 }

@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import com.squareup.picasso.Picasso
 import com.tkusevic.moviesapp.R
 import com.tkusevic.moviesapp.commons.constants.IMAGE_KEY
+import com.tkusevic.moviesapp.commons.constants.MOVIE_KEY
 import com.tkusevic.moviesapp.commons.extensions.onClick
 import com.tkusevic.moviesapp.data.model.Movie
 import com.tkusevic.moviesapp.movieDetailsPresenter
@@ -33,7 +34,7 @@ class MovieDetailsActivity : AppCompatActivity(), MovieDetailsView {
         likeMovieDetails.onClick {
             val intent = this.intent
             val bundle: Bundle = intent.extras
-            val movie: Serializable? = bundle.getSerializable("movie")
+            val movie: Serializable? = bundle.getSerializable(MOVIE_KEY)
             presenter.onLikeTapped(movie as Movie) }
     }
 
@@ -44,7 +45,7 @@ class MovieDetailsActivity : AppCompatActivity(), MovieDetailsView {
     private fun getMoviesInformation() {
         val intent = this.intent
         val bundle: Bundle = intent.extras
-        val movie: Serializable? = bundle.getSerializable("movie")
+        val movie: Serializable? = bundle.getSerializable(MOVIE_KEY)
         showData(movie as Movie)
     }
 
@@ -54,6 +55,7 @@ class MovieDetailsActivity : AppCompatActivity(), MovieDetailsView {
                 .resize(180, 180)
                 .centerCrop()
                 .into(imageMovieDetails)
+
         if (movie.isLiked) {
             likeMovieDetails.setImageResource(R.drawable.like_fill)
         } else {
@@ -69,5 +71,4 @@ class MovieDetailsActivity : AppCompatActivity(), MovieDetailsView {
         if(isLiked) likeMovieDetails.setImageResource(R.drawable.like_fill)
         else likeMovieDetails.setImageResource(R.drawable.like)
     }
-
 }

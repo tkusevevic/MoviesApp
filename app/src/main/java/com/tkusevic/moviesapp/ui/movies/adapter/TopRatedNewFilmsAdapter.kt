@@ -5,9 +5,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.tkusevic.moviesapp.R
 import com.tkusevic.moviesapp.data.model.Movie
-import com.tkusevic.moviesapp.firebase.MoviesRequestListener
-import com.tkusevic.moviesapp.firebase.authentication.AuthenticationHelper
-import com.tkusevic.moviesapp.firebase.database.DatabaseHelper
 import com.tkusevic.moviesapp.ui.listeners.OnMovieClickListener
 import com.tkusevic.moviesapp.ui.movies.holder.TopRatedNewFilmsViewHolder
 

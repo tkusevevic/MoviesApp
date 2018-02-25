@@ -16,9 +16,7 @@ class AppModule constructor(private val context: Context) {
 
     @Provides
     @Singleton
-    fun provideContext(): Context {
-        return context
-    }
+    fun provideContext(): Context = context
 
     @Provides
     @Singleton

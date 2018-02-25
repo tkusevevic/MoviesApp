@@ -4,11 +4,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
+import com.facebook.CallbackManager
 import com.facebook.FacebookSdk
 import com.facebook.appevents.AppEventsLogger
 import com.tkusevic.moviesapp.R
 import com.tkusevic.moviesapp.commons.constants.EMAIL_ERROR
 import com.tkusevic.moviesapp.commons.constants.PASSWORD_ERROR
+import com.tkusevic.moviesapp.commons.constants.USER_ID
 import com.tkusevic.moviesapp.commons.extensions.hide
 import com.tkusevic.moviesapp.commons.extensions.onClick
 import com.tkusevic.moviesapp.commons.extensions.show
@@ -27,6 +29,8 @@ class SignInActivity : AppCompatActivity(), SignInView {
 
     private val presenter: SignInPresenter by lazy { signInPresenter() }
 
+    val callbackManager = CallbackManager.Factory.create()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
@@ -36,17 +40,15 @@ class SignInActivity : AppCompatActivity(), SignInView {
         initListeners()
     }
 
-    private fun initPresenter() {
-        presenter.setBaseview(this)
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+        callbackManager.onActivityResult(requestCode, resultCode, data)
+        super.onActivityResult(requestCode, resultCode, data)
     }
 
+    private fun initPresenter() = presenter.setBaseview(this)
+
     private fun initListeners() {
-
         signIn.onClick { presenter.onSignInClick(emailSignIn.text.toString(), passwordSignIn.text.toString()) }
-
-        signInFacebook.onClick { presenter.onFacebookClick() }
-
-        //signInGoogle.onClick(presenter.onGoogleClick())
 
         goToRegistration.onClick { startActivity(Intent(this, RegistrationActivity::class.java)) }
     }
@@ -79,7 +81,6 @@ class SignInActivity : AppCompatActivity(), SignInView {
 
     override fun startMoviesActivity(user: User) {
         val intent = Intent(this, MoviesActivity::class.java)
-        intent.putExtra("userId", user.id)
         startActivity(intent)
     }
 

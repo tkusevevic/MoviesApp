@@ -10,6 +10,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.tkusevic.moviesapp.R
 import com.tkusevic.moviesapp.commons.constants.MOVIE_KEY
+import com.tkusevic.moviesapp.commons.extensions.hide
+import com.tkusevic.moviesapp.commons.extensions.show
 import com.tkusevic.moviesapp.data.model.Movie
 import com.tkusevic.moviesapp.presentation.TopRatedPresenter
 import com.tkusevic.moviesapp.topRatedPresenter
@@ -36,7 +38,7 @@ class TopRatedFragment : Fragment(), OnMovieClickListener, TopRatedView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         presenter.setBaseview(this)
-        presenter.getFavorites()
+        loadFavorites()
         initRecyclerView()
         loadTopRatedMovies()
     }
@@ -53,9 +55,9 @@ class TopRatedFragment : Fragment(), OnMovieClickListener, TopRatedView {
         recyclerViewTopRated.addOnScrollListener(scrollListener)
     }
 
-    private fun loadTopRatedMovies() {
-        presenter.getMovies()
-    }
+    private fun loadFavorites() = presenter.getFavorites()
+
+    private fun loadTopRatedMovies() = presenter.getMovies()
 
     override fun onMovieClick(movie: Movie) {
         val bundle = Bundle()
@@ -73,6 +75,10 @@ class TopRatedFragment : Fragment(), OnMovieClickListener, TopRatedView {
 
     override fun setMovies(movies: List<Movie>) = adapter.setMovies(movies)
 
-    override fun setFavorites(favorites: List<Movie>)  = adapter.setFavoriteMovies(favorites)
+    override fun setFavorites(favorites: List<Movie>) = adapter.setFavoriteMovies(favorites)
+
+    override fun showMessageEmptyList() = noTopRatedMovies.show()
+
+    override fun hideMessageEmptyList() = noTopRatedMovies.hide()
 }
 

@@ -39,11 +39,9 @@ class ProfilePresenterImpl @Inject constructor(private val authenticationHelper:
 
     override fun onSuccessfulRequest(user: User) {
         profileView.setData(user)
-        profileView.hideButton()
-        profileView.textHideEdit()
     }
 
     override fun onFailedRequest() {
-        profileView.makeText("failed profile edit!")
+        profileView.makeText("Couldn't load the user! :(")
     }
 }

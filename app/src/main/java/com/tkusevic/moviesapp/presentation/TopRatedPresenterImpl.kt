@@ -19,8 +19,8 @@ import javax.inject.Inject
  */
 class TopRatedPresenterImpl @Inject constructor(private val moviesInteractor: MoviesInteractor,
                                                 private val authenticationHelper: AuthenticationHelper,
-                                                private val databaseHelper: DatabaseHelper) : TopRatedPresenter, MoviesRequestListener{
-    
+                                                private val databaseHelper: DatabaseHelper) : TopRatedPresenter, MoviesRequestListener {
+
     private lateinit var topRatedView: TopRatedView
 
     override fun setBaseview(baseView: TopRatedView) {
@@ -32,8 +32,9 @@ class TopRatedPresenterImpl @Inject constructor(private val moviesInteractor: Mo
     }
 
     override fun getFavorites() {
-        val userId = authenticationHelper.getCurrentUserId()
-        databaseHelper.getFavoriteMovies(userId!!,{this.onSuccessfulRequest(it)})
+        authenticationHelper.getCurrentUserId()?.run {
+            databaseHelper.listenToFavoriteMovies(this, { onSuccessfulRequest(it) })
+        }
     }
 
     override fun onSuccessfulRequest(movies: List<Movie>) {
@@ -44,18 +45,32 @@ class TopRatedPresenterImpl @Inject constructor(private val moviesInteractor: Mo
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-
     private fun getMoviesCallback(): Callback<MoviesResponse> = object : Callback<MoviesResponse> {
         override fun onFailure(call: Call<MoviesResponse>?, t: Throwable?) {
+            //todo srediti
             TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         }
 
         override fun onResponse(call: Call<MoviesResponse>?, response: Response<MoviesResponse>) {
             if (response.isSuccessful) {
                 if (response.code() == RESPONSE_OK) {
-                    response.body().results.run { topRatedView.setMovies(this) }
+                    response.body().results.run { onMoviesReceived(this) }
                 }
             }
+        }
+    }
+
+    private fun onMoviesReceived(list: List<Movie>) {
+        if (list.isEmpty()) {
+            topRatedView.showMessageEmptyList()
+        } else {
+            topRatedView.hideMessageEmptyList()
+        }
+        topRatedView.setMovies(list)
+
+        authenticationHelper.getCurrentUserId()?.run {
+            databaseHelper.getFavoriteMoviesOnce(this) { onSuccessfulRequest(it) }
+
         }
     }
 

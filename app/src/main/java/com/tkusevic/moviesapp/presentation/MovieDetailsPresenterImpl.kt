@@ -10,7 +10,7 @@ import javax.inject.Inject
  * Created by tkusevic on 20.02.2018..
  */
 class MovieDetailsPresenterImpl @Inject constructor(private val authenticationHelper: AuthenticationHelper,
-                                private val databaseHelper: DatabaseHelper) : MovieDetailsPresenter {
+                                                    private val databaseHelper: DatabaseHelper) : MovieDetailsPresenter {
 
     private lateinit var movieDetailsView: MovieDetailsView
 

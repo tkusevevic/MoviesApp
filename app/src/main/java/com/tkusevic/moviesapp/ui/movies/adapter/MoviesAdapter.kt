@@ -21,12 +21,6 @@ class MoviesAdapter(private val listener: OnMovieClickListener) : RecyclerView.A
         notifyDataSetChanged()
     }
 
-    fun addMovies(movies: List<Movie> = arrayListOf()) {
-        val start: Int = this.movies.size
-        this.movies.addAll(movies)
-        notifyItemRangeInserted(start, movies.size)
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.holder_movies, parent, false)
         return MoviesViewHolder(listener, view)

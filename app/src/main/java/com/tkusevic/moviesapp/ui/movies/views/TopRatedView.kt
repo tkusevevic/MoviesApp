@@ -13,4 +13,7 @@ interface TopRatedView {
 
     fun setFavorites(favorites : List<Movie>)
 
+    fun showMessageEmptyList()
+
+    fun hideMessageEmptyList()
 }

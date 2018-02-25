@@ -14,4 +14,6 @@ interface NewFilmsPresenter : BasePresenter<NewFilmsView> {
     fun loadNextPage(page: Int)
 
     fun onLikeTapped(movie: Movie)
+
+    fun getFavorites()
 }
