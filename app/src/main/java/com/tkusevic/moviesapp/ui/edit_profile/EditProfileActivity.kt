@@ -26,7 +26,7 @@ class EditProfileActivity : AppCompatActivity(), EditProfileView {
 
     private fun initListeners() {
         saveEditProfile.onClick { presenter.saveChanges(aboutMeEdit.text.toString()
-                , profileEditMoviesDescription.text.toString()
+                , profileEditMovieDescription.text.toString()
                 , profileEditName.text.toString()) }
     }
 
@@ -36,9 +36,9 @@ class EditProfileActivity : AppCompatActivity(), EditProfileView {
 
     override fun setData(user: User) {
         profileEditName.setText(user.userDisplayName)
-        profileEditEmail.text = user.email
+        profileEditEmail.setText( user.email)
         aboutMeEdit.setText(user.description)
-        profileEditMoviesDescription.setText(user.moviesDescription)
+        profileEditMovieDescription.setText(user.moviesDescription)
     }
 
     override fun editDone() = finish()

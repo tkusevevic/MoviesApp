@@ -5,7 +5,7 @@
 
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
-    <string name="hint_name">Fullname</string>
+    <string name="hint_name">Name</string>
     <string name="btn_login">LOGIN</string>
     <string name="btn_register">REGISTER</string>
     <string name="btn_link_to_register">Not a member? Sign up now.</string>
@@ -30,6 +30,8 @@
     <string name="empty_list">Empty list :(</string>
     <string name="movies_i_like">About movies I like:</string>
     <string name="sign_out">SIGN OUT</string>
+    <string name="hint_about_me">About me:</string>
+    <string name="hint_about_movies">About movies I like:</string>
 
 
 </resources>

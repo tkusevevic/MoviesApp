@@ -22,11 +22,10 @@ const val NOW_PLAYING =  "Now playing"
 const val FAVORITES = "Favorites"
 const val PROFILE = "Profile"
 
-//keys for downloading image
+//key for downloading image
 const val IMAGE_KEY = "https://image.tmdb.org/t/p/w500"
 
-//keys for activitys
-const val USER_ID = "userId"
+//keys for activities
 const val TOP_RATED_KEY = "top_rated"
 const val NOW_PLAYING_KEY = "now_playing"
 const val MOVIE_KEY = "movie"

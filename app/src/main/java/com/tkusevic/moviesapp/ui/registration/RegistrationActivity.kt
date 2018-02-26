@@ -28,9 +28,7 @@ class RegistrationActivity : AppCompatActivity(), RegistrationView, EmptyRequest
         initListeners()
     }
 
-    private fun initPresenter() {
-        presenter.setBaseview(this)
-    }
+    private fun initPresenter() = presenter.setBaseview(this)
 
     private fun initListeners() {
         registrationBtn.onClick {
@@ -62,20 +60,16 @@ class RegistrationActivity : AppCompatActivity(), RegistrationView, EmptyRequest
         layoutEmail.error = EMAIL_ERROR
     }
 
-    override fun showPasswordError() {
-        layoutPassword.error = PASSWORD_ERROR
-    }
-
     override fun hideEmailError() {
         layoutEmail.isErrorEnabled = false
     }
 
-    override fun hidePasswordError() {
-        layoutPassword.isErrorEnabled = false
+    override fun showPasswordError() {
+        layoutPassword.error = PASSWORD_ERROR
     }
 
-    override fun showMessage(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    override fun hidePasswordError() {
+        layoutPassword.isErrorEnabled = false
     }
 
     override fun showNameError() {
@@ -85,5 +79,7 @@ class RegistrationActivity : AppCompatActivity(), RegistrationView, EmptyRequest
     override fun hideNameError() {
         layoutName.isErrorEnabled = false
     }
+
+    override fun showMessage(message: String) = Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 }
 

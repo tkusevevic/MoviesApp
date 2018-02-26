@@ -10,7 +10,6 @@ import com.facebook.appevents.AppEventsLogger
 import com.tkusevic.moviesapp.R
 import com.tkusevic.moviesapp.commons.constants.EMAIL_ERROR
 import com.tkusevic.moviesapp.commons.constants.PASSWORD_ERROR
-import com.tkusevic.moviesapp.commons.constants.USER_ID
 import com.tkusevic.moviesapp.commons.extensions.hide
 import com.tkusevic.moviesapp.commons.extensions.onClick
 import com.tkusevic.moviesapp.commons.extensions.show
@@ -84,7 +83,5 @@ class SignInActivity : AppCompatActivity(), SignInView {
         startActivity(intent)
     }
 
-    override fun showMessage(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-    }
+    override fun showMessage(message: String) = Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 }

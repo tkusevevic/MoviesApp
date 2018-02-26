@@ -65,7 +65,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="tomislav123"
                 android:hint="@string/hint_password"
                 android:textColorHint="@color/hint_gray">
 
@@ -76,6 +75,7 @@
                     android:layout_margin="10dp"
                     android:background="@color/input_register_bg"
                     android:hint="@string/hint_password"
+                    android:text="tomislav123"
                     android:inputType="textPassword"
                     android:padding="10dp"
                     android:singleLine="true"

@@ -40,9 +40,8 @@ class ProfileFragment : Fragment(), ProfileView {
         presenter.getUserId()
     }
 
-    private fun initListeners() {
-        editProfile.onClick { goToEdit() }
-    }
+    private fun initListeners() = editProfile.onClick { goToEdit() }
+
 
     override fun setData(user: User) {
         profileEmail.text = user.email
@@ -53,7 +52,5 @@ class ProfileFragment : Fragment(), ProfileView {
 
     override fun makeText(s: String) = Toast.makeText(activity, s, Toast.LENGTH_SHORT).show()
 
-    override fun goToEdit() {
-        startActivity(Intent(activity,EditProfileActivity::class.java))
-    }
+    override fun goToEdit() = startActivity(Intent(activity, EditProfileActivity::class.java))
 }

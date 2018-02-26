@@ -26,6 +26,7 @@ class MoviesViewHolder(private val listener: OnMovieClickListener, itemView: Vie
                 .resize(720, 720)
                 .centerCrop()
                 .into(image)
+
         title.text = movie.title
         date.text = String.format("Released: %s", movie.release)
         rating.text = String.format("Rating: %s", movie.voteAverage)
