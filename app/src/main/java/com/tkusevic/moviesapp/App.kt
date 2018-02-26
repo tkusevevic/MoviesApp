@@ -12,9 +12,7 @@ import com.tkusevic.moviesapp.di.module.AppModule
 class App : Application() {
 
     companion object {
-        val appComponent: AppComponent by lazy {
-            DaggerAppComponent.builder().appModule(AppModule(instance)).build()
-        }
+        val appComponent: AppComponent by lazy { DaggerAppComponent.builder().appModule(AppModule(instance)).build() }
 
         internal lateinit var instance: App
     }
@@ -22,9 +20,7 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         FirebaseApp.initializeApp(this)
-
         instance = this
-
         appComponent.inject(this)
     }
 }

@@ -31,5 +31,4 @@ interface AppComponent {
     fun movieDetalsPresenter(): MovieDetailsPresenter
 
     fun editProfilePresenter() : EditProfilePresenter
-
 }

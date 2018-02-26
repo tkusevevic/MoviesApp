@@ -27,9 +27,7 @@ class TopRatedPresenterImpl @Inject constructor(private val moviesInteractor: Mo
         this.topRatedView = baseView
     }
 
-    override fun getMovies() {
-        moviesInteractor.getMoviesBy(TOP_RATED_KEY, 1, getMoviesCallback())
-    }
+    override fun getMovies() = moviesInteractor.getMoviesBy(TOP_RATED_KEY, 1, getMoviesCallback())
 
     override fun getFavorites() {
         authenticationHelper.getCurrentUserId()?.run {
@@ -37,9 +35,8 @@ class TopRatedPresenterImpl @Inject constructor(private val moviesInteractor: Mo
         }
     }
 
-    override fun onSuccessfulRequest(movies: List<Movie>) {
-        topRatedView.setFavorites(movies)
-    }
+    override fun onSuccessfulRequest(movies: List<Movie>) = topRatedView.setFavorites(movies)
+
 
     override fun onFailedRequest() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
@@ -70,13 +67,10 @@ class TopRatedPresenterImpl @Inject constructor(private val moviesInteractor: Mo
 
         authenticationHelper.getCurrentUserId()?.run {
             databaseHelper.getFavoriteMoviesOnce(this) { onSuccessfulRequest(it) }
-
         }
     }
 
-    override fun loadNextPage(page: Int) {
-        moviesInteractor.loadNextPage(TOP_RATED_KEY, page, addBeersCallback())
-    }
+    override fun loadNextPage(page: Int) = moviesInteractor.loadNextPage(TOP_RATED_KEY, page, addBeersCallback())
 
     private fun addBeersCallback() = object : Callback<MoviesResponse> {
         override fun onResponse(call: Call<MoviesResponse>?, response: Response<MoviesResponse>) {

@@ -28,6 +28,8 @@ class EditProfileActivity : AppCompatActivity(), EditProfileView {
         saveEditProfile.onClick { presenter.saveChanges(aboutMeEdit.text.toString()
                 , profileEditMovieDescription.text.toString()
                 , profileEditName.text.toString()) }
+
+        backEdit.onClick { editDone() }
     }
 
     private fun initPresenter() = presenter.setBaseview(this)

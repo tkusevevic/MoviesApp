@@ -34,7 +34,7 @@ class FavoritesPresenterImpl @Inject constructor(private val authenticationHelpe
     }
 
     override fun onFailedRequest() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        //TODO
     }
 
     override fun onLikeTapped(movie: Movie) {

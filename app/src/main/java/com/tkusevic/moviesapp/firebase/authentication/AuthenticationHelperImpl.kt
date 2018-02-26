@@ -49,16 +49,10 @@ class AuthenticationHelperImpl @Inject constructor(private val firebaseAuth: Fir
     }
 
     override fun setUserDisplayName(username: String) {
-        //TODO provjeri da je name upisan pa mozes maknuti pola toga odavdje
-        var username = username
         val currentUser = firebaseAuth.currentUser
-        if (username.isEmpty()) {
-            username = "randomUsername"
-        }
-        if (currentUser != null) {
-            val request = UserProfileChangeRequest.Builder().setDisplayName(username).build()
-            currentUser.updateProfile(request).addOnCompleteListener { }
-        }
+        val request = UserProfileChangeRequest.Builder().setDisplayName(username).build()
+        currentUser?.updateProfile(request)?.addOnCompleteListener { }
+
     }
 
     override fun logTheUserOut() = firebaseAuth.signOut()

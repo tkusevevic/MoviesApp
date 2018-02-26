@@ -6,7 +6,6 @@ import com.tkusevic.moviesapp.presentation.*
  * Created by tkusevic on 14.02.2018..
  */
 
-
 fun topRatedPresenter(): TopRatedPresenter = App.appComponent.topRatedPresenter()
 
 fun registrationPresenter(): RegistrationPresenter = App.appComponent.registrationPresenter()

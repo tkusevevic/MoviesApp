@@ -1,6 +1,7 @@
 package com.tkusevic.moviesapp.presentation
 
 import com.google.firebase.auth.FirebaseUser
+import com.tkusevic.moviesapp.commons.constants.NO_USER_ERROR
 import com.tkusevic.moviesapp.commons.extensions.mapToUser
 import com.tkusevic.moviesapp.data.model.User
 import com.tkusevic.moviesapp.firebase.UserRequestListener
@@ -37,11 +38,7 @@ class ProfilePresenterImpl @Inject constructor(private val authenticationHelper:
         database.getUser(userId, { this.onSuccessfulRequest(it) })
     }
 
-    override fun onSuccessfulRequest(user: User) {
-        profileView.setData(user)
-    }
+    override fun onSuccessfulRequest(user: User) = profileView.setData(user)
 
-    override fun onFailedRequest() {
-        profileView.makeText("Couldn't load the user! :(")
-    }
+    override fun onFailedRequest() = profileView.makeText(NO_USER_ERROR)
 }

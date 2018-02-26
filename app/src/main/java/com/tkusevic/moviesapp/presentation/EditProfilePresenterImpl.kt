@@ -28,9 +28,7 @@ class EditProfilePresenterImpl @Inject constructor(private val authenticationHel
         userId?.let { database.getUser(it, { this.onSuccessfulRequest(it) }) }
     }
 
-    override fun onSuccessfulRequest(user: User) {
-        editProfileView.setData(user)
-    }
+    override fun onSuccessfulRequest(user: User) = editProfileView.setData(user)
 
     override fun onFailedRequest() {
         //TODO NEKI FAIL

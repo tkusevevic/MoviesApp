@@ -17,7 +17,7 @@ import com.tkusevic.moviesapp.registrationPresenter
 import com.tkusevic.moviesapp.ui.signIn.SignInActivity
 import kotlinx.android.synthetic.main.activity_registration.*
 
-class RegistrationActivity : AppCompatActivity(), RegistrationView, EmptyRequestListener {
+class RegistrationActivity : AppCompatActivity(), RegistrationView {
 
     private val presenter: RegistrationPresenter by lazy { registrationPresenter() }
 
@@ -38,13 +38,6 @@ class RegistrationActivity : AppCompatActivity(), RegistrationView, EmptyRequest
                     , name.text.toString())
         }
     }
-
-    override fun onSuccessfulRequest() {
-        startActivity(Intent(this, SignInActivity::class.java))
-        hideProgressAndShowOther()
-    }
-
-    override fun onFailedRequest() = hideProgressAndShowOther()
 
     override fun showProgressAndHideOther() {
         progress.show()
@@ -79,6 +72,8 @@ class RegistrationActivity : AppCompatActivity(), RegistrationView, EmptyRequest
     override fun hideNameError() {
         layoutName.isErrorEnabled = false
     }
+
+    override fun startSignIn() =startActivity(Intent(this, SignInActivity::class.java))
 
     override fun showMessage(message: String) = Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 }

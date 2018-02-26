@@ -112,7 +112,6 @@
                 android:background="@color/main_green"
                 android:text="@string/btn_register"
                 android:textColor="@color/white" />
-
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

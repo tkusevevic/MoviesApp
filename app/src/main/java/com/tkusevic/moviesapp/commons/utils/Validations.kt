@@ -1,9 +1,7 @@
 package com.tkusevic.moviesapp.commons.utils
 
-import com.tkusevic.moviesapp.App
-import com.tkusevic.moviesapp.R
-import kotlinx.android.synthetic.main.activity_registration.*
-import java.util.*
+import com.tkusevic.moviesapp.commons.constants.EMAIL_REGEX
+import java.util.regex.Pattern
 
 
 /**
@@ -18,15 +16,19 @@ fun inputsNotEmpty(email: String, password: String, name: String): Boolean {
     return (!email.isEmpty() && !password.isEmpty() && !name.isEmpty())
 }
 
-fun checkEmailEmpty(email : String) : Boolean {
+fun isValidEmail(input: String?): Boolean {
+    return Pattern.matches(EMAIL_REGEX, input)
+}
+
+fun checkEmailEmpty(email: String): Boolean {
     return email.isEmpty()
 }
 
-fun checkPasswordEmpty(password: String) : Boolean {
+fun checkPasswordEmpty(password: String): Boolean {
     return password.isEmpty()
 }
 
-fun checkNameEmpty(name : String) : Boolean {
+fun checkNameEmpty(name: String): Boolean {
     return name.isEmpty()
 }
 

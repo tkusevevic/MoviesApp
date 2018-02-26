@@ -21,5 +21,4 @@
         app:itemBackground="@color/background_color"
         app:itemTextColor="@color/white"
         app:menu="@menu/menu" />
-
 </RelativeLayout>
