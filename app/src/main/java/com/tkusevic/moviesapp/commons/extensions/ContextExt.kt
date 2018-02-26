@@ -14,4 +14,7 @@ fun Context?.toast(message: String) {
 }
 
 fun FirebaseUser.mapToUser(): User = User(this.uid,
-        this.email ?: "", this.displayName ?: "", "", "")
+        this.email ?: ""
+        , this.displayName ?: ""
+        , ""
+        , "")

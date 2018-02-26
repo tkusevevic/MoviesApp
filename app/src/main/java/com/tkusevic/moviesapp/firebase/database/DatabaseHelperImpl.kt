@@ -23,13 +23,20 @@ class DatabaseHelperImpl @Inject constructor(private val reference: DatabaseRefe
 
             override fun onDataChange(dataSnapshot: DataSnapshot?) {
                 dataSnapshot?.run {
-                    val user = getValue(User::class.java)
+                    val user: User? = getValue(User::class.java)
                     user?.run {
                         returningUser(user)
                     }
                 }
             }
         })
+    }
+
+    override fun addFavorites(userId: String, movies: List<Movie>) {
+        movies.forEach { movie ->
+            val userMovie = reference.child("users").child(userId).child("movies").child(movie.id.toString())
+            userMovie.setValue(movie)
+        }
     }
 
     override fun onMovieLiked(userId: String, movie: Movie) {
