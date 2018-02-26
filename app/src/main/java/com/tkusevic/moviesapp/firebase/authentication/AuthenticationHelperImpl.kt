@@ -63,7 +63,6 @@ class AuthenticationHelperImpl @Inject constructor(private val firebaseAuth: Fir
 
     override fun logTheUserOut() = firebaseAuth.signOut()
 
-
     override fun checkIfUserIsLoggedIn(): Boolean = (firebaseAuth.currentUser != null)
 
     override fun getCurrentUserId(): String? = firebaseAuth.currentUser?.uid

@@ -3,6 +3,7 @@ package com.tkusevic.moviesapp.ui.movies.pager
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
+import android.support.v4.view.ViewPager
 import com.tkusevic.moviesapp.commons.constants.*
 
 /**

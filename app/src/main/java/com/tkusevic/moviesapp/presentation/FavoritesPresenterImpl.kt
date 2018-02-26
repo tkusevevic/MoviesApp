@@ -25,10 +25,9 @@ class FavoritesPresenterImpl @Inject constructor(private val authenticationHelpe
     }
 
     override fun onSuccessfulRequest(movies: List<Movie>) {
-        if(movies.isEmpty()){
+        if (movies.isEmpty()) {
             favoritesView.showMessageOnScreen()
-        }
-        else{
+        } else {
             favoritesView.hideMessageOnScreen()
         }
         favoritesView.setMovies(movies)

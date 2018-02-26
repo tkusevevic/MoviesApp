@@ -30,23 +30,16 @@ class EditProfileActivity : AppCompatActivity(), EditProfileView {
                 , profileEditName.text.toString()) }
     }
 
-    private fun initPresenter() {
-        presenter.setBaseview(this)
-    }
+    private fun initPresenter() = presenter.setBaseview(this)
 
-    private fun setCurrentUserInfo() {
-        presenter.setCurrentProfile()
-    }
+    private fun setCurrentUserInfo() = presenter.setCurrentProfile()
 
     override fun setData(user: User) {
-        profileEditName.text= user.userDisplayName
-        profileEditEmail.text= user.email
+        profileEditName.setText(user.userDisplayName)
+        profileEditEmail.text = user.email
         aboutMeEdit.setText(user.description)
         profileEditMoviesDescription.setText(user.moviesDescription)
     }
 
-    override fun editDone() {
-        finish()
-    }
-
+    override fun editDone() = finish()
 }

@@ -1,6 +1,5 @@
 package com.tkusevic.moviesapp.firebase
 
-import com.tkusevic.moviesapp.data.model.Movie
 import com.tkusevic.moviesapp.data.model.User
 
 /**

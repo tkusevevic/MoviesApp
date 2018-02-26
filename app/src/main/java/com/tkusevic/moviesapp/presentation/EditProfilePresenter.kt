@@ -9,6 +9,6 @@ import com.tkusevic.moviesapp.ui.edit_profile.EditProfileView
 interface EditProfilePresenter : BasePresenter<EditProfileView> {
 
     fun setCurrentProfile()
-    
+
     fun saveChanges(aboutMe: String, movieDescription: String, name: String)
 }

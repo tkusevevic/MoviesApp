@@ -67,6 +67,4 @@ class DatabaseHelperImpl @Inject constructor(private val reference: DatabaseRefe
 
         })
     }
-
-
 }
