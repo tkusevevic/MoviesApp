@@ -7,7 +7,7 @@ import com.tkusevic.moviesapp.data.model.User
  */
 interface MoviesRequestListener {
 
-    fun onSuccessfulRequest(movies: List<Movie>)
+    fun onSuccessfulRequestMovies(movies: List<Movie>)
 
-    fun onFailedRequest()
+    fun onFailedRequestMovies()
 }

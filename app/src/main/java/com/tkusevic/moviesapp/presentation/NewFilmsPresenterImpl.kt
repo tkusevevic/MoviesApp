@@ -19,7 +19,8 @@ import javax.inject.Inject
  */
 class NewFilmsPresenterImpl @Inject constructor(private val moviesInteractor: MoviesInteractor,
                                                 private val authenticationHelper: AuthenticationHelper,
-                                                private val databaseHelper: DatabaseHelper) : MoviesRequestListener, NewFilmsPresenter {
+                                                private val databaseHelper: DatabaseHelper) :
+        MoviesRequestListener, NewFilmsPresenter {
 
     private lateinit var newFilmsView: NewFilmsView
 
@@ -32,15 +33,15 @@ class NewFilmsPresenterImpl @Inject constructor(private val moviesInteractor: Mo
 
     override fun getFavorites() {
         authenticationHelper.getCurrentUserId()?.run {
-            databaseHelper.listenToFavoriteMovies(this, { onSuccessfulRequest(it) })
+            databaseHelper.listenToFavoriteMovies(this, { onSuccessfulRequestMovies(it) })
         }
     }
 
-    override fun onSuccessfulRequest(movies: List<Movie>) = newFilmsView.setFavorites(movies)
+    override fun onSuccessfulRequestMovies(movies: List<Movie>) = newFilmsView.setFavorites(movies)
 
 
-    override fun onFailedRequest() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun onFailedRequestMovies() {
+        //TODO couldn't load the new film Movies
     }
 
     private fun getMoviesCallback(): Callback<MoviesResponse> = object : Callback<MoviesResponse> {
@@ -66,13 +67,13 @@ class NewFilmsPresenterImpl @Inject constructor(private val moviesInteractor: Mo
         newFilmsView.setMovies(list)
 
         authenticationHelper.getCurrentUserId()?.run {
-            databaseHelper.getFavoriteMoviesOnce(this) { onSuccessfulRequest(it) }
+            databaseHelper.getFavoriteMoviesOnce(this) { onSuccessfulRequestMovies(it) }
         }
     }
 
-    override fun loadNextPage(page: Int) = moviesInteractor.loadNextPage(NOW_PLAYING_KEY, page, addBeersCallback())
+    override fun loadNextPage(page: Int) = moviesInteractor.loadNextPage(NOW_PLAYING_KEY, page, addMoviesCallback())
 
-    private fun addBeersCallback() = object : Callback<MoviesResponse> {
+    private fun addMoviesCallback() = object : Callback<MoviesResponse> {
         override fun onResponse(call: Call<MoviesResponse>?, response: Response<MoviesResponse>) {
             if (response.isSuccessful) {
                 if (response.code() == RESPONSE_OK)
@@ -81,7 +82,7 @@ class NewFilmsPresenterImpl @Inject constructor(private val moviesInteractor: Mo
         }
 
         override fun onFailure(call: Call<MoviesResponse>?, t: Throwable?) {
-            //TODO
+            //TODO couldn't add nowPlaying movies
         }
     }
 

@@ -11,7 +11,8 @@ import javax.inject.Inject
  * Created by tkusevic on 21.02.2018..
  */
 class FavoritesPresenterImpl @Inject constructor(private val authenticationHelper: AuthenticationHelper,
-                                                 private val database: DatabaseHelper) : FavoritesPresenter, MoviesRequestListener {
+                                                 private val database: DatabaseHelper) :
+        FavoritesPresenter, MoviesRequestListener {
 
     private lateinit var favoritesView: FavoritesView
 
@@ -21,10 +22,10 @@ class FavoritesPresenterImpl @Inject constructor(private val authenticationHelpe
 
     override fun getFavoriteMovies() {
         val userId = authenticationHelper.getCurrentUserId()
-        userId?.let { database.listenToFavoriteMovies(it, { this.onSuccessfulRequest(it) }) }
+        userId?.let { database.listenToFavoriteMovies(it, { this.onSuccessfulRequestMovies(it) }) }
     }
 
-    override fun onSuccessfulRequest(movies: List<Movie>) {
+    override fun onSuccessfulRequestMovies(movies: List<Movie>) {
         if (movies.isEmpty()) {
             favoritesView.showMessageOnScreen()
         } else {
@@ -33,8 +34,8 @@ class FavoritesPresenterImpl @Inject constructor(private val authenticationHelpe
         favoritesView.setMovies(movies)
     }
 
-    override fun onFailedRequest() {
-        //TODO
+    override fun onFailedRequestMovies() {
+        //TODO couldn't load favorites movies
     }
 
     override fun onLikeTapped(movie: Movie) {

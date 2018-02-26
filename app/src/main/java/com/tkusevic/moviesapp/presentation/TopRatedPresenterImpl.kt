@@ -31,21 +31,20 @@ class TopRatedPresenterImpl @Inject constructor(private val moviesInteractor: Mo
 
     override fun getFavorites() {
         authenticationHelper.getCurrentUserId()?.run {
-            databaseHelper.listenToFavoriteMovies(this, { onSuccessfulRequest(it) })
+            databaseHelper.listenToFavoriteMovies(this, { onSuccessfulRequestMovies(it) })
         }
     }
 
-    override fun onSuccessfulRequest(movies: List<Movie>) = topRatedView.setFavorites(movies)
+    override fun onSuccessfulRequestMovies(movies: List<Movie>) = topRatedView.setFavorites(movies)
 
 
-    override fun onFailedRequest() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun onFailedRequestMovies() {
+        //TODO couldn't load favorite movies
     }
 
     private fun getMoviesCallback(): Callback<MoviesResponse> = object : Callback<MoviesResponse> {
         override fun onFailure(call: Call<MoviesResponse>?, t: Throwable?) {
-            //todo srediti
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            //todo couldn't load movies
         }
 
         override fun onResponse(call: Call<MoviesResponse>?, response: Response<MoviesResponse>) {
@@ -66,13 +65,13 @@ class TopRatedPresenterImpl @Inject constructor(private val moviesInteractor: Mo
         topRatedView.setMovies(list)
 
         authenticationHelper.getCurrentUserId()?.run {
-            databaseHelper.getFavoriteMoviesOnce(this) { onSuccessfulRequest(it) }
+            databaseHelper.getFavoriteMoviesOnce(this) { onSuccessfulRequestMovies(it) }
         }
     }
 
-    override fun loadNextPage(page: Int) = moviesInteractor.loadNextPage(TOP_RATED_KEY, page, addBeersCallback())
+    override fun loadNextPage(page: Int) = moviesInteractor.loadNextPage(TOP_RATED_KEY, page, addMoviesCallback())
 
-    private fun addBeersCallback() = object : Callback<MoviesResponse> {
+    private fun addMoviesCallback() = object : Callback<MoviesResponse> {
         override fun onResponse(call: Call<MoviesResponse>?, response: Response<MoviesResponse>) {
             if (response.isSuccessful) {
                 if (response.code() == RESPONSE_OK)
@@ -81,7 +80,7 @@ class TopRatedPresenterImpl @Inject constructor(private val moviesInteractor: Mo
         }
 
         override fun onFailure(call: Call<MoviesResponse>?, t: Throwable?) {
-            TODO("not implemented")
+            // TODO couldn't load the top rated movies
         }
     }
 
