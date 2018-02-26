@@ -12,10 +12,10 @@
         android:layout_height="wrap_content">
 
         <RelativeLayout
-            android:background="@color/toolbar_color"
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="56dp"
+            android:background="@color/toolbar_color"
             android:orientation="horizontal">
 
             <ImageView
@@ -86,7 +86,6 @@
             android:textColor="@color/white"
             android:textSize="20sp"
             tools:text="1100 votes" />
-
 
 
         <TextView

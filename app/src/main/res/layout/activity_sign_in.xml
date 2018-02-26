@@ -47,7 +47,6 @@
 
                 <EditText
                     android:id="@+id/emailSignIn"
-                    android:text="tkusevic@gmail.com"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
@@ -56,6 +55,7 @@
                     android:inputType="textEmailAddress"
                     android:padding="10dp"
                     android:singleLine="true"
+                    android:text="tkusevic@gmail.com"
                     android:textColor="@color/hint_gray"
                     android:textColorHint="@color/input_register_hint" />
             </android.support.design.widget.TextInputLayout>
@@ -75,10 +75,10 @@
                     android:layout_margin="10dp"
                     android:background="@color/input_register_bg"
                     android:hint="@string/hint_password"
-                    android:text="tomislav123"
                     android:inputType="textPassword"
                     android:padding="10dp"
                     android:singleLine="true"
+                    android:text="tomislav123"
                     android:textColor="@color/hint_gray"
                     android:textColorHint="@color/input_register_hint" />
             </android.support.design.widget.TextInputLayout>

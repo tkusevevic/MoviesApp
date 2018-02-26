@@ -22,7 +22,6 @@
             android:textSize="20sp" />
 
     </RelativeLayout>
-
     <TextView
         android:id="@+id/noNewMovies"
         android:layout_width="wrap_content"
