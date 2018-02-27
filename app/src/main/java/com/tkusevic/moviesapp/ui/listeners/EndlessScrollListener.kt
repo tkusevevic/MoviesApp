@@ -21,7 +21,7 @@ abstract class EndlessScrollListener(layoutManager: LinearLayoutManager) : Recyc
 
     private var mLayoutManager: RecyclerView.LayoutManager = layoutManager
 
-    fun getLastVisibleItem(lastVisibleItemPositions: IntArray): Int {
+    private fun getLastVisibleItem(lastVisibleItemPositions: IntArray): Int {
         var maxSize = 0
         for (i in lastVisibleItemPositions.indices) {
             if (i == 0) {

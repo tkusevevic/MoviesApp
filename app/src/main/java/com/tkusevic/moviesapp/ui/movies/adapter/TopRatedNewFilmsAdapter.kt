@@ -41,9 +41,7 @@ class TopRatedNewFilmsAdapter(private val listener: OnMovieClickListener) : Recy
         }
     }
 
-    override fun getItemCount(): Int {
-        return movies.size
-    }
+    override fun getItemCount(): Int =  movies.size
 
     fun setMovieLiked(id: Int, isLiked: Boolean) {
         val movie = movies.find { it.id == id }

@@ -8,6 +8,10 @@ import com.tkusevic.moviesapp.data.model.User
 interface ProfileView {
 
     fun setData(user: User)
+
     fun makeText(s: String)
+
     fun goToEdit()
+
+    fun signOut()
 }

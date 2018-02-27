@@ -5,11 +5,6 @@ import android.support.v7.app.AppCompatActivity
 import com.tkusevic.moviesapp.R
 import com.tkusevic.moviesapp.ui.movies.pager.CustomPagerAdapter
 import kotlinx.android.synthetic.main.activity_movies.*
-import android.support.v4.view.ViewPager
-import android.view.MotionEvent
-import android.view.View
-import com.tkusevic.moviesapp.R.id.viewPager
-import com.tkusevic.moviesapp.ui.movies.pager.NonSwipeableViewPager
 
 /**
  * Created by tkusevic on 18.02.2018..

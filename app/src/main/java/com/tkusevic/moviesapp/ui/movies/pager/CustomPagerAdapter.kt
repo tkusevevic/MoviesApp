@@ -18,13 +18,9 @@ class CustomPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
         notifyDataSetChanged()
     }
 
-    override fun getItem(position: Int): Fragment {
-        return fragments[position]
-    }
+    override fun getItem(position: Int): Fragment = fragments[position]
 
-    override fun getCount(): Int {
-        return fragments.size
-    }
+    override fun getCount(): Int = fragments.size
 
     override fun getPageTitle(position: Int): CharSequence? {
         return when (position) {

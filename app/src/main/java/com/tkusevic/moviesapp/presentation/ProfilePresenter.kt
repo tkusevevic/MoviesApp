@@ -11,4 +11,6 @@ interface ProfilePresenter : BasePresenter<ProfileView> {
     fun getUserId()
 
     fun editUser(aboutMe: String, movieDescription: String, name: String)
+
+    fun clearPrefs()
 }

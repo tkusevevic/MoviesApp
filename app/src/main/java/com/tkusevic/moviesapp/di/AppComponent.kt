@@ -28,7 +28,9 @@ interface AppComponent {
 
     fun favoritesPresenter(): FavoritesPresenter
 
-    fun movieDetalsPresenter(): MovieDetailsPresenter
+    fun movieDetailsPresenter(): MovieDetailsPresenter
 
     fun editProfilePresenter() : EditProfilePresenter
+
+    fun splashPresenter() : SplashPresenter
 }

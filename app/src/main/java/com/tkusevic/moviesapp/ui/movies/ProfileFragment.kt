@@ -8,14 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.tkusevic.moviesapp.R
-import com.tkusevic.moviesapp.commons.extensions.hide
 import com.tkusevic.moviesapp.commons.extensions.onClick
-import com.tkusevic.moviesapp.commons.extensions.show
 import com.tkusevic.moviesapp.data.model.User
 import com.tkusevic.moviesapp.presentation.ProfilePresenter
 import com.tkusevic.moviesapp.profilePresenter
 import com.tkusevic.moviesapp.ui.edit_profile.EditProfileActivity
 import com.tkusevic.moviesapp.ui.movies.views.ProfileView
+import com.tkusevic.moviesapp.ui.signIn.SignInActivity
 import kotlinx.android.synthetic.main.fragment_profile.*
 
 /**
@@ -40,7 +39,11 @@ class ProfileFragment : Fragment(), ProfileView {
         presenter.getUserId()
     }
 
-    private fun initListeners() = editProfile.onClick { goToEdit() }
+    private fun initListeners() {
+        editProfile.onClick { goToEdit() }
+
+        signOut.onClick { presenter.clearPrefs() }
+    }
 
 
     override fun setData(user: User) {
@@ -53,4 +56,9 @@ class ProfileFragment : Fragment(), ProfileView {
     override fun makeText(s: String) = Toast.makeText(activity, s, Toast.LENGTH_SHORT).show()
 
     override fun goToEdit() = startActivity(Intent(activity, EditProfileActivity::class.java))
+
+    override fun signOut() {
+        startActivity(Intent(activity, SignInActivity::class.java))
+        activity?.finish()
+    }
 }

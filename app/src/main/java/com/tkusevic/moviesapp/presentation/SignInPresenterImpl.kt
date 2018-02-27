@@ -7,6 +7,8 @@ import com.tkusevic.moviesapp.commons.utils.isValidEmail
 import com.tkusevic.moviesapp.data.model.User
 import com.tkusevic.moviesapp.firebase.UserRequestListener
 import com.tkusevic.moviesapp.firebase.authentication.AuthenticationHelper
+import com.tkusevic.moviesapp.preferences.PreferencesHelper
+import com.tkusevic.moviesapp.preferences.PreferencesHelperImpl
 import com.tkusevic.moviesapp.ui.signIn.SignInView
 import javax.inject.Inject
 
@@ -14,7 +16,8 @@ import javax.inject.Inject
 /**
  * Created by tkusevic on 15.02.2018..
  */
-class SignInPresenterImpl @Inject constructor(private val authenticationHelper: AuthenticationHelper) : SignInPresenter, UserRequestListener {
+class SignInPresenterImpl @Inject constructor(private val authenticationHelper: AuthenticationHelper,
+                                              private val preferencesHelper: PreferencesHelper) : SignInPresenter, UserRequestListener {
 
     private lateinit var signView: SignInView
 
@@ -52,6 +55,7 @@ class SignInPresenterImpl @Inject constructor(private val authenticationHelper: 
     }
 
     override fun onSuccessfulRequest(user: User) {
+        preferencesHelper.saveId(user.id)
         signView.startMoviesActivity(user)
         signView.hideProgressAndShowOther()
 

@@ -7,6 +7,8 @@ import com.tkusevic.moviesapp.data.model.User
 import com.tkusevic.moviesapp.firebase.UserRequestListener
 import com.tkusevic.moviesapp.firebase.authentication.AuthenticationHelper
 import com.tkusevic.moviesapp.firebase.database.DatabaseHelper
+import com.tkusevic.moviesapp.preferences.PreferencesHelper
+import com.tkusevic.moviesapp.preferences.PreferencesHelperImpl
 import com.tkusevic.moviesapp.ui.movies.views.ProfileView
 import javax.inject.Inject
 
@@ -14,7 +16,8 @@ import javax.inject.Inject
  * Created by tkusevic on 19.02.2018..
  */
 class ProfilePresenterImpl @Inject constructor(private val authenticationHelper: AuthenticationHelper,
-                                               private val database: DatabaseHelper) : ProfilePresenter, UserRequestListener {
+                                               private val database: DatabaseHelper,
+                                               private val preferencesHelper: PreferencesHelper) : ProfilePresenter, UserRequestListener {
 
     private lateinit var profileView: ProfileView
 
@@ -41,4 +44,9 @@ class ProfilePresenterImpl @Inject constructor(private val authenticationHelper:
     override fun onSuccessfulRequest(user: User) = profileView.setData(user)
 
     override fun onFailedRequest() = profileView.makeText(NO_USER_ERROR)
+
+    override fun clearPrefs() {
+        preferencesHelper.removeId()
+        profileView.signOut()
+    }
 }

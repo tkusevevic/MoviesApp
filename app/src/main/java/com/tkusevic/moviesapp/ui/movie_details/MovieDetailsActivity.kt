@@ -35,12 +35,11 @@ class MovieDetailsActivity : AppCompatActivity(), MovieDetailsView {
             val intent = this.intent
             val bundle: Bundle = intent.extras
             val movie: Serializable? = bundle.getSerializable(MOVIE_KEY)
-            presenter.onLikeTapped(movie as Movie) }
+            presenter.onLikeTapped(movie as Movie)
+        }
     }
 
-    private fun initPresenter() {
-        presenter.setBaseview(this)
-    }
+    private fun initPresenter() = presenter.setBaseview(this)
 
     private fun getMoviesInformation() {
         val intent = this.intent
@@ -68,7 +67,7 @@ class MovieDetailsActivity : AppCompatActivity(), MovieDetailsView {
     }
 
     override fun setLike(isLiked: Boolean) {
-        if(isLiked) likeMovieDetails.setImageResource(R.drawable.like_fill)
+        if (isLiked) likeMovieDetails.setImageResource(R.drawable.like_fill)
         else likeMovieDetails.setImageResource(R.drawable.like)
     }
 }

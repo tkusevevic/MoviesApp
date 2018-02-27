@@ -33,6 +33,11 @@ const val MOVIE_KEY = "movie"
 //responses
 const val RESPONSE_OK = 200
 
+//shared preferences
+const val PREFS_USER_ID_KEY = "userId"
+const val PREFS_NAME = "AppPrefs"
+
+
 //Errors
 const val NO_USER_ERROR = "Couldn't load user :("
 

@@ -20,7 +20,6 @@ import com.tkusevic.moviesapp.ui.movies.MoviesActivity
 import com.tkusevic.moviesapp.ui.registration.RegistrationActivity
 import kotlinx.android.synthetic.main.activity_sign_in.*
 
-
 /**
  * Created by tkusevic on 14.02.2018..
  */

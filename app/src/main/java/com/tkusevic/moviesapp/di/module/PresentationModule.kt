@@ -32,4 +32,7 @@ abstract class PresentationModule {
 
     @Binds
     abstract fun editProfilePresenter(editProfilePresenterImpl: EditProfilePresenterImpl): EditProfilePresenter
+
+    @Binds
+    abstract fun splashPresenter(splashPresenterImpl: SplashPresenterImpl): SplashPresenter
 }
