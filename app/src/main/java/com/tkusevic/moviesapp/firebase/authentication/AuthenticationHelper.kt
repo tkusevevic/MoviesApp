@@ -25,6 +25,4 @@ interface AuthenticationHelper {
     fun getCurrentUser(): FirebaseUser?
 
     fun editUser(user: User, listener: UserRequestListener)
-
-    val currentUserDisplayName: String
 }

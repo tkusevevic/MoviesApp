@@ -39,7 +39,6 @@ class SignInPresenterImpl @Inject constructor(private val authenticationHelper: 
         authenticationHelper.logTheUserIn(email, password, this)
     }
 
-
     private fun checkInputEmpty(email: String, password: String) {
         if (checkEmailEmpty(email.trim()) || !isValidEmail(email.trim()))
             signView.showEmailError()

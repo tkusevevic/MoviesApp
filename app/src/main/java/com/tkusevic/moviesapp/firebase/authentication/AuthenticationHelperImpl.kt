@@ -13,7 +13,8 @@ import javax.inject.Inject
 /**
  * Created by tkusevic on 14.02.2018..
  */
-class AuthenticationHelperImpl @Inject constructor(private val firebaseAuth: FirebaseAuth, private val databaseHelper: DatabaseHelper) : AuthenticationHelper {
+class AuthenticationHelperImpl @Inject constructor(private val firebaseAuth: FirebaseAuth,
+                                                   private val databaseHelper: DatabaseHelper) : AuthenticationHelper {
 
     override fun editUser(user: User, listener: UserRequestListener) {
         databaseHelper.saveUser(user)
@@ -62,6 +63,4 @@ class AuthenticationHelperImpl @Inject constructor(private val firebaseAuth: Fir
     override fun getCurrentUserId(): String? = firebaseAuth.currentUser?.uid
 
     override fun getCurrentUser(): FirebaseUser? = (firebaseAuth.currentUser)
-
-    override val currentUserDisplayName: String = firebaseAuth.currentUser?.displayName.toString()
 }

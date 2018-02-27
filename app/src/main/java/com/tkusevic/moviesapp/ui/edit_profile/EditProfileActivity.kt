@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.tkusevic.moviesapp.R
 import com.tkusevic.moviesapp.commons.extensions.onClick
+import com.tkusevic.moviesapp.commons.utils.hideSoftKeyboard
 import com.tkusevic.moviesapp.data.model.User
 import com.tkusevic.moviesapp.editProfilePresenter
 import com.tkusevic.moviesapp.presentation.EditProfilePresenter
 import kotlinx.android.synthetic.main.activity_edit_profile.*
+
 
 /**
  * Created by tkusevic on 23.02.2018..
@@ -30,6 +32,8 @@ class EditProfileActivity : AppCompatActivity(), EditProfileView {
                 , profileEditName.text.toString()) }
 
         backEdit.onClick { editDone() }
+
+        wholeLayout.onClick { hideSoftKeyboard(this) }
     }
 
     private fun initPresenter() = presenter.setBaseview(this)
