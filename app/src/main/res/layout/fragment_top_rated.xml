@@ -26,7 +26,6 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:text="@string/empty_list"
-        android:visibility="gone"
         android:textColor="@color/main_green"
         android:textSize="22sp" />
 
