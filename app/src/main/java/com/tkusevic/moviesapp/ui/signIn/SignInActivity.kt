@@ -80,6 +80,7 @@ class SignInActivity : AppCompatActivity(), SignInView {
     override fun startMoviesActivity(user: User) {
         val intent = Intent(this, MoviesActivity::class.java)
         startActivity(intent)
+        finish()
     }
 
     override fun showMessage(message: String) = Toast.makeText(this, message, Toast.LENGTH_SHORT).show()

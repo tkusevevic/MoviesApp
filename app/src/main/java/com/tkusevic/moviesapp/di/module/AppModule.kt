@@ -26,8 +26,7 @@ class AppModule constructor(private val context: Context) {
     fun firebaseDatabase(): FirebaseDatabase = FirebaseDatabase.getInstance()
 
     @Provides
-    fun firebaseReference(firebaseDatabase: FirebaseDatabase): DatabaseReference = firebaseDatabase.reference
-
+    fun firebaseReference (firebaseDatabase: FirebaseDatabase): DatabaseReference = firebaseDatabase.reference
 
     @Provides
     fun firebaseAuth(): FirebaseAuth = FirebaseAuth.getInstance()
