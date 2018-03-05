@@ -37,9 +37,14 @@ const val RESPONSE_OK = 200
 const val PREFS_USER_ID_KEY = "userId"
 const val PREFS_NAME = "AppPrefs"
 
+//FACEBOOK
+const val FACEBOOK_EMAIL = "email"
+const val FACEBOOK_PROFILE = "public_profile"
+const val FACEBOOK_TEXT = "FACEBOOK"
 
 //Errors
 const val NO_USER_ERROR = "Couldn't load user :("
+const val FACEBOOK_ERROR = "Couldn't sign you in with Facebook :("
 
 //email regex
 const val EMAIL_REGEX = "(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])"

@@ -16,6 +16,7 @@ import kotlinx.android.synthetic.main.holder_movies.view.*
 class MoviesViewHolder(private val listener: OnMovieClickListener, itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     fun setMovie(movie: Movie) = with(itemView) {
+
         if (movie.isLiked) {
             like.setImageResource(R.drawable.like_fill)
         } else {

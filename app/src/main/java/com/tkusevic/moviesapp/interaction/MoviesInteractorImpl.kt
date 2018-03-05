@@ -18,4 +18,12 @@ class MoviesInteractorImpl @Inject constructor(private val service: MoviesApiSer
     override fun loadNextPage(type: String, page: Int, moviesResponseCallback: Callback<MoviesResponse>) {
         service.getMoviesBy(type, API_KEY, page).enqueue(moviesResponseCallback)
     }
+
+    override fun searchMovies(input: String, page: Int, moviesResponseCallback: Callback<MoviesResponse>){
+        service.getMoviesByText(input, API_KEY,page).enqueue(moviesResponseCallback)
+    }
+
+    override fun loadNextPageSearch(input: String, page: Int, moviesResponseCallback: Callback<MoviesResponse>) {
+        service.getMoviesByText(input, API_KEY, page).enqueue(moviesResponseCallback)
+    }
 }

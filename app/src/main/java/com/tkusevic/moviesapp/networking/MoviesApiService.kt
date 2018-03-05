@@ -1,5 +1,6 @@
 package com.tkusevic.moviesapp.networking
 
+import android.graphics.Movie
 import com.tkusevic.moviesapp.data.response.MoviesResponse
 import retrofit2.Call
 import retrofit2.http.GET
@@ -15,4 +16,7 @@ interface MoviesApiService {
     @GET("3/movie/{movieType}/")
     fun getMoviesBy(@Path("movieType") movieType: String, @Query("api_key") apiKey: String, @Query("page") page: Int):
             Call<MoviesResponse>
+
+    @GET("3/search/movie/")
+    fun getMoviesByText( @Query("query") query: String, @Query("api_key") apiKey: String, @Query("page") page: Int): Call<MoviesResponse>
 }

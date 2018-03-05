@@ -1,5 +1,6 @@
 package com.tkusevic.moviesapp.firebase.authentication
 
+import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.FirebaseUser
 import com.tkusevic.moviesapp.data.model.User
 import com.tkusevic.moviesapp.firebase.EmptyRequestListener
@@ -25,4 +26,6 @@ interface AuthenticationHelper {
     fun getCurrentUser(): FirebaseUser?
 
     fun editUser(user: User, listener: UserRequestListener)
+
+    fun signInWithFacebook(credential : AuthCredential, listener: UserRequestListener)
 }

@@ -32,6 +32,8 @@
     <string name="movies_i_like">About movies I like:</string>
     <string name="hint_about_me">About me:</string>
     <string name="hint_about_movies">About movies I like:</string>
+    <string name="searchMovies">Search Movies</string>
+    <string name="search">Search</string>
 
 
 </resources>

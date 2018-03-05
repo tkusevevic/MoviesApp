@@ -1,5 +1,7 @@
 package com.tkusevic.moviesapp.presentation
 
+import com.facebook.AccessToken
+import com.google.firebase.auth.FacebookAuthProvider
 import com.tkusevic.moviesapp.commons.constants.ERROR_EMAIL_OR_PASSWORD
 import com.tkusevic.moviesapp.commons.utils.checkEmailEmpty
 import com.tkusevic.moviesapp.commons.utils.checkPasswordEmpty
@@ -8,7 +10,6 @@ import com.tkusevic.moviesapp.data.model.User
 import com.tkusevic.moviesapp.firebase.UserRequestListener
 import com.tkusevic.moviesapp.firebase.authentication.AuthenticationHelper
 import com.tkusevic.moviesapp.preferences.PreferencesHelper
-import com.tkusevic.moviesapp.preferences.PreferencesHelperImpl
 import com.tkusevic.moviesapp.ui.signIn.SignInView
 import javax.inject.Inject
 
@@ -49,15 +50,16 @@ class SignInPresenterImpl @Inject constructor(private val authenticationHelper: 
         else signView.hidePasswordError()
     }
 
-    override fun onGoogleClick() {
-        //TODO
-    }
+   override fun handleFacebookAccessToken(token: AccessToken) {
+       signView.showProgressAndHideOther()
+       val credential = FacebookAuthProvider.getCredential(token.token)
+       authenticationHelper.signInWithFacebook(credential,this)
+   }
 
     override fun onSuccessfulRequest(user: User) {
         preferencesHelper.saveId(user.id)
         signView.startMoviesActivity(user)
         signView.hideProgressAndShowOther()
-
     }
 
     override fun onFailedRequest() {

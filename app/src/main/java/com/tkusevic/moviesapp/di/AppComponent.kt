@@ -33,4 +33,6 @@ interface AppComponent {
     fun editProfilePresenter() : EditProfilePresenter
 
     fun splashPresenter() : SplashPresenter
+
+    fun movieSearchPresenter(): MovieSearchPresenter
 }

@@ -56,7 +56,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:background="@color/input_register_bg"
+                    android:background="@color/input_background"
                     android:inputType="textCapWords"
                     android:padding="10dp"
                     android:singleLine="true"
@@ -76,12 +76,12 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:background="@color/input_register_bg"
+                    android:background="@color/input_background"
                     android:inputType="textEmailAddress"
                     android:padding="10dp"
                     android:singleLine="true"
                     android:textColor="@color/white"
-                    android:textColorHint="@color/input_register_hint" />
+                    android:textColorHint="@color/input_hint" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -97,7 +97,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:background="@color/input_register_bg"
+                    android:background="@color/input_background"
                     android:inputType="textPassword"
                     android:padding="10dp"
                     android:singleLine="true"

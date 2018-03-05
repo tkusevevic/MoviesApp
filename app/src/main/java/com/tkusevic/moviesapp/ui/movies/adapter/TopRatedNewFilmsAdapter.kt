@@ -22,10 +22,15 @@ class TopRatedNewFilmsAdapter(private val listener: OnMovieClickListener) : Recy
         notifyDataSetChanged()
     }
 
-    fun addMovies(movies: List<Movie> = arrayListOf()) {
+    fun addMovies(movies: List<Movie>) {
         val start: Int = this.movies.size
         this.movies.addAll(movies)
         notifyItemRangeInserted(start, movies.size)
+    }
+
+    fun clearMovies(){
+        movies.clear()
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TopRatedNewFilmsViewHolder {
@@ -50,6 +55,7 @@ class TopRatedNewFilmsAdapter(private val listener: OnMovieClickListener) : Recy
             notifyItemChanged(movies.indexOf(this))
         }
     }
+
 
     fun setFavoriteMovies(favorite: List<Movie>) {
         val favoriteIds = favorite.map { it.id }

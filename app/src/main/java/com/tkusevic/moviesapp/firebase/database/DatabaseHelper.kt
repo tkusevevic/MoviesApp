@@ -19,4 +19,5 @@ interface DatabaseHelper {
     fun getFavoriteMoviesOnce(userId: String, onFavoriteMoviesReceived: (List<Movie>) -> Unit)
 
     fun addFavorites(userId: String, movies: List<Movie>)
+
 }

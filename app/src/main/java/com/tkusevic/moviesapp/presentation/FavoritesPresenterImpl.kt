@@ -11,8 +11,7 @@ import javax.inject.Inject
  * Created by tkusevic on 21.02.2018..
  */
 class FavoritesPresenterImpl @Inject constructor(private val authenticationHelper: AuthenticationHelper,
-                                                 private val database: DatabaseHelper) :
-        FavoritesPresenter, MoviesRequestListener {
+                                                 private val database: DatabaseHelper) : FavoritesPresenter, MoviesRequestListener {
 
     private lateinit var favoritesView: FavoritesView
 

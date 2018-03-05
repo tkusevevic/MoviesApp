@@ -47,6 +47,7 @@ class ProfilePresenterImpl @Inject constructor(private val authenticationHelper:
 
     override fun clearPrefs() {
         preferencesHelper.removeId()
+        authenticationHelper.logTheUserOut()
         profileView.signOut()
     }
 }

@@ -67,7 +67,10 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden">
         </activity>
-
+        <activity
+            android:name=".ui.search_movie.SearchMovieActivity"
+            android:windowSoftInputMode="stateHidden">
+        </activity>
 
     </application>
 

@@ -11,5 +11,5 @@ interface SignInPresenter : BasePresenter<SignInView> {
 
     fun onSignInClick(email: String, password: String)
 
-    fun onGoogleClick()
+    fun handleFacebookAccessToken(token: AccessToken)
 }

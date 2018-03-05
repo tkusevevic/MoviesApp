@@ -23,3 +23,5 @@ fun movieDetailsPresenter() : MovieDetailsPresenter = App.appComponent.movieDeta
 fun editProfilePresenter() : EditProfilePresenter= App.appComponent.editProfilePresenter()
 
 fun splashPresenter() : SplashPresenter = App.appComponent.splashPresenter()
+
+fun movieSearchPresenter() : MovieSearchPresenter = App.appComponent.movieSearchPresenter()

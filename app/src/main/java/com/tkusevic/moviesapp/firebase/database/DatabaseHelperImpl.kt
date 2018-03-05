@@ -64,7 +64,6 @@ class DatabaseHelperImpl @Inject constructor(private val reference: DatabaseRefe
                 val values = if (datasnapshot.hasChildren()) datasnapshot.children.map { it.getValue(Movie::class.java) } else listOf<Movie>()
                 onFavoriteMoviesReceived(values.filterNotNull())
             }
-
         })
     }
 }

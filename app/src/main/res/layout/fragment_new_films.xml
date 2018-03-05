@@ -21,6 +21,15 @@
             android:textColor="@color/main_green"
             android:textSize="20sp" />
 
+        <ImageView
+            android:id="@+id/searchNews"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="20dp"
+            android:src="@drawable/search" />
+
     </RelativeLayout>
     <TextView
         android:id="@+id/noNewMovies"

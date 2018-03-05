@@ -35,4 +35,7 @@ abstract class PresentationModule {
 
     @Binds
     abstract fun splashPresenter(splashPresenterImpl: SplashPresenterImpl): SplashPresenter
+
+    @Binds
+    abstract fun movieSearchPresenter(movieSearchPresenterImpl: MovieSearchPresenterImpl): MovieSearchPresenter
 }

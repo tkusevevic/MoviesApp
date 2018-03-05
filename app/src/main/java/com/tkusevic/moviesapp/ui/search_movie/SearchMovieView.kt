@@ -1,11 +1,11 @@
-package com.tkusevic.moviesapp.ui.movies.views
+package com.tkusevic.moviesapp.ui.search_movie
 
 import com.tkusevic.moviesapp.data.model.Movie
 
 /**
- * Created by tkusevic on 19.02.2018..
+ * Created by tkusevic on 05.03.2018..
  */
-interface TopRatedView {
+interface SearchMovieView {
 
     fun setMovies(movies: List<Movie>)
 
@@ -13,8 +13,5 @@ interface TopRatedView {
 
     fun setFavorites(favorites : List<Movie>)
 
-    fun showMessageEmptyList()
-
-    fun hideMessageEmptyList()
-
+    fun clearList()
 }
