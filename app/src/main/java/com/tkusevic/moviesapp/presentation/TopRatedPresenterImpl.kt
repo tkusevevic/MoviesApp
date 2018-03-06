@@ -57,13 +57,8 @@ class TopRatedPresenterImpl @Inject constructor(private val moviesInteractor: Mo
     }
 
     private fun onMoviesReceived(list: List<Movie>) {
-        if (list.isEmpty()) {
-            topRatedView.showMessageEmptyList()
-        } else {
-            topRatedView.hideMessageEmptyList()
-        }
+        if (list.isEmpty()) topRatedView.showMessageEmptyList() else topRatedView.hideMessageEmptyList()
         topRatedView.setMovies(list)
-
         authenticationHelper.getCurrentUserId()?.run {
             databaseHelper.getFavoriteMoviesOnce(this) { onSuccessfulRequestMovies(it) }
         }

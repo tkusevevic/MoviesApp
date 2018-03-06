@@ -22,16 +22,13 @@ class MovieSearchPresenterImpl @Inject constructor(private val moviesInteractor:
                                                    private val authenticationHelper: AuthenticationHelper,
                                                    private val databaseHelper: DatabaseHelper) : MovieSearchPresenter, MoviesRequestListener {
 
-
     lateinit var view: SearchMovieView
 
     override fun setBaseview(baseView: SearchMovieView) {
         view = baseView
     }
 
-    override fun getMovies(input: String) {
-        moviesInteractor.searchMovies(input, 1, getMoviesCallback())
-    }
+    override fun getMovies(input: String) = moviesInteractor.searchMovies(input, 1, getMoviesCallback())
 
     private fun getMoviesCallback(): Callback<MoviesResponse> = object : Callback<MoviesResponse> {
         override fun onFailure(call: Call<MoviesResponse>?, t: Throwable?) {
@@ -60,9 +57,7 @@ class MovieSearchPresenterImpl @Inject constructor(private val moviesInteractor:
         //TODO FAILED FETCH
     }
 
-    override fun loadNextPage(input: String, page: Int) {
-        moviesInteractor.loadNextPageSearch(input, page, addMoviesCallback())
-    }
+    override fun loadNextPage(input: String, page: Int) = moviesInteractor.loadNextPageSearch(input, page, addMoviesCallback())
 
     private fun addMoviesCallback() = object : Callback<MoviesResponse> {
         override fun onResponse(call: Call<MoviesResponse>?, response: Response<MoviesResponse>) {
@@ -77,9 +72,7 @@ class MovieSearchPresenterImpl @Inject constructor(private val moviesInteractor:
         }
     }
 
-    override fun clearList() {
-        view.clearList()
-    }
+    override fun clearList() = view.clearList()
 
     override fun onLikeTapped(movie: Movie) {
         movie.isLiked = !movie.isLiked

@@ -11,7 +11,6 @@ import com.tkusevic.moviesapp.commons.constants.PASSWORD_ERROR
 import com.tkusevic.moviesapp.commons.extensions.hide
 import com.tkusevic.moviesapp.commons.extensions.onClick
 import com.tkusevic.moviesapp.commons.extensions.show
-import com.tkusevic.moviesapp.firebase.EmptyRequestListener
 import com.tkusevic.moviesapp.presentation.RegistrationPresenter
 import com.tkusevic.moviesapp.registrationPresenter
 import com.tkusevic.moviesapp.ui.signIn.SignInActivity
@@ -73,7 +72,7 @@ class RegistrationActivity : AppCompatActivity(), RegistrationView {
         layoutName.isErrorEnabled = false
     }
 
-    override fun startSignIn() =startActivity(Intent(this, SignInActivity::class.java))
+    override fun startSignIn() = startActivity(Intent(this, SignInActivity::class.java))
 
     override fun showMessage(message: String) = Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 }

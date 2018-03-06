@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
 import android.widget.Toast
 import com.tkusevic.moviesapp.R
 import com.tkusevic.moviesapp.commons.constants.MOVIE_KEY
@@ -54,42 +55,30 @@ class SearchMovieActivity : AppCompatActivity(), SearchMovieView, OnMovieClickLi
     private fun initListeners() {
         backSearch.onClick { finish() }
 
+        clearSearch.onClick {
+            searchInput.text.clear()
+            presenter.clearList()
+        }
+
         searchInput.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                if(s==null || s.isEmpty() || s.isBlank())
-                {
-                    presenter.clearList()
-                }
+                if(s==null || s.isEmpty() || s.isBlank()) { presenter.clearList()}
             }
 
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                if(s==null || s.isEmpty() || s.isBlank())
-                {
-                    presenter.clearList()
-                }
-            }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 presenter.getMovies(s.toString())
-                if(s==null || s.isEmpty() || s.isBlank())
-                {
-                    presenter.clearList()
-                }
+                if(s==null || s.isEmpty() || s.isBlank()) { presenter.clearList() }
             }
         })
     }
 
-    override fun setMovies(movies: List<Movie>) {
-        adapter.setMovies(movies)
-    }
+    override fun setMovies(movies: List<Movie>) = adapter.setMovies(movies)
 
-    override fun addMovies(movies: List<Movie>) {
-        adapter.addMovies(movies)
-    }
+    override fun addMovies(movies: List<Movie>) = adapter.addMovies(movies)
 
-    override fun setFavorites(favorites: List<Movie>) {
-        adapter.setFavoriteMovies(favorites)
-    }
+    override fun setFavorites(favorites: List<Movie>) = adapter.setFavoriteMovies(favorites)
 
     override fun onMovieClick(movie: Movie) {
         val bundle = Bundle()
@@ -103,8 +92,5 @@ class SearchMovieActivity : AppCompatActivity(), SearchMovieView, OnMovieClickLi
         adapter.setMovieLiked(movie.id, movie.isLiked)
     }
 
-    override fun clearList() {
-        adapter.clearMovies()
-    }
-
+    override fun clearList() = adapter.clearMovies()
 }

@@ -10,7 +10,6 @@ import android.support.v7.widget.StaggeredGridLayoutManager
 /**
  * Created by tkusevic on 20.02.2018..
  */
-@RequiresApi(api = Build.VERSION_CODES.M)
 abstract class EndlessScrollListener(layoutManager: LinearLayoutManager) : RecyclerView.OnScrollListener() {
 
     private var visibleThreshold = 5
@@ -21,27 +20,10 @@ abstract class EndlessScrollListener(layoutManager: LinearLayoutManager) : Recyc
 
     private var mLayoutManager: RecyclerView.LayoutManager = layoutManager
 
-    private fun getLastVisibleItem(lastVisibleItemPositions: IntArray): Int {
-        var maxSize = 0
-        for (i in lastVisibleItemPositions.indices) {
-            if (i == 0) {
-                maxSize = lastVisibleItemPositions[i]
-            } else if (lastVisibleItemPositions[i] > maxSize) {
-                maxSize = lastVisibleItemPositions[i]
-            }
-        }
-        return maxSize
-    }
-
     override fun onScrolled(view: RecyclerView?, dx: Int, dy: Int) {
         var lastVisibleItemPosition = 0
         val totalItemCount = mLayoutManager.itemCount
-
         when (mLayoutManager) {
-            is StaggeredGridLayoutManager -> {
-                val lastVisibleItemPositions = (mLayoutManager as StaggeredGridLayoutManager).findLastVisibleItemPositions(null)
-                lastVisibleItemPosition = getLastVisibleItem(lastVisibleItemPositions)
-            }
             is GridLayoutManager -> lastVisibleItemPosition = (mLayoutManager as GridLayoutManager).findLastVisibleItemPosition()
             is LinearLayoutManager -> lastVisibleItemPosition = (mLayoutManager as LinearLayoutManager).findLastVisibleItemPosition()
         }
