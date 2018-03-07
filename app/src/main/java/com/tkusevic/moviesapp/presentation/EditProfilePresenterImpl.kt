@@ -17,7 +17,7 @@ class EditProfilePresenterImpl @Inject constructor(private val authenticationHel
                                                    private val database: DatabaseHelper) :
         EditProfilePresenter, UserRequestListener, MoviesRequestListener {
 
-    lateinit var editProfileView: EditProfileView
+    private lateinit var editProfileView: EditProfileView
 
     override fun setBaseview(baseView: EditProfileView) {
         this.editProfileView = baseView

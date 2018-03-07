@@ -21,6 +21,7 @@ const val TOP_RATED = "Top rated"
 const val NOW_PLAYING = "Now playing"
 const val FAVORITES = "Favorites"
 const val PROFILE = "Profile"
+const val SEARCH = "Search"
 
 //key for downloading image
 const val IMAGE_KEY = "https://image.tmdb.org/t/p/w500"

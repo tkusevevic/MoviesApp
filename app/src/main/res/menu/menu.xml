@@ -14,6 +14,12 @@
         android:title="NOW PLAYING"
         app:showAsAction="ifRoom" />
     <item
+        android:id="@+id/action_search"
+        android:enabled="true"
+        android:icon="@drawable/search"
+        android:title="SEARCH"
+        app:showAsAction="ifRoom" />
+    <item
         android:id="@+id/action_favorites"
         android:enabled="true"
         android:icon="@drawable/like_fill"
@@ -25,4 +31,5 @@
         android:icon="@drawable/profile"
         android:title="PROFILE"
         app:showAsAction="ifRoom" />
+
 </menu>

@@ -22,7 +22,7 @@ class MovieSearchPresenterImpl @Inject constructor(private val moviesInteractor:
                                                    private val authenticationHelper: AuthenticationHelper,
                                                    private val databaseHelper: DatabaseHelper) : MovieSearchPresenter, MoviesRequestListener {
 
-    lateinit var view: SearchMovieView
+    private lateinit var view: SearchMovieView
 
     override fun setBaseview(baseView: SearchMovieView) {
         view = baseView

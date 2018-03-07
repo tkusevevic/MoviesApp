@@ -11,7 +11,7 @@ interface MovieSearchPresenter : BasePresenter<SearchMovieView> {
 
     fun getMovies(input: String)
 
-    fun loadNextPage( input: String,page: Int)
+    fun loadNextPage(input: String, page: Int)
 
     fun onLikeTapped(movie: Movie)
 

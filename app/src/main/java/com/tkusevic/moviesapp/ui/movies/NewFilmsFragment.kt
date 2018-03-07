@@ -21,7 +21,6 @@ import com.tkusevic.moviesapp.ui.listeners.OnMovieClickListener
 import com.tkusevic.moviesapp.ui.movie_details.MovieDetailsActivity
 import com.tkusevic.moviesapp.ui.movies.adapter.TopRatedNewFilmsAdapter
 import com.tkusevic.moviesapp.ui.movies.views.NewFilmsView
-import com.tkusevic.moviesapp.ui.search_movie.SearchMovieActivity
 import kotlinx.android.synthetic.main.fragment_new_films.*
 
 /**
@@ -43,7 +42,6 @@ class NewFilmsFragment : Fragment(), OnMovieClickListener, NewFilmsView {
         loadFavorites()
         initRecyclerView()
         loadNewMovies()
-        searchNews.onClick { startActivity(Intent(activity,SearchMovieActivity::class.java)) }
     }
 
     private fun initRecyclerView() {

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.tkusevic.moviesapp.R
 import com.tkusevic.moviesapp.ui.movies.pager.CustomPagerAdapter
+import com.tkusevic.moviesapp.ui.search_movie.SearchFragment
 import kotlinx.android.synthetic.main.activity_movies.*
 
 /**
@@ -22,11 +23,12 @@ class MoviesActivity : AppCompatActivity() {
         val navigationPagerAdapter = CustomPagerAdapter(supportFragmentManager)
         navigationPagerAdapter.addFragment(TopRatedFragment())
         navigationPagerAdapter.addFragment(NewFilmsFragment())
+        navigationPagerAdapter.addFragment(SearchFragment())
         navigationPagerAdapter.addFragment(FavoritesFragment())
         navigationPagerAdapter.addFragment(ProfileFragment())
 
         viewPager.adapter = navigationPagerAdapter
-        viewPager.offscreenPageLimit = 3
+        viewPager.offscreenPageLimit = 4
 
     }
 
@@ -36,8 +38,9 @@ class MoviesActivity : AppCompatActivity() {
                     when (item.itemId) {
                         R.id.action_top_rated -> viewPager.currentItem = 0
                         R.id.action_now_playing -> viewPager.currentItem = 1
-                        R.id.action_favorites -> viewPager.currentItem = 2
-                        R.id.action_profile -> viewPager.currentItem = 3
+                        R.id.action_search -> viewPager.currentItem = 2
+                        R.id.action_favorites -> viewPager.currentItem = 3
+                        R.id.action_profile -> viewPager.currentItem = 4
                     }
                     true
                 })

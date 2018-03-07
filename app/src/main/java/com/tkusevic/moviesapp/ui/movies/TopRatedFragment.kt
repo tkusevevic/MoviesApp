@@ -1,7 +1,6 @@
 package com.tkusevic.moviesapp.ui.movies
 
 import android.content.Intent
-import android.opengl.Visibility
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -22,8 +21,6 @@ import com.tkusevic.moviesapp.ui.listeners.OnMovieClickListener
 import com.tkusevic.moviesapp.ui.movie_details.MovieDetailsActivity
 import com.tkusevic.moviesapp.ui.movies.adapter.TopRatedNewFilmsAdapter
 import com.tkusevic.moviesapp.ui.movies.views.TopRatedView
-import com.tkusevic.moviesapp.ui.search_movie.SearchMovieActivity
-import com.tkusevic.moviesapp.ui.search_movie.SearchMovieView
 import kotlinx.android.synthetic.main.fragment_top_rated.*
 
 /**
@@ -45,13 +42,6 @@ class TopRatedFragment : Fragment(), OnMovieClickListener, TopRatedView {
         loadFavorites()
         initRecyclerView()
         loadTopRatedMovies()
-        initListener()
-    }
-
-    private fun initListener() {
-        searchTopRated.onClick {
-            startActivity(Intent(activity, SearchMovieActivity::class.java))
-        }
     }
 
     private fun initRecyclerView() {

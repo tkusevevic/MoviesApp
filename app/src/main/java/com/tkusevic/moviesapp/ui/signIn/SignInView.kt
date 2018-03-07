@@ -2,6 +2,7 @@ package com.tkusevic.moviesapp.ui.signIn
 
 import com.tkusevic.moviesapp.data.model.User
 
+
 /**
  * Created by tkusevic on 15.02.2018..
  */

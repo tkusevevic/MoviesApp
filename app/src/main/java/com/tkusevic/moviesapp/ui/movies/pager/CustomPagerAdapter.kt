@@ -26,8 +26,10 @@ class CustomPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
         return when (position) {
             0 -> TOP_RATED
             1 -> NOW_PLAYING
-            2 -> FAVORITES
-            3 -> PROFILE
+            2 -> SEARCH
+            3 -> FAVORITES
+            4 -> PROFILE
+
             else -> null
         }
     }
