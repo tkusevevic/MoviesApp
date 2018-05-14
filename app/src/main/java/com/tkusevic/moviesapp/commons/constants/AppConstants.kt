@@ -24,7 +24,7 @@ const val PROFILE = "Profile"
 const val SEARCH = "Search"
 
 //key for downloading image
-const val IMAGE_KEY = "https://image.tmdb.org/t/p/w500"
+const val IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500"
 
 //keys for activities
 const val TOP_RATED_KEY = "top_rated"
@@ -41,7 +41,6 @@ const val PREFS_NAME = "AppPrefs"
 //FACEBOOK
 const val FACEBOOK_EMAIL = "email"
 const val FACEBOOK_PROFILE = "public_profile"
-const val FACEBOOK_TEXT = "FACEBOOK"
 
 //Errors
 const val NO_USER_ERROR = "Couldn't load user :("

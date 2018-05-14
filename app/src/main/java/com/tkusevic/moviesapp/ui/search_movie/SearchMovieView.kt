@@ -11,7 +11,7 @@ interface SearchMovieView {
 
     fun addMovies(movies: List<Movie>)
 
-    fun setFavorites(favorites : List<Movie>)
+    fun setFavorites(favorites: List<Movie>)
 
     fun clearList()
 }

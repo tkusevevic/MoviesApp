@@ -6,13 +6,13 @@ import android.view.ViewGroup
 import com.tkusevic.moviesapp.R
 import com.tkusevic.moviesapp.data.model.Movie
 import com.tkusevic.moviesapp.ui.listeners.OnMovieClickListener
-import com.tkusevic.moviesapp.ui.movies.holder.TopRatedNewFilmsViewHolder
+import com.tkusevic.moviesapp.ui.movies.holder.MoviesViewHolder
 
 /**
  * Created by tkusevic on 22.02.2018..
  */
 
-class TopRatedNewFilmsAdapter(private val listener: OnMovieClickListener) : RecyclerView.Adapter<TopRatedNewFilmsViewHolder>() {
+class TopRatedNewFilmsAdapter(private val listener: OnMovieClickListener) : RecyclerView.Adapter<MoviesViewHolder>() {
 
     private val movies: MutableList<Movie> = mutableListOf()
 
@@ -23,30 +23,29 @@ class TopRatedNewFilmsAdapter(private val listener: OnMovieClickListener) : Recy
     }
 
     fun addMovies(movies: List<Movie>) {
-        val start: Int = this.movies.size
         this.movies.addAll(movies)
-        notifyItemRangeInserted(start, movies.size)
+        notifyDataSetChanged()
     }
 
-    fun clearMovies(){
+    fun clearMovies() {
         movies.clear()
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TopRatedNewFilmsViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.holder_movies, parent, false)
-        return TopRatedNewFilmsViewHolder(listener, view)
+        return MoviesViewHolder(listener, view)
     }
 
-    override fun onBindViewHolder(holder: TopRatedNewFilmsViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: MoviesViewHolder, position: Int) {
         val movie = movies[position]
-        holder?.run {
+        holder.run {
             setMovie(movie)
             listener.let { this }
         }
     }
 
-    override fun getItemCount(): Int =  movies.size
+    override fun getItemCount(): Int = movies.size
 
     fun setMovieLiked(id: Int, isLiked: Boolean) {
         val movie = movies.find { it.id == id }
@@ -55,7 +54,6 @@ class TopRatedNewFilmsAdapter(private val listener: OnMovieClickListener) : Recy
             notifyItemChanged(movies.indexOf(this))
         }
     }
-
 
     fun setFavoriteMovies(favorite: List<Movie>) {
         val favoriteIds = favorite.map { it.id }

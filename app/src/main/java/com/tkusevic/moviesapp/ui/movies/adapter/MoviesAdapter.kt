@@ -26,9 +26,9 @@ class MoviesAdapter(private val listener: OnMovieClickListener) : RecyclerView.A
         return MoviesViewHolder(listener, view)
     }
 
-    override fun onBindViewHolder(holder: MoviesViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: MoviesViewHolder, position: Int) {
         val movie = movies[position]
-        holder?.run {
+        holder.run {
             setMovie(movie)
             listener.let { this }
         }

@@ -29,7 +29,6 @@ class NewFilmsPresenterImpl @Inject constructor(private val moviesInteractor: Mo
 
     override fun getMovies() = moviesInteractor.getMoviesBy(NOW_PLAYING_KEY, 1, getMoviesCallback())
 
-
     override fun getFavorites() {
         authenticationHelper.getCurrentUserId()?.run {
             databaseHelper.listenToFavoriteMovies(this, { onSuccessfulRequestMovies(it) })
@@ -37,7 +36,6 @@ class NewFilmsPresenterImpl @Inject constructor(private val moviesInteractor: Mo
     }
 
     override fun onSuccessfulRequestMovies(movies: List<Movie>) = newFilmsView.setFavorites(movies)
-
 
     override fun onFailedRequestMovies() {
         //TODO couldn't load the new film Movies
@@ -51,7 +49,7 @@ class NewFilmsPresenterImpl @Inject constructor(private val moviesInteractor: Mo
         override fun onResponse(call: Call<MoviesResponse>?, response: Response<MoviesResponse>) {
             if (response.isSuccessful) {
                 if (response.code() == RESPONSE_OK) {
-                    response.body().results.run { onMoviesReceived(this) }
+                    response.body()?.results.run { this?.let { onMoviesReceived(it) } }
                 }
             }
         }
@@ -76,7 +74,7 @@ class NewFilmsPresenterImpl @Inject constructor(private val moviesInteractor: Mo
         override fun onResponse(call: Call<MoviesResponse>?, response: Response<MoviesResponse>) {
             if (response.isSuccessful) {
                 if (response.code() == RESPONSE_OK)
-                    response.body().results.run { newFilmsView.addMovies(this) }
+                    response.body()?.results.run { this?.let { newFilmsView.addMovies(it) } }
             }
         }
 

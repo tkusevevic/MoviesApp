@@ -43,13 +43,13 @@ class SignInActivity : AppCompatActivity(), SignInView {
     }
 
     private fun initFacebook() {
-        signInFacebook.setReadPermissions(FACEBOOK_EMAIL,FACEBOOK_PROFILE)
+        signInFacebook.setReadPermissions(FACEBOOK_EMAIL, FACEBOOK_PROFILE)
         signInFacebook.registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
             override fun onSuccess(result: LoginResult) {
                 presenter.handleFacebookAccessToken(result.accessToken)
             }
 
-            override fun onCancel(){
+            override fun onCancel() {
             }
 
             override fun onError(error: FacebookException?) {

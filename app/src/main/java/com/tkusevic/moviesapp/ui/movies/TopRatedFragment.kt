@@ -11,7 +11,6 @@ import android.view.ViewGroup
 import com.tkusevic.moviesapp.R
 import com.tkusevic.moviesapp.commons.constants.MOVIE_KEY
 import com.tkusevic.moviesapp.commons.extensions.hide
-import com.tkusevic.moviesapp.commons.extensions.onClick
 import com.tkusevic.moviesapp.commons.extensions.show
 import com.tkusevic.moviesapp.data.model.Movie
 import com.tkusevic.moviesapp.presentation.TopRatedPresenter
@@ -48,6 +47,7 @@ class TopRatedFragment : Fragment(), OnMovieClickListener, TopRatedView {
         recyclerViewTopRated.adapter = adapter
         val lm = LinearLayoutManager(activity)
         recyclerViewTopRated.layoutManager = lm
+
         val scrollListener = object : EndlessScrollListener(lm) {
             override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView?) {
                 presenter.loadNextPage(page)

@@ -1,11 +1,8 @@
 package com.tkusevic.moviesapp.ui.listeners
 
-import android.os.Build
-import android.support.annotation.RequiresApi
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.StaggeredGridLayoutManager
 
 /**
  * Created by tkusevic on 20.02.2018..

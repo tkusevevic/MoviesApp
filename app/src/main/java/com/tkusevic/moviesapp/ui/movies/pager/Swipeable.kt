@@ -1,9 +1,9 @@
 package com.tkusevic.moviesapp.ui.movies.pager
 
 import android.content.Context
-import android.view.MotionEvent
 import android.support.v4.view.ViewPager
 import android.util.AttributeSet
+import android.view.MotionEvent
 
 
 /**

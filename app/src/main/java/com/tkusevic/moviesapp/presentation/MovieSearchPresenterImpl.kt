@@ -38,7 +38,7 @@ class MovieSearchPresenterImpl @Inject constructor(private val moviesInteractor:
         override fun onResponse(call: Call<MoviesResponse>?, response: Response<MoviesResponse>) {
             if (response.isSuccessful) {
                 if (response.code() == RESPONSE_OK) {
-                    response.body().results.run { onMoviesReceived(this) }
+                    response.body()?.results.run { this?.let { onMoviesReceived(it) } }
                 }
             }
         }
@@ -63,7 +63,7 @@ class MovieSearchPresenterImpl @Inject constructor(private val moviesInteractor:
         override fun onResponse(call: Call<MoviesResponse>?, response: Response<MoviesResponse>) {
             if (response.isSuccessful) {
                 if (response.code() == RESPONSE_OK)
-                    response.body().results.run { view.addMovies(this) }
+                    response.body()?.results.run { this?.let { view.addMovies(it) } }
             }
         }
 

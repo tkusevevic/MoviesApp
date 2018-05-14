@@ -4,13 +4,12 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.squareup.picasso.Picasso
 import com.tkusevic.moviesapp.R
-import com.tkusevic.moviesapp.commons.constants.IMAGE_KEY
+import com.tkusevic.moviesapp.commons.constants.IMAGE_BASE_URL
 import com.tkusevic.moviesapp.commons.constants.MOVIE_KEY
 import com.tkusevic.moviesapp.commons.extensions.onClick
 import com.tkusevic.moviesapp.data.model.Movie
 import com.tkusevic.moviesapp.movieDetailsPresenter
 import com.tkusevic.moviesapp.presentation.MovieDetailsPresenter
-import com.tkusevic.moviesapp.presentation.MovieDetailsPresenterImpl
 import kotlinx.android.synthetic.main.activity_movie_details.*
 import java.io.Serializable
 
@@ -50,7 +49,7 @@ class MovieDetailsActivity : AppCompatActivity(), MovieDetailsView {
 
     override fun showData(movie: Movie) {
         Picasso.with(this)
-                .load(IMAGE_KEY + movie.imageUrl)
+                .load(IMAGE_BASE_URL + movie.imageUrl)
                 .resize(180, 180)
                 .centerCrop()
                 .into(imageMovieDetails)

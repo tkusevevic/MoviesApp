@@ -15,12 +15,5 @@ class SplashPresenterImpl @Inject constructor(private val preferencesHelper: Pre
         splashView=baseView
     }
 
-    override fun checkPrefs() {
-        if (preferencesHelper.userIdExists()) {
-            splashView.startApp()
-        }
-        else{
-            splashView.startSignIn()
-        }
-    }
+    override fun checkPrefs() = if(preferencesHelper.userIdExists()) splashView.startApp() else splashView.startSignIn()
 }

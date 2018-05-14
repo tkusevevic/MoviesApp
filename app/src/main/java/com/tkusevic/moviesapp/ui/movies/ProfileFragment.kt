@@ -45,7 +45,6 @@ class ProfileFragment : Fragment(), ProfileView {
         signOut.onClick { presenter.clearPrefs() }
     }
 
-
     override fun setData(user: User) {
         profileEmail.text = user.email
         profileName.text = user.userDisplayName
