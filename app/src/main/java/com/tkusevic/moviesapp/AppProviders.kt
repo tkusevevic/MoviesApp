@@ -18,10 +18,16 @@ fun newFilmsPresenter(): NewFilmsPresenter = App.appComponent.newFilmsPresenter(
 
 fun favoritesPresenter(): FavoritesPresenter = App.appComponent.favoritesPresenter()
 
-fun movieDetailsPresenter() : MovieDetailsPresenter = App.appComponent.movieDetailsPresenter()
+fun movieDetailsPresenter(): MovieDetailsPresenter = App.appComponent.movieDetailsPresenter()
 
-fun editProfilePresenter() : EditProfilePresenter= App.appComponent.editProfilePresenter()
+fun editProfilePresenter(): EditProfilePresenter = App.appComponent.editProfilePresenter()
 
-fun splashPresenter() : SplashPresenter = App.appComponent.splashPresenter()
+fun splashPresenter(): SplashPresenter = App.appComponent.splashPresenter()
 
-fun movieSearchPresenter() : MovieSearchPresenter = App.appComponent.movieSearchPresenter()
+fun movieSearchPresenter(): MovieSearchPresenter = App.appComponent.movieSearchPresenter()
+
+fun searchUserPresenter(): SearchUserPresenter = App.appComponent.searchUserPresenter()
+
+fun userDetailsPresenter(): UserDetailsPresenter = App.appComponent.userDetailsPresenter()
+
+

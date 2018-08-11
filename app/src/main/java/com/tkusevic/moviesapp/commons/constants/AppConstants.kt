@@ -30,6 +30,7 @@ const val IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500"
 const val TOP_RATED_KEY = "top_rated"
 const val NOW_PLAYING_KEY = "now_playing"
 const val MOVIE_KEY = "movie"
+const val USER_KEY = "user"
 
 //responses
 const val RESPONSE_OK = 200

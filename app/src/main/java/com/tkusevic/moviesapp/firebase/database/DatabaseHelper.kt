@@ -20,4 +20,5 @@ interface DatabaseHelper {
 
     fun addFavorites(userId: String, movies: List<Movie>)
 
+    fun getUsers( onUsersRecieved: (List<User>) -> Unit)
 }

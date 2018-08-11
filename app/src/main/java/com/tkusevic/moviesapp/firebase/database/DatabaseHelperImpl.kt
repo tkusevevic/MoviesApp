@@ -66,4 +66,16 @@ class DatabaseHelperImpl @Inject constructor(private val reference: DatabaseRefe
             }
         })
     }
+
+    override fun getUsers(onUsersRecieved: (List<User>) -> Unit) {
+        reference.child("users").addListenerForSingleValueEvent(object : ValueEventListener{
+            override fun onDataChange(data: DataSnapshot) {
+                val values = if(data.hasChildren()) data.children.map { it.getValue(User::class.java) } else mutableListOf()
+                onUsersRecieved(values.filterNotNull())
+            }
+
+            override fun onCancelled(p0: DatabaseError?) {}
+
+        })
+    }
 }

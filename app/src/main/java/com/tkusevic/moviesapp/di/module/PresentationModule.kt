@@ -38,4 +38,10 @@ abstract class PresentationModule {
 
     @Binds
     abstract fun movieSearchPresenter(movieSearchPresenterImpl: MovieSearchPresenterImpl): MovieSearchPresenter
+
+    @Binds
+    abstract fun searchUserPresenter(searchUserPresenterImpl: SearchUserPresenterImpl): SearchUserPresenter
+
+    @Binds
+    abstract fun userDetailsPresenter(userDetailsPresenterImpl: UserDetailsPresenterImpl): UserDetailsPresenter
 }

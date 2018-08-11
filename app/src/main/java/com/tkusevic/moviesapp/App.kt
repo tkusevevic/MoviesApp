@@ -22,6 +22,5 @@ class App : Application() {
         FirebaseApp.initializeApp(this)
         instance = this
         appComponent.inject(this)
-
     }
 }

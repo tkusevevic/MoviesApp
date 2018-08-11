@@ -9,11 +9,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.tkusevic.moviesapp.R
 import com.tkusevic.moviesapp.commons.extensions.onClick
+import com.tkusevic.moviesapp.commons.extensions.toast
 import com.tkusevic.moviesapp.data.model.User
 import com.tkusevic.moviesapp.presentation.ProfilePresenter
 import com.tkusevic.moviesapp.profilePresenter
 import com.tkusevic.moviesapp.ui.edit_profile.EditProfileActivity
 import com.tkusevic.moviesapp.ui.movies.views.ProfileView
+import com.tkusevic.moviesapp.ui.search_user.SearchUsersActivity
 import com.tkusevic.moviesapp.ui.signIn.SignInActivity
 import kotlinx.android.synthetic.main.fragment_profile.*
 
@@ -41,7 +43,7 @@ class ProfileFragment : Fragment(), ProfileView {
 
     private fun initListeners() {
         editProfile.onClick { goToEdit() }
-
+        searchUser.onClick { startActivity(Intent(activity,SearchUsersActivity::class.java)) }
         signOut.onClick { presenter.clearPrefs() }
     }
 

@@ -35,4 +35,8 @@ interface AppComponent {
     fun splashPresenter(): SplashPresenter
 
     fun movieSearchPresenter(): MovieSearchPresenter
+
+    fun searchUserPresenter() : SearchUserPresenter
+
+    fun userDetailsPresenter(): UserDetailsPresenter
 }

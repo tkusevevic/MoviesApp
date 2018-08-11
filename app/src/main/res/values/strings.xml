@@ -34,6 +34,7 @@
     <string name="hint_about_movies">About movies I like:</string>
     <string name="searchMovies">Search Movies</string>
     <string name="search">Search</string>
+    <string name="searchUsers">Search users</string>
 
 
 </resources>
