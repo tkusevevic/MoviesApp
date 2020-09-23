@@ -4,32 +4,26 @@
     <item
         android:id="@+id/action_top_rated"
         android:enabled="true"
-        android:icon="@drawable/top_rated"
+        android:icon="@drawable/top_rated_red"
         android:title="TOP RATED"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_now_playing"
         android:enabled="true"
-        android:icon="@drawable/now_playing"
+        android:icon="@drawable/now_playing_red"
         android:title="NOW PLAYING"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_search"
         android:enabled="true"
-        android:icon="@drawable/search"
+        android:icon="@drawable/search_red"
         android:title="SEARCH"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_favorites"
         android:enabled="true"
-        android:icon="@drawable/like_fill"
+        android:icon="@drawable/like_red_fill"
         android:title="FAVORITES"
-        app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/action_profile"
-        android:enabled="true"
-        android:icon="@drawable/profile"
-        android:title="PROFILE"
         app:showAsAction="ifRoom" />
 
 </menu>

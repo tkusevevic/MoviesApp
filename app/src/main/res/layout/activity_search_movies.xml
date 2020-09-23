@@ -18,7 +18,7 @@
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:layout_marginStart="20dp"
-            android:src="@drawable/back" />
+            android:src="@drawable/back_red" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -57,7 +57,7 @@
                 android:id="@+id/clearSearch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/x"
+                android:src="@drawable/x_red"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="10dp"/>

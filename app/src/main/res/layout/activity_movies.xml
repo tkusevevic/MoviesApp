@@ -5,14 +5,14 @@
     android:layout_height="match_parent"
     android:background="@color/background_color">
 
-    <com.tkusevic.moviesapp.ui.movies.pager.Swipeable
+    <com.fkulesevic.movielicious.ui.movies.pager.Swipeable
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="56dp"
         android:layout_alignParentStart="true"
         android:layout_below="@id/toolbar">
-    </com.tkusevic.moviesapp.ui.movies.pager.Swipeable>
+    </com.fkulesevic.movielicious.ui.movies.pager.Swipeable>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottomNavigation"

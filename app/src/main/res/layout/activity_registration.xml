@@ -19,7 +19,7 @@
             android:layout_width="270dp"
             android:layout_height="230dp"
             android:layout_gravity="center"
-            android:src="@drawable/movies" />
+            android:src="@drawable/icon_movie" />
 
         <ProgressBar
             android:id="@+id/progress"

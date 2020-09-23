@@ -25,7 +25,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="20dp"
-                android:src="@drawable/back" />
+                android:src="@drawable/back_red" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -41,7 +41,7 @@
                 android:layout_height="36dp"
                 android:layout_alignParentEnd="true"
                 android:layout_margin="10dp"
-                tools:background="@drawable/like" />
+                tools:background="@drawable/like_red" />
         </RelativeLayout>
 
         <ImageView
@@ -50,8 +50,7 @@
             android:layout_height="260dp"
             android:layout_below="@id/toolbar"
             android:layout_centerHorizontal="true"
-            android:padding="5dp"
-            tools:src="@drawable/movies" />
+            android:padding="5dp"/>
 
         <TextView
             android:id="@+id/titleMovieDetails"
