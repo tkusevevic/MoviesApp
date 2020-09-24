@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "675746936980",
-    "firebase_url": "https://movielicious-4d742.firebaseio.com",
-    "project_id": "movielicious-4d742",
-    "storage_bucket": "movielicious-4d742.appspot.com"
+    "project_number": "67373124132",
+    "firebase_url": "https://movielicous.firebaseio.com",
+    "project_id": "movielicous",
+    "storage_bucket": "movielicous.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:675746936980:android:60da5a409fe175c0331c81",
+        "mobilesdk_app_id": "1:67373124132:android:6239472fcbe0bf45b8a6b1",
         "android_client_info": {
           "package_name": "com.fkulesevic.movielicious"
         }
       },
       "oauth_client": [
         {
-          "client_id": "675746936980-4932mpav2fo4cusapjcbiu1nd1ntkl71.apps.googleusercontent.com",
+          "client_id": "67373124132-79bb44u3gpjh0b205c6a5hkdbm89ajme.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyB9XdnBjilW8nb9ZPzOW2XR74qON9JIzYM"
+          "current_key": "AIzaSyBZxYH_rMWDUo5iWNCgHdQBfsduKVfMKuQ"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "675746936980-4932mpav2fo4cusapjcbiu1nd1ntkl71.apps.googleusercontent.com",
+              "client_id": "67373124132-79bb44u3gpjh0b205c6a5hkdbm89ajme.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

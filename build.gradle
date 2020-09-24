@@ -17,7 +17,16 @@ buildscript {
 
 allprojects {
     repositories {
-        mavenCentral()
+        mavenCentral()buildscript {
+            ext {
+                kotlinVersion = '1.3.72'
+                springBootVersion = '2.0.4.RELEASE'
+            }
+            repositories {
+                mavenCentral()
+            }
+            ...
+        }
         google()
         jcenter()
     }

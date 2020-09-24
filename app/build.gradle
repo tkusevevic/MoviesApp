@@ -64,11 +64,6 @@ dependencies {
     //dagger
     implementation 'com.google.dagger:dagger:2.14.1'
     kapt 'com.google.dagger:dagger-compiler:2.14.1'
-
-    //koin
-    implementation 'org.koin:koin-android:0.9.1'
-
-
 }
 
 apply plugin: 'com.google.gms.google-services'

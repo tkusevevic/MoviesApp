@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Movielicious.iml" filepath="$PROJECT_DIR$/Movielicious.iml" group="Movielicious" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Movielicous.iml" filepath="$PROJECT_DIR$/.idea/modules/Movielicous.iml" group="Movielicous" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Movielicous-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Movielicous-app.iml" group="Movielicous/app" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="Movielicious/app" />
     </modules>
   </component>
